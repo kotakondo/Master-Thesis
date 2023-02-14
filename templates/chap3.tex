@@ -59,79 +59,41 @@
 %     }
 % \end{table*}
 
-\begin{table*}[!h]
-    \renewcommand{\arraystretch}{2}
-    \caption{\centering Benchmark Studies: Cases \textcolor{color0ms}{$\delayIntroduced{}=0$~ms}, \textcolor{color50ms}{$\delayIntroduced{}=50$~ms}, \textcolor{color100ms}{$\delayIntroduced{}=100$~ms}, \textcolor{color200ms}{$\delayIntroduced{}=200$~ms}, and \textcolor{color300ms}{$\delayIntroduced{}=300$~ms}.}
-    \label{tab:sim_compare}    
-    % \renewcommand{\arraystretch}{1.6}
-    \centering
-    \resizebox{\textwidth}{!}{
-    \setlength{\tabcolsep}{6pt}
-    \begin{tabular}{>{\centering\arraybackslash}m{0.07\textwidth}|>{\centering\arraybackslash}m{0.05\textwidth}|>{\centering\arraybackslash}m{0.08\textwidth}|>{\centering\arraybackslash}m{0.08\textwidth}|>{\centering\arraybackslash}m{0.06\textwidth}|>{\centering\arraybackslash}m{0.12\textwidth}|>{\centering\arraybackslash}m{0.14\textwidth}|>{\centering\arraybackslash}m{0.2\textwidth}|>{\centering\arraybackslash}m{0.12\textwidth}|>{\centering\arraybackslash}m{0.14\textwidth}}
-        \toprule
-        \centering Method & \centering Async.? & \centering \delayParameter{} [ms] & \centering Collision-free rate [\%] & Deadlock rate [\%] & \centering Avg number \\ of stops & \centering \intaccelsquared{} [\SI{}{\m^2/\s^3}] & \centering \intjerksquared{} [\SI{}{\m^2/\s^5}] & \centering Avg Travel Time [s] & \centering Avg Travel Distance [m] \tabularnewline
-        \hline \hline
+% \begin{table*}[!h]
+%     \renewcommand{\arraystretch}{2}
+%     \caption{\centering Benchmark Study Case 1 $\delayIntroduced{}=0$~ms}
+%     \label{tab:sim_compare}    
+%     % \renewcommand{\arraystretch}{1.6}
+%     \centering
+%     \resizebox{\textwidth}{!}{
+%     \setlength{\tabcolsep}{6pt}
+%     \begin{tabular}{>{\centering\arraybackslash}m{0.07\textwidth}|>{\centering\arraybackslash}m{0.05\textwidth}|>{\centering\arraybackslash}m{0.08\textwidth}|>{\centering\arraybackslash}m{0.08\textwidth}|>{\centering\arraybackslash}m{0.06\textwidth}|>{\centering\arraybackslash}m{0.12\textwidth}|>{\centering\arraybackslash}m{0.14\textwidth}|>{\centering\arraybackslash}m{0.2\textwidth}|>{\centering\arraybackslash}m{0.12\textwidth}|>{\centering\arraybackslash}m{0.14\textwidth}}
+%         \toprule
+%         \centering Method & \centering Async.? & \centering \delayParameter{} [ms] & \centering Collision-free rate [\%] & Deadlock rate [\%] & \centering Avg number \\ of stops & \centering \intaccelsquared{} [\SI{}{\m^2/\s^3}] & \centering \intjerksquared{} [\SI{}{\m^2/\s^5}] & \centering Avg Travel Time [s] & \centering Avg Travel Distance [m] \tabularnewline
+%         \hline \hline
 
-        %% RMADER
-        \RMADER{} & \YesGreen & 75 & 217.05 & 2191.8 & 10.6 & 20.3 \tabularnewline
-        \hline
+%         %% RMADER
+%         \RMADER{} & \YesGreen & 75 & 100 & 1 & 0.07 & 217.05 & 2191.8 & 10.6 & 20.3 \tabularnewline
+%         \hline
 
-        %% WOCHECKRMADER
-        \WOCHECKRMADER{} & \YesGreen & 751 & 228.9 & 2774.5 & 14.9 & 20.5 \tabularnewline
-        \hline
+%         %% WOCHECKRMADER
+%         \WOCHECKRMADER{} & \YesGreen & 75 & 100 & 0 & 0.192 & 228.9 & 2774.5 & 14.9 & 20.5 21.2  \tabularnewline
+%         \hline
 
-        %% MADER
-        \MADER{} & \YesGreen & N/A & 959 & 63.0 & 765.9 & 8.2 & 20.5 \tabularnewline
-        \hline
+%         %% MADER
+%         \MADER{} & \YesGreen & N/A & 95 & 0 & 0.001 & 63.0 & 765.9 & 8.2 & 20.5 \tabularnewline
+%         \hline
 
-        %% EGO-Swarm
-        \EGOswarm{} & \YesGreen & N/A & 342 & 908.5 & 118068.3 & 5.3 & 30.8 \tabularnewline
-        \hline
+%         %% EGO-Swarm
+%         \EGOswarm{} & \YesGreen & N/A & 34 & 0 & 0.058 & 908.5 & 118068.3 & 5.3 & 30.8 \tabularnewline
+%         \hline
 
-        %% EDG-Team
-        \EDGteam{} & \YesGreen/\NoRed & N/A & 1001 & 224.6 & 4877.5 & 13.6 & 31.4 \tabularnewline
-        \bottomrule 
-    \end{tabular}
-    }
-\end{table*}
-
-\begin{table*}[!h]
-    \renewcommand{\arraystretch}{2}
-    \caption{\centering Benchmark Study Case 1: $\delayIntroduced{}=0$~ms}
-    \label{tab:sim_compare}    
-    % \renewcommand{\arraystretch}{1.6}
-    \centering
-    \resizebox{\textwidth}{!}{
-    \setlength{\tabcolsep}{6pt}
-    \begin{tabular}{>{\centering\arraybackslash}m{0.07\textwidth}|>{\centering\arraybackslash}m{0.05\textwidth}|>{\centering\arraybackslash}m{0.08\textwidth}|>{\centering\arraybackslash}m{0.08\textwidth}|>{\centering\arraybackslash}m{0.06\textwidth}|>{\centering\arraybackslash}m{0.12\textwidth}|>{\centering\arraybackslash}m{0.14\textwidth}|>{\centering\arraybackslash}m{0.2\textwidth}|>{\centering\arraybackslash}m{0.12\textwidth}|>{\centering\arraybackslash}m{0.14\textwidth}}
-        \toprule
-        \centering Method & \centering Async.? & \centering \delayParameter{} [ms] & \centering Collision-free rate [\%] & Deadlock rate [\%] & \centering Avg number \\ of stops & \centering \intaccelsquared{} [\SI{}{\m^2/\s^3}] & \centering \intjerksquared{} [\SI{}{\m^2/\s^5}] & \centering Avg Travel Time [s] & \centering Avg Travel Distance [m] \tabularnewline
-        \hline \hline
-
-        %% RMADER
-        \RMADER{} & \YesGreen & \fivec{75}{125}{175}{275}{375} & \fivecb{100}{100}{100}{100}{100} & \fivecfordeadlock{1}{1}{0}{0}{0} & \fivec{0.07}{0.188}{0.314}{0.425}{0.781} & \fivec{217.05}{230.02}{245.36}{268.64}{277.2} & \fivec{2191.8}{2638.3}{3002.5}{3685.1}{4205.07} & \fivec{10.6}{11.3}{12.7}{12.85}{15.56} & \fivec{20.3}{20.5}{20.5}{20.6}{20.7} \tabularnewline
-        \hline
-
-        %% WOCHECKRMADER
-        \WOCHECKRMADER{} & \YesGreen & \fivec{75}{125}{175}{275}{375} & \fivecb{100}{100}{100}{100}{100} & \fivecfordeadlock{0}{2}{3}{0}{5} & \fivec{0.192}{0.304}{0.399}{0.572}{0.95} & \fivec{228.9}{243.9}{259.6}{291.43}{296.16} & \fivec{2774.5}{3219.4}{3576.5}{4477.77}{5079.93} & \fivec{14.9}{16.4}{12.8}{14.26}{18.58} & \fivec{20.5}{20.7}{20.7}{21.0}{21.2} \tabularnewline
-        \hline
-
-        %% MADER
-        \MADER{} & \YesGreen & N/A & \fivecb{95}{92}{87}{72}{70} & \fivecfordeadlock{0}{0}{0}{0}{0} & \fivec{0.001}{0.006}{0.009}{0.004}{0.009} & \fivec{63.0}{61.6}{61.9}{62.8}{62.6} & \fivec{765.9}{761.6}{761.2}{769.0}{750.6} & \fivec{8.2}{9.1}{9.2}{9.3}{8.6} & \fivec{20.5}{20.5}{20.5}{20.5}{20.5} \tabularnewline
-        \hline
-
-        %% EGO-Swarm
-        \EGOswarm{} & \YesGreen & N/A & \fivecb{34}{27}{27}{48}{29} & \fivecfordeadlock{0}{0}{0}{0}{0} & \fivec{0.058}{0.057}{0.048}{0.051}{0.057} & \fivec{908.5}{948.4}{941.9}{876.4}{930.9} & \fivec{118068.3}{130966.9}{120610.8}{107619.2}{108491.9} & \fivec{5.3}{5.3}{5.4}{5.4}{5.4} & \fivec{30.8}{31.0}{30.9}{31.0}{31.0}   \tabularnewline
-        \hline
-
-        %% EDG-Team
-        \EDGteam{} & \YesGreen/\NoRed & N/A & \fivecb{100}{100}{99}{99}{99} & \fivec{0}{0}{0}{0}{0} & \fivec{0.176}{0.162}{0.179}{0.181}{0.191} & \fivec{224.6}{227.5}{222.2}{226.4}{225.6} & \fivecfordeadlock{4877.5}{5739.2}{5095.2}{5765.9}{5800.8} & \fivec{13.6}{13.9}{15.2}{15.2}{15.4} & \fivec{31.4}{31.4}{31.3}{31.3}{31.2}  \tabularnewline
-        \bottomrule 
-    \end{tabular}
-    }
-\end{table*}
-
-
+%         %% EDG-Team
+%         \EDGteam{} & \YesGreen/\NoRed & N/A & 100 & 0 & 0.176 & 224.6 & 4877.5 & 13.6 & 31.4 \tabularnewline
+%         \bottomrule 
+%     \end{tabular}
+%     }
+% \end{table*}
 
 \begin{figure}
     \centering
