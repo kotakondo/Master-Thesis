@@ -1,0 +1,1136 @@
+@article{kondo2022robust,
+  title={Robust {MADER}: Decentralized and Asynchronous Multiagent Trajectory Planner Robust to Communication Delay},
+  author={Kondo, Kota and Tordesillas, Jesus and Figueroa, Reinaldo and Rached, Juan and Merkel, Joseph and Lusk, Parker C and How, Jonathan P},
+  journal={arXiv preprint arXiv:2209.13667},
+  year={2022}
+}
+
+@article{kuwata_cooperative_2011,
+	title = {Cooperative {Distributed} {Robust} {Trajectory} {Optimization} {Using} {Receding} {Horizon} {MILP}},
+	volume = {19},
+	issn = {1558-0865},
+	doi = {10.1109/TCST.2010.2045501},
+	abstract = {Motivated by recent research on cooperative unmanned aerial vehicles (UAVs), this paper introduces a new cooperative distributed trajectory optimization approach for systems with independent dynamics but coupled objectives and hard constraints. The overall goal is to develop a distributed approach that solves small subproblems while minimizing a fleet-level objective. In the new algorithm, vehicles solve their subproblems in sequence while generating feasible modifications to the prediction of other vehicles' plans. In order to avoid reproducing the global optimization, the decisions of other vehicles are parameterized using a much smaller number of variables than in the centralized formulation. This reduced number of variables is sufficient to improve the cooperation between vehicles without significantly increasing the computational effort involved. The resulting algorithm is shown to be robustly feasible under the action of unknown but bounded disturbances. Furthermore, the fleet objective function is proven to monotonically decrease as the algorithm cycles through the vehicles in the fleet and over the time. The results from simulations and a hardware experiment demonstrate that the proposed algorithm can improve the fleet objective by temporarily having one vehicle sacrifice its individual objective, showing the cooperative behavior.},
+	number = {2},
+	journal = {IEEE Transactions on Control Systems Technology},
+	author = {Kuwata, Yoshiaki and How, Jonathan P.},
+	month = mar,
+	year = {2011},
+	note = {Conference Name: IEEE Transactions on Control Systems Technology},
+	keywords = {Computational modeling, Constrained optimization, Constraint optimization, cooperative control, Distributed control, distributed optimization, Hardware, Iterative methods, mixed-integer linear programming (MILP), Robust control, robust receding horizon control (RHC/MPC), Robustness, Trajectory, trajectory planning, Unmanned aerial vehicles, Vehicle dynamics},
+	pages = {423--431},
+	file = {IEEE Xplore Full Text PDF:/home/kota/snap/zotero-snap/common/Zotero/storage/7W6GHLN2/Kuwata and How - 2011 - Cooperative Distributed Robust Trajectory Optimiza.pdf:application/pdf},
+}
+
+@inproceedings{vinod_safe_2022,
+	title = {Safe multi-agent motion planning via filtered reinforcement learning},
+	doi = {10.1109/ICRA46639.2022.9812259},
+	abstract = {We study the problem of safe multi-agent motion planning in cluttered environments. Existing multi-agent reinforcement learning-based motion planners only provide approximate safety enforcement. We propose a safe reinforcement learning algorithm that leverages single-agent reinforcement learning for target regulation and a subsequent convex optimization-based filtering that ensures the collective safety of the system. Our approach yields a safe, real-time implementable multi-agent motion planner that is simpler to train and enforces safety as hard constraints. Our approach can handle state and control constraints on the agents, and enforce collision avoidance among themselves and with static obstacles in the environment. Numerical simulations and hardware experiments show the efficacy of the approach.},
+	booktitle = {2022 {International} {Conference} on {Robotics} and {Automation} ({ICRA})},
+	author = {Vinod, Abraham P. and Safaoui, Sleiman and Chakrabarty, Ankush and Quirynen, Rien and Yoshikawa, Nobuyuki and Di Cairano, Stefano},
+	month = may,
+	year = {2022},
+	keywords = {Filtering, Hardware, Numerical simulation, Real-time systems, Regulation, Reinforcement learning, Safety},
+	pages = {7270--7276},
+	file = {IEEE Xplore Abstract Record:/home/kota/snap/zotero-snap/common/Zotero/storage/DDJTEFPL/9812259.html:text/html;IEEE Xplore Full Text PDF:/home/kota/snap/zotero-snap/common/Zotero/storage/YTIYLVDS/Vinod et al. - 2022 - Safe multi-agent motion planning via filtered rein.pdf:application/pdf},
+}
+
+@inproceedings{batra_decentralized_2022,
+	title = {Decentralized {Control} of {Quadrotor} {Swarms} with {End}-to-end {Deep} {Reinforcement} {Learning}},
+	url = {https://proceedings.mlr.press/v164/batra22a.html},
+	abstract = {We demonstrate the possibility of learning drone swarm controllers that are zero-shot transferable to real quadrotors via large-scale multi-agent end-to-end reinforcement learning. We train policies parameterized by neural networks that are capable of controlling individual drones in a swarm in a fully decentralized manner. Our policies, trained in simulated environments with realistic quadrotor physics, demonstrate advanced flocking behaviors, perform aggressive maneuvers in tight formations while avoiding collisions with each other, break and re-establish formations to avoid collisions with moving obstacles, and efficiently coordinate in pursuit-evasion tasks. We analyze, in simulation, how different model architectures and parameters of the training regime influence the final performance of neural swarms. We demonstrate the successful deployment of the model learned in simulation to highly resource-constrained physical quadrotors performing station keeping and goal swapping behaviors. Video demonstrations and source code are available at the project website https://sites.google.com/view/swarm-rl.},
+	language = {en},
+	urldate = {2022-09-12},
+	booktitle = {Proceedings of the 5th {Conference} on {Robot} {Learning}},
+	publisher = {PMLR},
+	author = {Batra, Sumeet and Huang, Zhehui and Petrenko, Aleksei and Kumar, Tushar and Molchanov, Artem and Sukhatme, Gaurav S.},
+	month = jan,
+	year = {2022},
+	note = {ISSN: 2640-3498},
+	pages = {576--586},
+	file = {Full Text PDF:/home/kota/snap/zotero-snap/common/Zotero/storage/YHWDRZY4/Batra et al. - 2022 - Decentralized Control of Quadrotor Swarms with End.pdf:application/pdf},
+}
+
+@inproceedings{ryou_cooperative_2022,
+	title = {Cooperative {Multi}-{Agent} {Trajectory} {Generation} with {Modular} {Bayesian} {Optimization}},
+	isbn = {978-0-9923747-8-5},
+	url = {http://www.roboticsproceedings.org/rss18/p060.pdf},
+	doi = {10.15607/RSS.2022.XVIII.060},
+	abstract = {We present a modular Bayesian optimization framework that efficiently generates time-optimal trajectories for a cooperative multi-agent system, such as a team of UAVs. Existing methods for multi-agent trajectory generation often rely on overly conservative constraints to reduce the complexity of this highdimensional planning problem, leading to suboptimal solutions. We propose a novel modular structure for the Bayesian optimization model that consists of multiple Gaussian process surrogate models that represent the dynamic feasibility and collision avoidance constraints. This modular structure alleviates the stark increase in computational cost with problem dimensionality and enables the use of minimal constraints in the joint optimization of the multi-agent trajectories. The efficiency of the algorithm is further improved by introducing a scheme for simultaneous evaluation of the Bayesian optimization acquisition function and random sampling. The modular BayesOpt algorithm was applied to optimize multi-agent trajectories through six unique environments using multi-fidelity evaluations from various data sources. It was found that the resulting trajectories are faster than those obtained from two baseline methods. The optimized trajectories were validated in real-world experiments using four quadcopters that fly within centimeters of each other at speeds up to 7.4 m/s.},
+	language = {en},
+	urldate = {2022-07-08},
+	booktitle = {Robotics: {Science} and {Systems} {XVIII}},
+	publisher = {Robotics: Science and Systems Foundation},
+	author = {Ryou, Gilhyun and Tal, Ezra and Karaman, Sertac},
+	month = jun,
+	year = {2022},
+	file = {Ryou et al. - 2022 - Cooperative Multi-Agent Trajectory Generation with.pdf:/home/kota/snap/zotero-snap/common/Zotero/storage/BLAJP6F9/Ryou et al. - 2022 - Cooperative Multi-Agent Trajectory Generation with.pdf:application/pdf},
+}
+
+@article{peng2022obstacle,
+  title={Obstacle Avoidance of Resilient UAV Swarm Formation with Active Sensing System in the Dense Environment},
+  author={Peng, Peng and Dong, Wei and Chen, Gang and Zhu, Xiangyang},
+  journal={arXiv preprint arXiv:2202.13381},
+  year={2022}
+}
+
+@article{senbaslar_asynchronous_2022,
+    title={{Asynchronous} {Real}-time {Decentralized} {Multi}-{Robot} {Trajectory Planning}},
+    author = {Baskin, Senbaslar and Sukhatme, Gaurav},
+    journal = {IEEE/RSJ International Conference on Intelligent Robots and Systems},
+    month = oct,
+    year = {2022},
+}
+
+@article{robinson_efficient_2018,
+	title = {An {Efficient} {Algorithm} for {Optimal} {Trajectory} {Generation} for {Heterogeneous} {Multi}-{Agent} {Systems} in {Non}-{Convex} {Environments}},
+	volume = {3},
+	issn = {2377-3766},
+	doi = {10.1109/LRA.2018.2794582},
+	abstract = {Generating optimal trajectories for a large numbers of vehicles in real-time becomes extremely challenging when including realistic dynamic models and time-varying obstacle constraints. We present a novel method to efficiently produce time-optimal collision-free trajectories in complex non-convex maze-like environments while enforcing nonlinear constraints on velocity, acceleration, jerk, and snap. The approach combines two complementary numerical techniques for optimal control: level set reachability analysis and pseudospectral orthogonal collocation. Applied in a multi-agent prioritized planning framework, the methodology allows for heterogeneous sizes, dynamics, endpoint conditions, and individualized optimization objectives, while achieving linear scaling in computation time relative to the number of vehicles. Simulation examples are shown with up to 26 static obstacles and 32 quadcopters in a tightly constrained space with average computation times of 1-3.5 s per vehicle, depending on scenario complexity.},
+	number = {2},
+	journal = {IEEE Robotics and Automation Letters},
+	author = {Robinson, D. Reed and Mar, Robert T. and Estabridis, Katia and Hewer, Gary},
+	month = apr,
+	year = {2018},
+	note = {Conference Name: IEEE Robotics and Automation Letters},
+	keywords = {Aerospace electronics, Motion and path planning, Nonlinear dynamical systems, Optimal control, Optimization, Planning, Trajectory, Vehicle dynamics, collision avoidance, optimization and optimal control, path planning for multiple mobile robots or agents},
+	pages = {1215--1222},
+}
+
+@article{sharon_conflict-based_2015,
+	title = {Conflict-based search for optimal multi-agent pathfinding},
+	volume = {219},
+	issn = {0004-3702},
+	url = {https://doi.org/10.1016/j.artint.2014.11.006},
+	doi = {10.1016/j.artint.2014.11.006},
+	abstract = {In the multi-agent pathfinding problem (MAPF) we are given a set of agents each with respective start and goal positions. The task is to find paths for all agents while avoiding collisions. Most previous work on solving this problem optimally has treated the individual agents as a single 'joint agent' and then applied single-agent search variants of the A* algorithm.In this paper we present the Conflict Based Search (CBS) a new optimal multi-agent pathfinding algorithm. CBS is a two-level algorithm that does not convert the problem into the single 'joint agent' model. At the high level, a search is performed on a Conflict Tree (CT) which is a tree based on conflicts between individual agents. Each node in the CT represents a set of constraints on the motion of the agents. At the low level, fast single-agent searches are performed to satisfy the constraints imposed by the high level CT node. In many cases this two-level formulation enables CBS to examine fewer states than A* while still maintaining optimality. We analyze CBS and show its benefits and drawbacks.Additionally we present the Meta-Agent CBS (MA-CBS) algorithm. MA-CBS is a generalization of CBS. Unlike basic CBS, MA-CBS is not restricted to single-agent searches at the low level. Instead, MA-CBS allows agents to be merged into small groups of joint agents. This mitigates some of the drawbacks of basic CBS and further improves performance. In fact, MA-CBS is a framework that can be built on top of any optimal and complete MAPF solver in order to enhance its performance. Experimental results on various problems show a speedup of up to an order of magnitude over previous approaches.},
+	number = {C},
+	urldate = {2022-09-16},
+	journal = {Artificial Intelligence},
+	author = {Sharon, Guni and Stern, Roni and Felner, Ariel and Sturtevant, Nathan R.},
+	month = feb,
+	year = {2015},
+	keywords = {Heuristic search, Multi-agent, Pathfinding},
+	pages = {40--66},
+}
+
+@article{tordesillas_minvo_2022,
+	title = {{MINVO} {Basis}: {Finding} {Simplexes} with {Minimum} {Volume} {Enclosing} {Polynomial} {Curves}},
+	volume = {151},
+	issn = {0010-4485},
+	shorttitle = {{MINVO} {Basis}},
+	url = {https://doi.org/10.1016/j.cad.2022.103341},
+	doi = {10.1016/j.cad.2022.103341},
+	abstract = {This paper studies the polynomial basis that generates the smallest n-simplex enclosing a given n th-degree polynomial curve in R n. Although the Bernstein and B-Spline polynomial bases provide feasible solutions to this problem, the simplexes obtained by these bases are not the smallest possible, which leads to overly conservative results in many CAD (computer-aided design) applications. We first prove that the polynomial basis that solves this problem (MINVO basis) also solves for the n th-degree polynomial curve with largest convex hull enclosed in a given n-simplex. Then, we present a formulation that is independent of the n-simplex or n th-degree polynomial curve given. By using Sum-Of-Squares (SOS) programming, branch and bound, and moment relaxations, we obtain high-quality feasible solutions for any n ∈ N, and prove (numerical) global optimality for n = 1 , 2 , 3 and (numerical) local optimality for n = 4. The results obtained for n = 3 show that, for any given 3 rd-degree polynomial curve in R 3, the MINVO basis is able to obtain an enclosing simplex whose volume is 2.36 and 254.9 times smaller than the ones obtained by the Bernstein and B-Spline bases, respectively. When n = 7, these ratios increase to 902.7 and 2 . 997 ⋅ 1 0 21, respectively. • The MINVO basis finds the smallest n-simplex enclosing a polynomial curve. • The MINVO basis finds the polynomial curve with largest convex hull in an n-simplex. • Improvements up to several orders of magnitude with respect to Bernstein/B-Spline. • Numerical global optimality is proven for n = 1,2,3. • High-quality feasible solutions are obtained for any degree n.},
+	number = {C},
+	urldate = {2022-09-15},
+	journal = {Computer-Aided Design},
+	author = {Tordesillas, Jesus and How, Jonathan P.},
+	month = oct,
+	year = {2022},
+	keywords = {Curve with largest convex hull, Minimum enclosing simplex, Polynomial basis, Polynomial curve, Spline},
+}
+
+@article{tordesillas_panther_2022,
+	title = {{PANTHER}: {Perception}-{Aware} {Trajectory} {Planner} in {Dynamic} {Environments}},
+	volume = {10},
+	issn = {2169-3536},
+	shorttitle = {{PANTHER}},
+	url = {http://arxiv.org/abs/2103.06372},
+	doi = {10.1109/ACCESS.2022.3154037},
+	abstract = {This paper presents PANTHER, a real-time perception-aware (PA) trajectory planner for multirotor-UAVs (Unmanned Aerial Vehicles) in dynamic environments. PANTHER plans trajectories that avoid dynamic obstacles while also keeping them in the sensor field of view (FOV) and minimizing the blur to aid in object tracking. The rotation and translation of the UAV are jointly optimized, which allows PANTHER to fully exploit the differential flatness of multirotors to maximize the PA objective. Real-time performance is achieved by implicitly imposing the underactuated dynamics of the UAV through the Hopf fibration. PANTHER is able to keep the obstacles inside the FOV 7.9 and 1.5 times more than non-PA approaches and PA approaches that decouple translation and yaw, respectively. The projected velocity (and hence the blur) is reduced by 18\% and 34\%, respectively. This leads to average success rates three times larger than state-of-the-art approaches in multi-obstacle avoidance scenarios. The MINVO basis is used to impose low-conservative collision avoidance constraints in position and velocity space. Finally, extensive hardware experiments in unknown dynamic environments with all the computation running onboard are presented, with velocities of up to 5.8 m/s, and with relative velocities (with respect to the obstacles) of up to 6.3 m/s. The only sensors used are an IMU, a forward-facing depth camera, and a downward-facing monocular camera.},
+	urldate = {2022-09-14},
+	journal = {IEEE Access},
+	author = {Tordesillas, Jesus and How, Jonathan P.},
+	year = {2022},
+	note = {arXiv:2103.06372 [cs]},
+	keywords = {Computer Science - Robotics},
+	pages = {22662--22677},
+}
+
+@inproceedings{cap_asynchronous_2013,
+	title = {Asynchronous decentralized prioritized planning for coordination in multi-robot system},
+	doi = {10.1109/IROS.2013.6696903},
+	abstract = {In this paper, the multi-robot motion coordination planning problem is addressed. Although a centralized prioritized planning strategy can be used to solve the problem, we rather consider a decentralized variant, which is a more suitable for a robotic system of cooperating unmanned aerial vehicles (UAVs) due to communication limitations, privacy concerns, and a better exploitation of computational resources distributed among the individual robots. However, the existing decentralized prioritized planning algorithm contains synchronization points that all the agents must be able to pass synchronously, which is impractical and inefficient for a real-world deployment of the robotic systems. Therefore, we introduce a new asynchronous decentralized prioritized planning algorithm and show that the method can converge faster than both the synchronous decentralized and centralized algorithms. Further, we demonstrate the applicability of the proposed method as a coordination mechanism within a complex mission planning for a real robotic system consisting of several autonomous UAVs.},
+	booktitle = {2013 {IEEE}/{RSJ} {International} {Conference} on {Intelligent} {Robots} and {Systems}},
+	author = {Cáp, Michal and Novák, Peter and Selecký, Martin and Faigl, Jan and Vokffnek, Jiff},
+	month = nov,
+	year = {2013},
+	note = {ISSN: 2153-0866},
+	keywords = {Collision avoidance, Planning, Robot kinematics, Runtime, Synchronization, Trajectory},
+	pages = {3822--3829},
+}
+
+@misc{liu_towards_2018,
+	title = {Towards {Search}-based {Motion} {Planning} for {Micro} {Aerial} {Vehicles}},
+	url = {http://arxiv.org/abs/1810.03071},
+	doi = {10.48550/arXiv.1810.03071},
+	abstract = {Search-based motion planning has been used for mobile robots in many applications. However, it has not been fully developed and applied for planning full state trajectories of Micro Aerial Vehicles (MAVs) due to their complicated dynamics and the requirement of real-time computation. In this paper, we explore a search-based motion planning framework that plans dynamically feasible, collision-free, and resolution optimal and complete trajectories. This paper extends the search-based planning approach to address three important scenarios for MAVs navigation: (i) planning safe trajectories in the presence of motion uncertainty; (ii) planning with constraints on field-of-view and (iii) planning in dynamic environments. We show that these problems can be solved effectively and efficiently using the proposed search-based planning with motion primitives.},
+	urldate = {2022-09-01},
+	publisher = {arXiv},
+	author = {Liu, Sikang and Mohta, Kartik and Atanasov, Nikolay and Kumar, Vijay},
+	month = oct,
+	year = {2018},
+	note = {arXiv:1810.03071 [cs]},
+	keywords = {Computer Science - Robotics},
+}
+
+@inproceedings{chen_decoupled_2015,
+	title = {Decoupled multiagent path planning via incremental sequential convex programming},
+	doi = {10.1109/ICRA.2015.7140034},
+	abstract = {This paper presents a multiagent path planning algorithm based on sequential convex programming (SCP) that finds locally optimal trajectories. Previous work using SCP efficiently computes motion plans in convex spaces with no static obstacles. In many scenarios where the spaces are non-convex, previous SCP-based algorithms failed to find feasible solutions because the convex approximation of collision constraints leads to forming a sequence of infeasible optimization problems. This paper addresses this problem by tightening collision constraints incrementally, thus forming a sequence of more relaxed, feasible intermediate optimization problems. We show that the proposed algorithm increases the probability of finding feasible trajectories by 33\% for teams of more than three vehicles in non-convex environments. Further, we show that decoupling the multiagent optimization problem to a number of single-agent optimization problems leads to significant improvement in computational tractability. We develop a decoupled implementation of the proposed algorithm, abbreviated dec-iSCP. We show that dec-iSCP runs 14\% faster and finds feasible trajectories with higher probability than a decoupled implementation of previous SCP-based algorithms. The proposed algorithm is real-time implementable and is validated through hardware experiments on a team of quadrotors.},
+	booktitle = {2015 {IEEE} {International} {Conference} on {Robotics} and {Automation} ({ICRA})},
+	author = {Chen, Yufan and Cutler, Mark and How, Jonathan P.},
+	month = may,
+	year = {2015},
+	note = {ISSN: 1050-4729},
+	keywords = {Approximation algorithms, Approximation methods, Optimization, Time factors, Trajectory, Vehicles},
+	pages = {5954--5961},
+}
+
+@inproceedings{tordesillas_faster_2019,
+	title = {{FASTER}: {Fast} and {Safe} {Trajectory} {Planner} for {Flights} in {Unknown} {Environments}},
+	shorttitle = {{FASTER}},
+	doi = {10.1109/IROS40897.2019.8968021},
+	abstract = {High-speed trajectory planning through unknown environments requires algorithmic techniques that enable fast reaction times while maintaining safety as new information about the operating environment is obtained. The requirement of computational tractability typically leads to optimization problems that do not include the obstacle constraints (collision checks are done on the solutions) or use a convex decomposition of the free space and then impose an ad-hoc time allocation scheme for each interval of the trajectory. Moreover, safety guarantees are usually obtained by having a local planner that plans a trajectory with a final “stop” condition in the freeknown space. However, these two decisions typically lead to slow and conservative trajectories. We propose FASTER (Fast and Safe Trajectory Planner) to overcome these issues. FASTER obtains high-speed trajectories by enabling the local planner to optimize in both the free-known and unknown spaces. Safety guarantees are ensured by always having a feasible, safe back-up trajectory in the free-known space at the start of each replanning step. Furthermore, we present a Mixed Integer Quadratic Program formulation in which the solver can choose the trajectory interval allocation, and where a time allocation heuristic is computed efficiently using the result of the previous replanning iteration. This proposed algorithm is tested extensively both in simulation and in real hardware, showing agile flights in unknown cluttered environments with velocities up to 3.6 m/s.},
+	booktitle = {2019 {IEEE}/{RSJ} {International} {Conference} on {Intelligent} {Robots} and {Systems} ({IROS})},
+	author = {Tordesillas, Jesus and Lopez, Brett T. and How, Jonathan P.},
+	month = nov,
+	year = {2019},
+	note = {ISSN: 2153-0866},
+	pages = {1934--1940},
+}
+
+@article{kavraki_probabilistic_1996,
+	title = {Probabilistic roadmaps for path planning in high-dimensional configuration spaces},
+	volume = {12},
+	issn = {2374-958X},
+	doi = {10.1109/70.508439},
+	abstract = {A new motion planning method for robots in static workspaces is presented. This method proceeds in two phases: a learning phase and a query phase. In the learning phase, a probabilistic roadmap is constructed and stored as a graph whose nodes correspond to collision-free configurations and whose edges correspond to feasible paths between these configurations. These paths are computed using a simple and fast local planner. In the query phase, any given start and goal configurations of the robot are connected to two nodes of the roadmap; the roadmap is then searched for a path joining these two nodes. The method is general and easy to implement. It can be applied to virtually any type of holonomic robot. It requires selecting certain parameters (e.g., the duration of the learning phase) whose values depend on the scene, that is the robot and its workspace. But these values turn out to be relatively easy to choose, Increased efficiency can also be achieved by tailoring some components of the method (e.g., the local planner) to the considered robots. In this paper the method is applied to planar articulated robots with many degrees of freedom. Experimental results show that path planning can be done in a fraction of a second on a contemporary workstation (/spl ap/150 MIPS), after learning for relatively short periods of time (a few dozen seconds).},
+	number = {4},
+	journal = {IEEE Transactions on Robotics and Automation},
+	author = {Kavraki, L.E. and Svestka, P. and Latombe, J.-C. and Overmars, M.H.},
+	month = aug,
+	year = {1996},
+	note = {Conference Name: IEEE Transactions on Robotics and Automation},
+	keywords = {Computer science, Joining processes, Laboratories, Layout, Motion planning, Orbital robotics, Path planning, Robots, Workstations},
+	pages = {566--580},
+}
+
+@article{noauthor_reciprocal_nodate,
+	title = {Reciprocal {Velocity} {Obstacles} for {Real}-{Time} {Multi}-{Agent} {Navigation}},
+	abstract = {In this paper, we propose a new concept —the “Reciprocal Velocity Obstacle”— for real-time multi-agent navigation. We consider the case in which each agent navigates independently without explicit communication with other agents. Our formulation is an extension of the Velocity Obstacle concept [3], which was introduced for navigation among (passively) moving obstacles. Our approach takes into account the reactive behavior of the other agents by implicitly assuming that the other agents make a similar collision-avoidance reasoning. We show that this method guarantees safe and oscillationfree motions for each of the agents. We apply our concept to navigation of hundreds of agents in densely populated environments containing both static and moving obstacles, and we show that real-time and scalable performance is achieved in such challenging scenarios.},
+	language = {en},
+	pages = {8},
+}
+
+@inproceedings{van_den_berg_reciprocal_2008,
+	title = {Reciprocal {Velocity} {Obstacles} for real-time multi-agent navigation},
+	doi = {10.1109/ROBOT.2008.4543489},
+	abstract = {In this paper, we propose a new concept - the "Reciprocal Velocity Obstacle"- for real-time multi-agent navigation. We consider the case in which each agent navigates independently without explicit communication with other agents. Our formulation is an extension of the Velocity Obstacle concept [3], which was introduced for navigation among (passively) moving obstacles. Our approach takes into account the reactive behavior of the other agents by implicitly assuming that the other agents make a similar collision-avoidance reasoning. We show that this method guarantees safe and oscillation- free motions for each of the agents. We apply our concept to navigation of hundreds of agents in densely populated environments containing both static and moving obstacles, and we show that real-time and scalable performance is achieved in such challenging scenarios.},
+	booktitle = {2008 {IEEE} {International} {Conference} on {Robotics} and {Automation}},
+	author = {van den Berg, Jur and Lin, Ming and Manocha, Dinesh},
+	month = may,
+	year = {2008},
+	note = {ISSN: 1050-4729},
+	keywords = {Assembly systems, Centralized control, Collision avoidance, Communication system control, Contracts, Motion control, Multiagent systems, Navigation, Robotics and automation, USA Councils},
+	pages = {1928--1935},
+}
+
+@article{toumieh_decentralized_2022,
+	title = {Decentralized {Multi}-{Agent} {Planning} {Using} {Model} {Predictive} {Control} and {Time}-{Aware} {Safe} {Corridors}},
+	volume = {7},
+	issn = {2377-3766},
+	doi = {10.1109/LRA.2022.3196777},
+	abstract = {Multi-agent planning has numerous real-world applications, such as autonomous agriculture, search and rescue, and infrastructure inspection. It is thus of tremendous benefit to improve on the state-of-the-art in multiple metrics to make autonomous multi-agent systems more efficient and a more viable real-world solution. In this letter, we propose a new framework for multi-agent planning in a static environment that improves upon the existing state-of-the-art in multiple areas such as computation time, trajectory smoothness, and feasibility. The proposed method first generates a global path that only avoids static obstacles and then generates a Safe Corridor around it. It then extends the notion of Safe Corridors and makes them time-aware in order to account for the future positions of other agents. The time-aware Safe Corridor, along with a local reference trajectory generated from the global path, are used in an Mixed-Integer Quadratic Program/Model Predictive Control formulation that generates a collision-free optimal trajectory. The proposed framework is real-time, decentralized, and synchronous. It is compared to two recent state-of-the-art methods in simulations. It outperforms both methods in robustness as well as feasibility and computation time.},
+	number = {4},
+	journal = {IEEE Robotics and Automation Letters},
+	author = {Toumieh, Charbel and Lambert, Alain},
+	month = oct,
+	year = {2022},
+	note = {Conference Name: IEEE Robotics and Automation Letters},
+	keywords = {Collision avoidance, Computational modeling, Ellipsoids, Planning, Real-time systems, Safety, Shape, Trajectory, path planning for multiple mobile robots or agents, swarm robotics},
+	pages = {11110--11117},
+}
+
+@article{gielis_critical_2022,
+	title = {A {Critical} {Review} of {Communications} in {Multi}-robot {Systems}},
+	issn = {2662-4087},
+	url = {https://doi.org/10.1007/s43154-022-00090-9},
+	doi = {10.1007/s43154-022-00090-9},
+	abstract = {This review summarizes the broad roles that communication formats and technologies have played in enabling multi-robot systems. We approach this field from two perspectives: of robotic applications that need communication capabilities in order to accomplish tasks, and of networking technologies that have enabled newer and more advanced multi-robot systems.},
+	language = {en},
+	urldate = {2022-08-27},
+	journal = {Current Robotics Reports},
+	author = {Gielis, Jennifer and Shankar, Ajay and Prorok, Amanda},
+	month = aug,
+	year = {2022},
+	keywords = {Communication, Multi-robot systems, Robot networks},
+}
+
+@article{elmokadem_towards_2021,
+	title = {Towards {Fully} {Autonomous} {UAVs}: {A} {Survey}},
+	volume = {21},
+	copyright = {http://creativecommons.org/licenses/by/3.0/},
+	issn = {1424-8220},
+	shorttitle = {Towards {Fully} {Autonomous} {UAVs}},
+	url = {https://www.mdpi.com/1424-8220/21/18/6223},
+	doi = {10.3390/s21186223},
+	abstract = {Unmanned Aerial Vehicles have undergone rapid developments in recent decades. This has made them very popular for various military and civilian applications allowing us to reach places that were previously hard to reach in addition to saving time and lives. A highly desirable direction when developing unmanned aerial vehicles is towards achieving fully autonomous missions and performing their dedicated tasks with minimum human interaction. Thus, this paper provides a survey of some of the recent developments in the field of unmanned aerial vehicles related to safe autonomous navigation, which is a very critical component in the whole system. A great part of this paper focus on advanced methods capable of producing three-dimensional avoidance maneuvers and safe trajectories. Research challenges related to unmanned aerial vehicle development are also highlighted.},
+	language = {en},
+	number = {18},
+	urldate = {2022-08-27},
+	journal = {Sensors},
+	author = {Elmokadem, Taha and Savkin, Andrey V.},
+	month = jan,
+	year = {2021},
+	note = {Number: 18
+Publisher: Multidisciplinary Digital Publishing Institute},
+	keywords = {UAVs, UAVs for smart agriculture, aerial drones, aerial environmental monitoring, autonomous navigation, collaborative robots’ control, flying robots, intelligent control, obstacle avoidance, trajectory planning},
+	pages = {6223},
+}
+
+@article{lusk_distributed_2020,
+	title = {A {Distributed} {Pipeline} for {Scalable}, {Deconflicted} {Formation} {Flying}},
+	volume = {5},
+	issn = {2377-3766},
+	doi = {10.1109/LRA.2020.3006823},
+	abstract = {Reliance on external localization infrastructure and centralized coordination are main limiting factors for formation flying of vehicles in large numbers and in unprepared environments. While solutions using onboard localization address the dependency on external infrastructure, the associated coordination strategies typically lack collision avoidance and scalability. To address these shortcomings, we present a unified pipeline with onboard localization and a distributed, collision-free formation control strategy that scales to a large number of vehicles. Since distributed collision avoidance strategies are known to result in gridlock, we also present a distributed task assignment solution to deconflict vehicles. We experimentally validate our pipeline in simulation and hardware. The results show that our approach for solving the optimization problem associated with formation control gives solutions within seconds in cases where general purpose solvers fail due to high complexity. In addition, our lightweight assignment strategy leads to successful and quicker formation convergence in 96-100\% of all trials, whereas indefinite gridlocks occur without it for 33-50\% of trials. By enabling large-scale, deconflicted coordination, this pipeline should help pave the way for anytime, anywhere deployment of aerial swarms.},
+	number = {4},
+	journal = {IEEE Robotics and Automation Letters},
+	author = {Lusk, Parker C. and Cai, Xiaoyi and Wadhwania, Samir and Paris, Aleix and Fathian, Kaveh and How, Jonathan P.},
+	month = oct,
+	year = {2020},
+	note = {Conference Name: IEEE Robotics and Automation Letters},
+	keywords = {Base stations, Collision avoidance, Distributed robot systems, Pipelines, Robot sensing systems, Task analysis, Trajectory, multi-robot systems, swarms},
+	pages = {5213--5220},
+}
+
+@inproceedings{usenko_real-time_2017,
+	title = {Real-{Time} {Trajectory} {Replanning} for {MAVs} using {Uniform} {B}-splines and a {3D} {Circular} {Buffer}},
+	url = {http://arxiv.org/abs/1703.01416},
+	doi = {10.1109/IROS.2017.8202160},
+	abstract = {In this paper, we present a real-time approach to local trajectory replanning for microaerial vehicles (MAVs). Current trajectory generation methods for multicopters achieve high success rates in cluttered environments, but assume that the environment is static and require prior knowledge of the map. In the presented study, we use the results of such planners and extend them with a local replanning algorithm that can handle unmodeled (possibly dynamic) obstacles while keeping the MAV close to the global trajectory. To ensure that the proposed approach is real-time capable, we maintain information about the environment around the MAV in an occupancy grid stored in a three-dimensional circular buffer, which moves together with a drone, and represent the trajectories by using uniform B-splines. This representation ensures that the trajectory is sufficiently smooth and simultaneously allows for efficient optimization.},
+	urldate = {2022-08-19},
+	booktitle = {2017 {IEEE}/{RSJ} {International} {Conference} on {Intelligent} {Robots} and {Systems} ({IROS})},
+	author = {Usenko, Vladyslav and von Stumberg, Lukas and Pangercic, Andrej and Cremers, Daniel},
+	month = sep,
+	year = {2017},
+	note = {arXiv:1703.01416 [cs]},
+	keywords = {Computer Science - Robotics},
+	pages = {215--222},
+}
+
+@misc{quan_distributed_2022,
+	title = {Distributed {Swarm} {Trajectory} {Optimization} for {Formation} {Flight} in {Dense} {Environments}},
+	url = {http://arxiv.org/abs/2109.07682},
+	abstract = {For aerial swarms, navigation in a prescribed formation is widely practiced in various scenarios. However, the associated planning strategies typically lack the capability of avoiding obstacles in cluttered environments. To address this deficiency, we present an optimization-based method that ensures collision-free trajectory generation for formation flight. In this paper, a novel differentiable metric is proposed to quantify the overall similarity distance between formations. We then formulate this metric into an optimization framework, which achieves spatial-temporal planning using polynomial trajectories. Minimization over collision penalty is also incorporated into the framework, so that formation preservation and obstacle avoidance can be handled simultaneously. To validate the efficiency of our method, we conduct benchmark comparisons with other cutting-edge works. Integrated with an autonomous distributed aerial swarm system, the proposed method demonstrates its efficiency and robustness in real-world experiments with obstacle-rich surroundings. We will release the source code for the reference of the community.},
+	urldate = {2022-08-18},
+	publisher = {arXiv},
+	author = {Quan, Lun and Yin, Longji and Xu, Chao and Gao, Fei},
+	month = apr,
+	year = {2022},
+	note = {arXiv:2109.07682 [cs]},
+	keywords = {Computer Science - Robotics},
+}
+
+@misc{zhou_robust_2020,
+	title = {Robust {Real}-time {UAV} {Replanning} {Using} {Guided} {Gradient}-based {Optimization} and {Topological} {Paths}},
+	url = {http://arxiv.org/abs/1912.12644},
+	doi = {10.48550/arXiv.1912.12644},
+	abstract = {Gradient-based trajectory optimization (GTO) has gained wide popularity for quadrotor trajectory replanning. However, it suffers from local minima, which is not only fatal to safety but also unfavorable for smooth navigation. In this paper, we propose a replanning method based on GTO addressing this issue systematically. A path-guided optimization (PGO) approach is devised to tackle infeasible local minima, which improves the replanning success rate significantly. A topological path searching algorithm is developed to capture a collection of distinct useful paths in 3-D environments, each of which then guides an independent trajectory optimization. It activates a more comprehensive exploration of the solution space and output superior replanned trajectories. Benchmark evaluation shows that our method outplays state-of-the-art methods regarding replanning success rate and optimality. Challenging experiments of aggressive autonomous flight are presented to demonstrate the robustness of our method. We will release our implementation as an open-source package.},
+	urldate = {2022-08-17},
+	publisher = {arXiv},
+	author = {Zhou, Boyu and Gao, Fei and Pan, Jie and Shen, Shaojie},
+	month = apr,
+	year = {2020},
+	note = {arXiv:1912.12644 [cs]},
+	keywords = {Computer Science - Robotics},
+}
+
+@article{zhou_robust_2019,
+	title = {Robust and {Efficient} {Quadrotor} {Trajectory} {Generation} for {Fast} {Autonomous} {Flight}},
+	volume = {4},
+	issn = {2377-3766},
+	doi = {10.1109/LRA.2019.2927938},
+	abstract = {In this letter, we propose a robust and efficient quadrotor motion planning system for fast flight in three-dimensional complex environments. We adopt a kinodynamic path searching method to find a safe, kinodynamic feasible, and minimum-time initial trajectory in the discretized control space. We improve the smoothness and clearance of the trajectory by a B-spline optimization, which incorporates gradient information from a Euclidean distance field and dynamic constraints efficiently utilizing the convex hull property of B-spline. Finally, by representing the final trajectory as a non-uniform B-spline, an iterative time adjustment method is adopted to guarantee dynamically feasible and non-conservative trajectories. We validate our proposed method in various complex simulational environments. The competence of the method is also validated in challenging real-world tasks. We release our code as an open-source package.},
+	number = {4},
+	journal = {IEEE Robotics and Automation Letters},
+	author = {Zhou, Boyu and Gao, Fei and Wang, Luqi and Liu, Chuhao and Shen, Shaojie},
+	month = oct,
+	year = {2019},
+	note = {Conference Name: IEEE Robotics and Automation Letters},
+	keywords = {Aerospace electronics, Dynamics, Motion and path planning, Optimization, Resource management, Safety, Splines (mathematics), Trajectory, aerial systems: perception and autonomy, collision avoidance},
+	pages = {3529--3536},
+}
+
+@misc{zhou_fuel_2020,
+	title = {{FUEL}: {Fast} {UAV} {Exploration} using {Incremental} {Frontier} {Structure} and {Hierarchical} {Planning}},
+	shorttitle = {{FUEL}},
+	url = {http://arxiv.org/abs/2010.11561},
+	doi = {10.48550/arXiv.2010.11561},
+	abstract = {Autonomous exploration is a fundamental problem for various applications of unmanned aerial vehicles. Existing methods, however, were demonstrated to insufficient exploration rate, due to the lack of efficient global coverage, conservative motion plans and low decision frequencies. In this paper, we propose FUEL, a hierarchical framework that can support Fast UAV Exploration in complex unknown environments. We maintain crucial information in the entire space required by exploration planning by a frontier information structure (FIS), which can be updated incrementally when the space is explored. Supported by the FIS, a hierarchical planner plans exploration motions in three steps, which find efficient global coverage paths, refine a local set of viewpoints and generate minimum-time trajectories in sequence. We present extensive benchmark and real-world tests, in which our method completes the exploration tasks with unprecedented efficiency (3-8 times faster) compared to state-of-the-art approaches. Our method will be made open source to benefit the community.},
+	urldate = {2022-08-08},
+	publisher = {arXiv},
+	author = {Zhou, Boyu and Zhang, Yichen and Chen, Xinyi and Shen, Shaojie},
+	month = dec,
+	year = {2020},
+	note = {arXiv:2010.11561 [cs]},
+	keywords = {Computer Science - Robotics},
+}
+
+@misc{zhou_raptor_2020,
+	title = {{RAPTOR}: {Robust} and {Perception}-aware {Trajectory} {Replanning} for {Quadrotor} {Fast} {Flight}},
+	shorttitle = {{RAPTOR}},
+	url = {http://arxiv.org/abs/2007.03465},
+	doi = {10.48550/arXiv.2007.03465},
+	abstract = {Recent advances in trajectory replanning have enabled quadrotor to navigate autonomously in unknown environments. However, high-speed navigation still remains a significant challenge. Given very limited time, existing methods have no strong guarantee on the feasibility or quality of the solutions. Moreover, most methods do not consider environment perception, which is the key bottleneck to fast flight. In this paper, we present RAPTOR, a robust and perception-aware replanning framework to support fast and safe flight. A path-guided optimization (PGO) approach that incorporates multiple topological paths is devised, to ensure finding feasible and high-quality trajectories in very limited time. We also introduce a perception-aware planning strategy to actively observe and avoid unknown obstacles. A risk-aware trajectory refinement ensures that unknown obstacles which may endanger the quadrotor can be observed earlier and avoid in time. The motion of yaw angle is planned to actively explore the surrounding space that is relevant for safe navigation. The proposed methods are tested extensively. We will release our implementation as an open-source package for the community.},
+	urldate = {2022-08-08},
+	publisher = {arXiv},
+	author = {Zhou, Boyu and Pan, Jie and Gao, Fei and Shen, Shaojie},
+	month = jul,
+	year = {2020},
+	note = {arXiv:2007.03465 [cs]},
+	keywords = {Computer Science - Robotics},
+}
+
+@inproceedings{mellinger_minimum_2011,
+	title = {Minimum snap trajectory generation and control for quadrotors},
+	doi = {10.1109/ICRA.2011.5980409},
+	abstract = {We address the controller design and the trajectory generation for a quadrotor maneuvering in three dimensions in a tightly constrained setting typical of indoor environments. In such settings, it is necessary to allow for significant excursions of the attitude from the hover state and small angle approximations cannot be justified for the roll and pitch. We develop an algorithm that enables the real-time generation of optimal trajectories through a sequence of 3-D positions and yaw angles, while ensuring safe passage through specified corridors and satisfying constraints on velocities, accelerations and inputs. A nonlinear controller ensures the faithful tracking of these trajectories. Experimental results illustrate the application of the method to fast motion (5-10 body lengths/second) in three-dimensional slalom courses.},
+	booktitle = {2011 {IEEE} {International} {Conference} on {Robotics} and {Automation}},
+	author = {Mellinger, Daniel and Kumar, Vijay},
+	month = may,
+	year = {2011},
+	note = {ISSN: 1050-4729},
+	keywords = {Acceleration, Aerodynamics, Angular velocity, Force, Optimization, Rotors, Trajectory},
+	pages = {2520--2525},
+}
+
+@article{loquercio_dronet_2018,
+	title = {{DroNet}: {Learning} to {Fly} by {Driving}},
+	volume = {3},
+	issn = {2377-3766},
+	shorttitle = {{DroNet}},
+	doi = {10.1109/LRA.2018.2795643},
+	abstract = {Civilian drones are soon expected to be used in a wide variety of tasks, such as aerial surveillance, delivery, or monitoring of existing architectures. Nevertheless, their deployment in urban environments has so far been limited. Indeed, in unstructured and highly dynamic scenarios, drones face numerous challenges to navigate autonomously in a feasible and safe way. In contrast to traditional “map-localize-plan” methods, this letter explores a data-driven approach to cope with the above challenges. To accomplish this, we propose DroNet: a convolutional neural network that can safely drive a drone through the streets of a city. Designed as a fast eight-layers residual network, DroNet produces two outputs for each single input image: A steering angle to keep the drone navigating while avoiding obstacles, and a collision probability to let the UAV recognize dangerous situations and promptly react to them. The challenge is however to collect enough data in an unstructured outdoor environment such as a city. Clearly, having an expert pilot providing training trajectories is not an option given the large amount of data required and, above all, the risk that it involves for other vehicles or pedestrians moving in the streets. Therefore, we propose to train a UAV from data collected by cars and bicycles, which, already integrated into the urban environment, would not endanger other vehicles and pedestrians. Although trained on city streets from the viewpoint of urban vehicles, the navigation policy learned by DroNet is highly generalizable. Indeed, it allows a UAV to successfully fly at relative high altitudes and even in indoor environments, such as parking lots and corridors. To share our findings with the robotics community, we publicly release all our datasets, code, and trained networks.},
+	number = {2},
+	journal = {IEEE Robotics and Automation Letters},
+	author = {Loquercio, Antonio and Maqueda, Ana I. and del-Blanco, Carlos R. and Scaramuzza, Davide},
+	month = apr,
+	year = {2018},
+	note = {Conference Name: IEEE Robotics and Automation Letters},
+	keywords = {Automobiles, Drones, Learning from demonstration, Navigation, Robots, Training, Urban areas, aerial systems: perception and autonomy, deep learning in robotics and automation},
+	pages = {1088--1095},
+}
+
+@misc{spasojevic_perception-aware_2020,
+	title = {Perception-aware time optimal path parameterization for quadrotors},
+	url = {http://arxiv.org/abs/2005.13986},
+	doi = {10.48550/arXiv.2005.13986},
+	abstract = {The increasing popularity of quadrotors has given rise to a class of predominantly vision-driven vehicles. This paper addresses the problem of perception-aware time optimal path parametrization for quadrotors. Although many different choices of perceptual modalities are available, the low weight and power budgets of quadrotor systems makes a camera ideal for on-board navigation and estimation algorithms. However, this does come with a set of challenges. The limited field of view of the camera can restrict the visibility of salient regions in the environment, which dictates the necessity to consider perception and planning jointly. The main contribution of this paper is an efficient time optimal path parametrization algorithm for quadrotors with limited field of view constraints. We show in a simulation study that a state-of-the-art controller can track planned trajectories, and we validate the proposed algorithm on a quadrotor platform in experiments.},
+	urldate = {2022-07-14},
+	publisher = {arXiv},
+	author = {Spasojevic, Igor and Murali, Varun and Karaman, Sertac},
+	month = may,
+	year = {2020},
+	note = {arXiv:2005.13986 [cs]},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition, Computer Science - Robotics},
+}
+
+@misc{noauthor_elastic_2021,
+	title = {Elastic {Tracker}: {A} {Spatio}-temporal {Trajectory} {Planner} {Flexible} {Aerial} {Tracking}},
+	shorttitle = {Elastic {Tracker}},
+	url = {https://deepai.org/publication/elastic-tracker-a-spatio-temporal-trajectory-planner-flexible-aerial-tracking},
+	abstract = {09/15/21 - This paper proposes Elastic Tracker, a flexible trajectory planning framework
+that can deal with challenging tracking tasks with g...},
+	urldate = {2022-07-13},
+	journal = {DeepAI},
+	month = sep,
+	year = {2021},
+}
+
+@misc{noauthor_publication_nodate,
+	title = {Publication - {TR2022}-053},
+	url = {https://www.merl.com/publications/TR2022-053},
+	abstract = {Mitsubishi Electric Research Laboratories (MERL) - Publication - TR2022-053},
+	urldate = {2022-07-12},
+}
+
+@article{zhou_ego-planner_2020,
+	title = {{EGO}-{Planner}: {An} {ESDF}-free {Gradient}-based {Local} {Planner} for {Quadrotors}},
+	volume = {PP},
+	shorttitle = {{EGO}-{Planner}},
+	doi = {10.1109/LRA.2020.3047728},
+	abstract = {Gradient-based planners are widely used for quadrotor local planning, in which a Euclidean Signed Distance Field (ESDF) is crucial for evaluating gradient magnitude and direction. Nevertheless, computing such a field has much redundancy since the trajectory optimization procedure only covers a very limited subspace of the ESDF updating range. In this paper, an ESDF-free gradient-based planning framework is proposed, which significantly reduces computation time. The main improvement is that the collision term in penalty function is formulated by comparing the colliding trajectory with a collision-free guiding path. The resulting obstacle information will be stored only if the trajectory hits new obstacles, making the planner only extract necessary obstacle information. Then, we lengthen the time allocation if dynamical feasibility is violated. An anisotropic curve fitting algorithm is introduced to adjust higher order derivatives of the trajectory while maintaining the original shape. Benchmark comparisons and real-world experiments verify its robustness and high-performance. The source code is released as ros packages.},
+	journal = {IEEE Robotics and Automation Letters},
+	author = {Zhou, Xin and Wang, Zhepei and Ye, Hongkai and Xu, Chao and Gao, Fei},
+	month = dec,
+	year = {2020},
+	pages = {1--1},
+}
+
+@article{luis_trajectory_2019,
+	title = {Trajectory {Generation} for {Multiagent} {Point}-{To}-{Point} {Transitions} via {Distributed} {Model} {Predictive} {Control}},
+	volume = {4},
+	issn = {2377-3766},
+	doi = {10.1109/LRA.2018.2890572},
+	abstract = {This letter introduces a novel algorithm for multiagent offline trajectory generation based on distributed model predictive control. Central to the algorithm's scalability and success is the development of an on-demand collision avoidance strategy. By predicting future states and sharing this information with their neighbors, the agents are able to detect and avoid collisions while moving toward their goals. The proposed algorithm can be implemented in a distributed fashion and reduces the computation time by more than 85\% compared to previous optimization approaches based on sequential convex programming, while only having a small impact on the optimality of the plans. The approach was validated both through extensive simulations and experimentally with teams of up to 25 quadrotors flying in confined indoor spaces.},
+	number = {2},
+	journal = {IEEE Robotics and Automation Letters},
+	author = {Luis, Carlos E. and Schoellig, Angela P.},
+	month = apr,
+	year = {2019},
+	note = {Conference Name: IEEE Robotics and Automation Letters},
+	keywords = {Aerodynamics, Collision avoidance, Computational modeling, Motion and path planning, Optimization, Prediction algorithms, Predictive control, Trajectory, collision avoidance, distributed robot systems, model predictive control},
+	pages = {375--382},
+}
+
+@inproceedings{park_efficient_2020,
+	title = {Efficient {Multi}-{Agent} {Trajectory} {Planning} with {Feasibility} {Guarantee} using {Relative} {Bernstein} {Polynomial}},
+	doi = {10.1109/ICRA40945.2020.9197162},
+	abstract = {This paper presents a new efficient algorithm which guarantees a solution for a class of multi-agent trajectory planning problems in obstacle-dense environments. Our algorithm combines the advantages of both grid-based and optimization-based approaches, and generates safe, dynamically feasible trajectories without suffering from an erroneous optimization setup such as imposing infeasible collision constraints. We adopt a sequential optimization method with dummy agents to improve the scalability of the algorithm, and utilize the convex hull property of Bernstein and relative Bernstein polynomial to replace non-convex collision avoidance constraints to convex ones. The proposed method can compute the trajectory for 64 agents on average 6.36 seconds with Intel Core i7-7700 @ 3.60GHz CPU and 16G RAM, and it reduces more than 50\% of the objective cost compared to our previous work. We validate the proposed algorithm through simulation and flight tests.},
+	booktitle = {2020 {IEEE} {International} {Conference} on {Robotics} and {Automation} ({ICRA})},
+	author = {Park, Jungwon and Kim, Junha and Jang, Inkyu and Kim, H. Jin},
+	month = may,
+	year = {2020},
+	note = {ISSN: 2577-087X},
+	keywords = {Collision avoidance, Heuristic algorithms, Optimization, Planning, System recovery, Three-dimensional displays, Trajectory},
+	pages = {434--440},
+}
+
+@inproceedings{chen_decoupled_2015-1,
+	title = {Decoupled multiagent path planning via incremental sequential convex programming},
+	doi = {10.1109/ICRA.2015.7140034},
+	abstract = {This paper presents a multiagent path planning algorithm based on sequential convex programming (SCP) that finds locally optimal trajectories. Previous work using SCP efficiently computes motion plans in convex spaces with no static obstacles. In many scenarios where the spaces are non-convex, previous SCP-based algorithms failed to find feasible solutions because the convex approximation of collision constraints leads to forming a sequence of infeasible optimization problems. This paper addresses this problem by tightening collision constraints incrementally, thus forming a sequence of more relaxed, feasible intermediate optimization problems. We show that the proposed algorithm increases the probability of finding feasible trajectories by 33\% for teams of more than three vehicles in non-convex environments. Further, we show that decoupling the multiagent optimization problem to a number of single-agent optimization problems leads to significant improvement in computational tractability. We develop a decoupled implementation of the proposed algorithm, abbreviated dec-iSCP. We show that dec-iSCP runs 14\% faster and finds feasible trajectories with higher probability than a decoupled implementation of previous SCP-based algorithms. The proposed algorithm is real-time implementable and is validated through hardware experiments on a team of quadrotors.},
+	booktitle = {2015 {IEEE} {International} {Conference} on {Robotics} and {Automation} ({ICRA})},
+	author = {Chen, Yufan and Cutler, Mark and How, Jonathan P.},
+	month = may,
+	year = {2015},
+	note = {ISSN: 1050-4729},
+	keywords = {Approximation algorithms, Approximation methods, Optimization, Time factors, Trajectory, Vehicles},
+	pages = {5954--5961},
+}
+
+@misc{zhou_ego-swarm_2020,
+	title = {{EGO}-{Swarm}: {A} {Fully} {Autonomous} and {Decentralized} {Quadrotor} {Swarm} {System} in {Cluttered} {Environments}},
+	shorttitle = {{EGO}-{Swarm}},
+	url = {http://arxiv.org/abs/2011.04183},
+	doi = {10.48550/arXiv.2011.04183},
+	abstract = {This paper presents a decentralized and asynchronous systematic solution for multi-robot autonomous navigation in unknown obstacle-rich scenes using merely onboard resources. The planning system is formulated under gradient-based local planning framework, where collision avoidance is achieved by formulating the collision risk as a penalty of a nonlinear optimization problem. In order to improve robustness and escape local minima, we incorporate a lightweight topological trajectory generation method. Then agents generate safe, smooth, and dynamically feasible trajectories in only several milliseconds using an unreliable trajectory sharing network. Relative localization drift among agents is corrected by using agent detection in depth images. Our method is demonstrated in both simulation and real-world experiments. The source code is released for the reference of the community.},
+	urldate = {2022-07-05},
+	publisher = {arXiv},
+	author = {Zhou, Xin and Zhu, Jiangchao and Zhou, Hongyu and Xu, Chao and Gao, Fei},
+	month = nov,
+	year = {2020},
+	note = {arXiv:2011.04183 [cs]
+version: 1},
+	keywords = {Computer Science - Robotics},
+}
+
+@misc{zhou_decentralized_2021,
+	title = {Decentralized {Spatial}-{Temporal} {Trajectory} {Planning} for {Multicopter} {Swarms}},
+	url = {http://arxiv.org/abs/2106.12481},
+	doi = {10.48550/arXiv.2106.12481},
+	abstract = {Multicopter swarms with decentralized structure possess the nature of flexibility and robustness, while efficient spatial-temporal trajectory planning still remains a challenge. This report introduces decentralized spatial-temporal trajectory planning, which puts a well-formed trajectory representation named MINCO into multi-agent scenarios. Our method ensures high-quality local planning for each agent subject to any constraint from either the coordination of the swarm or safety requirements in cluttered environments. Then, the local trajectory generation is formulated as an unconstrained optimization problem that is efficiently solved in milliseconds. Moreover, a decentralized asynchronous mechanism is designed to trigger the local planning for each agent. A systematic solution is presented with detailed descriptions of careful engineering considerations. Extensive benchmarks and indoor/outdoor experiments validate its wide applicability and high quality. Our software will be released for the reference of the community.},
+	urldate = {2022-07-05},
+	publisher = {arXiv},
+	author = {Zhou, Xin and Wang, Zhepei and Wen, Xiangyong and Zhu, Jiangchao and Xu, Chao and Gao, Fei},
+	month = jun,
+	year = {2021},
+	note = {arXiv:2106.12481 [cs]},
+	keywords = {Computer Science - Robotics},
+}
+
+@article{wang_multi-agent_2020,
+	title = {Multi-agent sensitivity enhanced iterative best response: {A} real-time game theoretic planner for drone racing in {3D} environments},
+	volume = {125},
+	issn = {0921-8890},
+	shorttitle = {Multi-agent sensitivity enhanced iterative best response},
+	url = {https://www.sciencedirect.com/science/article/pii/S0921889019301939},
+	doi = {10.1016/j.robot.2019.103410},
+	abstract = {This paper presents a real-time game theoretic motion planning approach that enables an autonomous drone to race competitively against an arbitrary number of opponent drones along a 2D or 3D racecourse. Our method computes an approximate Nash equilibrium in the space of robot trajectories to maximally advance the ego robot while taking into account the opponents’ intentions and responses. The core of our solution is a “sensitivity enhanced” iterative best response algorithm that the ego robot uses to repeatedly plan its own trajectory and infer opponents’ trajectories, ultimately seeking a Nash equilibrium in the joint space of trajectories for all the drones. The algorithm includes a term that allows the ego vehicle to gain advantage by exploiting the influence of the ego drone’s trajectory on the adversaries’ objectives through the shared collision avoidance constraints among the vehicles. We also propose two methods for accelerating this computationally intensive iterative algorithm using (i) parallel computing with multiple CPU cores, and (ii) a neural network model that learns to predict trajectories close to the Nash equilibrium through offline training examples. Extensive simulation studies are conducted to benchmark the performance of our game theoretic planner and the statistical results show that our approach largely outperforms a baseline model predictive control algorithm that does not account for the opponents’ reactions. Hardware experiments with 4 quadrotor robots on a 3D racecourse are performed to show the applicability of our method in real-time robotic systems.},
+	language = {en},
+	urldate = {2022-06-28},
+	journal = {Robotics and Autonomous Systems},
+	author = {Wang, Zijian and Taubner, Tim and Schwager, Mac},
+	month = mar,
+	year = {2020},
+	keywords = {Game theoretic motion planning, Multi-robot systems, Nash equilibrium},
+	pages = {103410},
+}
+
+@article{afrin_resource_2021,
+	title = {Resource {Allocation} and {Service} {Provisioning} in {Multi}-{Agent} {Cloud} {Robotics}: {A} {Comprehensive} {Survey}},
+	volume = {23},
+	issn = {1553-877X},
+	shorttitle = {Resource {Allocation} and {Service} {Provisioning} in {Multi}-{Agent} {Cloud} {Robotics}},
+	doi = {10.1109/COMST.2021.3061435},
+	abstract = {Robotic applications nowadays are widely adopted to enhance operational automation and performance of real-world Cyber-Physical Systems (CPSs) including Industry 4.0, agriculture, healthcare, and disaster management. These applications are composed of latency-sensitive, data-heavy, and compute-intensive tasks. The robots, however, are constrained in the computational power and storage capacity. The concept of multi-agent cloud robotics enables robot-to-robot cooperation and creates a complementary environment for the robots in executing large-scale applications with the capability to utilize the edge and cloud resources. However, in such a collaborative environment, the optimal resource allocation for robotic tasks is challenging to achieve. Heterogeneous energy consumption rates and application of execution costs associated with the robots and computing instances make it even more complex. In addition, the data transmission delay between local robots, edge nodes, and cloud data centres adversely affects the real-time interactions and impedes service performance guarantee. Taking all these issues into account, this paper comprehensively surveys the state-of-the-art on resource allocation and service provisioning in multi-agent cloud robotics. The paper presents the application domains of multi-agent cloud robotics through explicit comparison with the contemporary computing paradigms and identifies the specific research challenges. A complete taxonomy on resource allocation is presented for the first time, together with the discussion of resource pooling, computation offloading, and task scheduling for efficient service provisioning. Furthermore, we highlight the research gaps from the learned lessons, and present future directions deemed beneficial to further advance this emerging field.},
+	number = {2},
+	journal = {IEEE Communications Surveys \& Tutorials},
+	author = {Afrin, Mahbuba and Jin, Jiong and Rahman, Akhlaqur and Rahman, Ashfaqur and Wan, Jiafu and Hossain, Ekram},
+	year = {2021},
+	note = {Conference Name: IEEE Communications Surveys \& Tutorials},
+	keywords = {Cloud computing, Multi-robot system, Real-time systems, Resource management, Robot kinematics, Robot sensing systems, Robots, Task analysis, cloud computing, computation and communication trade-off, edge computing, offloading, resource allocation, service provisioning, task scheduling},
+	pages = {842--870},
+}
+
+@article{hock_distributed_2019,
+	title = {Distributed iterative learning control for multi-agent systems},
+	volume = {43},
+	issn = {1573-7527},
+	url = {https://doi.org/10.1007/s10514-019-09845-4},
+	doi = {10.1007/s10514-019-09845-4},
+	abstract = {The goal of this work is to enable a team of quadrotors to learn how to accurately track a desired trajectory while holding a given formation. We solve this problem in a distributed manner, where each vehicle has only access to the information of its neighbors. The desired trajectory is only available to one (or few) vehicle(s). We present a distributed iterative learning control (ILC) approach where each vehicle learns from the experience of its own and its neighbors’ previous task repetitions and adapts its feedforward input to improve performance. Existing algorithms are extended in theory to make them more applicable to real-world experiments. In particular, we prove convergence of the learning scheme for any linear, causal learning function with gains chosen according to a simple scalar condition. Previous proofs were restricted to a specific learning function, which only depends on the tracking error derivative (D-type ILC). This extension provides more degrees of freedom in the ILC design and, as a result, better performance can be achieved. We also show that stability is not affected by a linear dynamic coupling between neighbors. This allows the use of an additional consensus feedback controller to compensate for non-repetitive disturbances. Possible robustness extensions for the ILC algorithm are discussed, the so-called Q-filter and a Kalman filter for disturbance estimation. Finally, this is the first work to show distributed ILC in experiment. With a team of two quadrotors, the practical applicability of the proposed distributed multi-agent ILC approach is attested and the benefits of the theoretic extension are analyzed. In a second experimental setup with a team of four quadrotors, we evaluate the impact of different communication graph structures on the learning performance. The results indicate, that there is a trade-off between fast learning convergence and formation synchronicity, especially during the first iterations.},
+	language = {en},
+	number = {8},
+	urldate = {2022-06-28},
+	journal = {Autonomous Robots},
+	author = {Hock, Andreas and Schoellig, Angela P.},
+	month = dec,
+	year = {2019},
+	keywords = {Distributed control, Iterative learning control, Multi-agent systems, Quadrotor control},
+	pages = {1989--2010},
+}
+
+@article{hu_distributed_2021,
+	title = {Distributed {Multi}-{Agent} {Meta} {Learning} for {Trajectory} {Design} in {Wireless} {Drone} {Networks}},
+	volume = {39},
+	issn = {1558-0008},
+	doi = {10.1109/JSAC.2021.3088689},
+	abstract = {In this paper, the problem of the trajectory design for a group of energy-constrained drones operating in dynamic wireless network environments is studied. In the considered model, a team of drone base stations (DBSs) is dispatched to cooperatively serve clusters of ground users that have dynamic and unpredictable uplink access demands. In this scenario, the DBSs must cooperatively navigate in the considered area to maximize coverage of the dynamic requests of the ground users. This trajectory design problem is posed as an optimization framework whose goal is to find optimal trajectories that maximize the fraction of users served by all DBSs. To find an optimal solution for this non-convex optimization problem under unpredictable environments, a value decomposition based reinforcement learning (VD-RL) solution coupled with a meta-training mechanism is proposed. This algorithm allows the DBSs to dynamically learn their trajectories while generalizing their learning to unseen environments. Analytical results show that, the proposed VD-RL algorithm is guaranteed to converge to a locally optimal solution of the non-convex optimization problem. Simulation results show that, even without meta-training, the proposed VD-RL algorithm can achieve a 53.2\% improvement of the service coverage and a 30.6\% improvement in terms of the convergence speed, compared to baseline multi-agent algorithms. Meanwhile, the use of the meta-training mechanism improves the convergence speed of the VD-RL algorithm by up to 53.8\% when the DBSs must deal with a previously unseen task.},
+	number = {10},
+	journal = {IEEE Journal on Selected Areas in Communications},
+	author = {Hu, Ye and Chen, Mingzhe and Saad, Walid and Poor, H. Vincent and Cui, Shuguang},
+	month = oct,
+	year = {2021},
+	note = {Conference Name: IEEE Journal on Selected Areas in Communications},
+	keywords = {Drones, Heuristic algorithms, Optimization, Satellite broadcasting, Task analysis, Training, Trajectory, meta-learning, multi-agent reinforcement learning, network optimization},
+	pages = {3177--3192},
+}
+
+@article{tran_switching_2020,
+	title = {Switching time-invariant formation control of a collaborative multi-agent system using negative imaginary systems theory},
+	volume = {95},
+	issn = {0967-0661},
+	url = {https://www.sciencedirect.com/science/article/pii/S0967066119302035},
+	doi = {10.1016/j.conengprac.2019.104245},
+	abstract = {The movement of cooperative robots in a densely cluttered environment may be impossible if the formation type is invariant. Hence, we investigate a novel method of switching time-invariant formation control for a group of heterogeneous autonomous vehicles, which may include Unmanned Ground Vehicles (UGV) and Unmanned Aerial Vehicles (UAV). We have extended a Negative Imaginary (NI) consensus control approach to switch the formation shape of the robots whilst only using the relative distances between agents, in combination with those between agents and obstacles. All agents can automatically create a new safe formation to overcome obstacles, then restore the prototype formation once the obstacles are cleared. We address the oscillation and local minima problems, generated by existing algorithms, using a newly developed circle fitting approach. We also highlight the advantages of our proposed algorithms over the kinematic controller and the conventional Artificial Potential Field (APF) controller from both theoretical and experimental standpoints. Simulation and experimental results are then analyzed to validate the feasibility of our proposed approach.},
+	language = {en},
+	urldate = {2022-06-28},
+	journal = {Control Engineering Practice},
+	author = {Tran, Vu Phi and Garratt, Matthew and Petersen, Ian R.},
+	month = feb,
+	year = {2020},
+	keywords = {Consensus algorithm, Formation control, Negative imaginary theory, Obstacle avoidance, UAV–UGV coordination},
+	pages = {104245},
+}
+
+@inproceedings{lizzio_review_2021,
+	title = {A {Review} of {Consensus}-based {Multi}-agent {UAV} {Applications}},
+	doi = {10.1109/ICUAS51884.2021.9476858},
+	abstract = {In this paper, a review of distributed control for multi-agent systems is proposed, focusing on consensus-based applications. Both rotary-wing and fixed-wing Unmanned Aerial Vehicles (UAVs) are considered. On one side, methodologies and implementations based on collision and obstacle avoidance through consensus are analyzed for multirotor UAVs. On the other hand, a target tracking through consensus is considered for fixed-wing UAVs. This novel approach to classify the literature could help researchers to assess the outcomes achieved in these two directions in view of potential practical implementations of consensus-based methodologies.},
+	booktitle = {2021 {International} {Conference} on {Unmanned} {Aircraft} {Systems} ({ICUAS})},
+	author = {Lizzio, Fausto Francesco and Capello, Elisa and Guglieri, Giorgio},
+	month = jun,
+	year = {2021},
+	note = {ISSN: 2575-7296},
+	keywords = {Dynamics, Focusing, Heuristic algorithms, Switches, Target tracking, Topology, UAV, Unmanned aerial vehicles, consensus, distributed control, multi-agent, swarm},
+	pages = {1548--1557},
+}
+
+@misc{hou_enhanced_2022,
+	title = {Enhanced {Decentralized} {Autonomous} {Aerial} {Swarm} with {Group} {Planning}},
+	url = {http://arxiv.org/abs/2203.01069},
+	doi = {10.48550/arXiv.2203.01069},
+	abstract = {Autonomous aerial swarm remains a grand challenge in robotics. Existing works in this field can be categorized as centralized and decentralized. Centralized methods suffer from scale dilemmas, while decentralized ones often lead to poor planning quality. In this paper, we propose an enhanced decentralized autonomous aerial swarm system with group planning. According to the spatial distribution of agents, the system dynamically divides the swarm into several groups and isolated agents. For conflicts within each group, we propose a novel coordination mechanism named group planning. The group planning consists of efficient multi-agent pathfinding and trajectory joint optimization, which can significantly improve the planning quality and success rate. We demonstrate simulations and real-world experiments that our method not only has applicability for a large-scale swarm, but also has top-level planning quality.},
+	urldate = {2022-06-28},
+	publisher = {arXiv},
+	author = {Hou, Jialiang and Zhou, Xin and Gan, Zhongxue and Gao, Fei},
+	month = mar,
+	year = {2022},
+	note = {arXiv:2203.01069 [cs]},
+	keywords = {Computer Science - Robotics},
+}
+
+@article{park_online_2022,
+	title = {Online {Distributed} {Trajectory} {Planning} for {Quadrotor} {Swarm} {With} {Feasibility} {Guarantee} {Using} {Linear} {Safe} {Corridor}},
+	volume = {7},
+	issn = {2377-3766},
+	doi = {10.1109/LRA.2022.3152702},
+	abstract = {This letter presents a new online multi-agent trajectory planning algorithm that guarantees to generate safe, dynamically feasible trajectories in a cluttered environment. The proposed algorithm utilizes a linear safe corridor (LSC) to formulate the distributed trajectory optimization problem with only feasible constraints, so it does not resort to slack variables or soft constraints to avoid optimization failure. We adopt a priority-based goal planning method to prevent the deadlock without an additional procedure to decide which robot to yield. The proposed algorithm can compute the trajectories for 60 agents on average 15.5 ms per agent with an Intel i7 laptop and shows a similar flight distance and distance compared to the baselines based on soft constraints. We verified that the proposed method can reach the goal without deadlock in both the random forest and the indoor space, and we validated the safety and operability of the proposed algorithm through a real flight test with ten quadrotors in a maze-like environment.},
+	number = {2},
+	journal = {IEEE Robotics and Automation Letters},
+	author = {Park, Jungwon and Kim, Dabin and Kim, Gyeong Chan and Oh, Dahyun and Kim, H. Jin},
+	month = apr,
+	year = {2022},
+	note = {Conference Name: IEEE Robotics and Automation Letters},
+	keywords = {Collision avoidance, Heuristic algorithms, Optimization, Path planning for multiple mobile robots or agents, Planning, System recovery, Trajectory, Trajectory planning, collision avoidance, distributed robot systems},
+	pages = {4869--4876},
+}
+
+@misc{zhou_decentralized_2021-1,
+	title = {Decentralized {Spatial}-{Temporal} {Trajectory} {Planning} for {Multicopter} {Swarms}},
+	url = {http://arxiv.org/abs/2106.12481},
+	doi = {10.48550/arXiv.2106.12481},
+	abstract = {Multicopter swarms with decentralized structure possess the nature of flexibility and robustness, while efficient spatial-temporal trajectory planning still remains a challenge. This report introduces decentralized spatial-temporal trajectory planning, which puts a well-formed trajectory representation named MINCO into multi-agent scenarios. Our method ensures high-quality local planning for each agent subject to any constraint from either the coordination of the swarm or safety requirements in cluttered environments. Then, the local trajectory generation is formulated as an unconstrained optimization problem that is efficiently solved in milliseconds. Moreover, a decentralized asynchronous mechanism is designed to trigger the local planning for each agent. A systematic solution is presented with detailed descriptions of careful engineering considerations. Extensive benchmarks and indoor/outdoor experiments validate its wide applicability and high quality. Our software will be released for the reference of the community.},
+	urldate = {2022-06-28},
+	publisher = {arXiv},
+	author = {Zhou, Xin and Wang, Zhepei and Wen, Xiangyong and Zhu, Jiangchao and Xu, Chao and Gao, Fei},
+	month = jun,
+	year = {2021},
+	note = {arXiv:2106.12481 [cs]},
+	keywords = {Computer Science - Robotics},
+}
+
+@ARTICLE{tordesillas_mader_2022,  author={Tordesillas, Jesus and How, Jonathan P.},  journal={IEEE Transactions on Robotics},   title={MADER: Trajectory Planner in Multiagent and Dynamic Environments},   year={2022},  volume={38},  number={1},  pages={463-476},  doi={10.1109/TRO.2021.3080235}}
+
+@article{zhao_robust_2021,
+	title = {Robust and {Efficient} {Trajectory} {Replanning} {Based} on {Guiding} {Path} for {Quadrotor} {Fast} {Autonomous} {Flight}},
+	volume = {13},
+	copyright = {http://creativecommons.org/licenses/by/3.0/},
+	issn = {2072-4292},
+	url = {https://www.mdpi.com/2072-4292/13/5/972},
+	doi = {10.3390/rs13050972},
+	abstract = {Path planning is one of the key parts of unmanned aerial vehicle (UAV) fast autonomous flight in an unknown cluttered environment. However, real-time and stability remain a significant challenge in the field of path planning. To improve the robustness and efficiency of the path planning method in complex environments, this paper presents RETRBG, a robust and efficient trajectory replanning method based on the guiding path. Firstly, a safe guiding path is generated by using an improved A* and path pruning method, which is used to perceive the narrow space in its surrounding environment. Secondly, under the guidance of the path, a guided kinodynamic path searching method (GKPS) is devised to generate a safe, kinodynamically feasible and minimum-time initial path. Finally, an adaptive optimization function with two modes is proposed to improve the optimization quality in complex environments, which selects the optimization mode to optimize the smoothness and safety of the path according to the perception results of the guiding path. The experimental results demonstrate that the proposed method achieved good performance both in different obstacle densities and different resolutions. Compared with the other state-of-the-art methods, the quality and success rate of the planning result are significantly improved.},
+	language = {en},
+	number = {5},
+	urldate = {2022-06-28},
+	journal = {Remote Sensing},
+	author = {Zhao, Yinghao and Yan, Li and Chen, Yu and Dai, Jicheng and Liu, Yuxuan},
+	month = jan,
+	year = {2021},
+	note = {Number: 5
+Publisher: Multidisciplinary Digital Publishing Institute},
+	keywords = {UAV, adaptive optimization, guiding path, kinodynamic path searching, path planning},
+	pages = {972},
+}
+
+@article{koenig_lifelong_2004,
+	title = {Lifelong {Planning} {A}∗},
+	volume = {155},
+	issn = {0004-3702},
+	url = {https://www.sciencedirect.com/science/article/pii/S000437020300225X},
+	doi = {10.1016/j.artint.2003.12.001},
+	abstract = {Heuristic search methods promise to find shortest paths for path-planning problems faster than uninformed search methods. Incremental search methods, on the other hand, promise to find shortest paths for series of similar path-planning problems faster than is possible by solving each path-planning problem from scratch. In this article, we develop Lifelong Planning A∗ (LPA∗), an incremental version of A∗ that combines ideas from the artificial intelligence and the algorithms literature. It repeatedly finds shortest paths from a given start vertex to a given goal vertex while the edge costs of a graph change or vertices are added or deleted. Its first search is the same as that of a version of A∗ that breaks ties in favor of vertices with smaller g-values but many of the subsequent searches are potentially faster because it reuses those parts of the previous search tree that are identical to the new one. We present analytical results that demonstrate its similarity to A∗ and experimental results that demonstrate its potential advantage in two different domains if the path-planning problems change only slightly and the changes are close to the goal.},
+	language = {en},
+	number = {1},
+	urldate = {2022-06-28},
+	journal = {Artificial Intelligence},
+	author = {Koenig, Sven and Likhachev, Maxim and Furcy, David},
+	month = may,
+	year = {2004},
+	keywords = {A∗, Continual planning, Heuristic search, Heuristic search-based planning, Incremental search, Lifelong planning, Plan reuse, Replanning, Symbolic STRIPS-style planning},
+	pages = {93--146},
+}
+
+@inproceedings{stentz_optimal_1994,
+	title = {Optimal and efficient path planning for partially-known environments},
+	doi = {10.1109/ROBOT.1994.351061},
+	abstract = {The task of planning trajectories for a mobile robot has received considerable attention in the research literature. Most of the work assumes the robot has a complete and accurate model of its environment before it begins to move; less attention has been paid to the problem of partially known environments. This situation occurs for an exploratory robot or one that must move to a goal location without the benefit of a floorplan or terrain map. Existing approaches plan an initial path based on known information and then modify the plan locally or replan the entire path as the robot discovers obstacles with its sensors, sacrificing optimality or computational efficiency respectively. This paper introduces a new algorithm, D*, capable of planning paths in unknown, partially known, and changing environments in an efficient, optimal, and complete manner.{\textless}{\textgreater}},
+	booktitle = {Proceedings of the 1994 {IEEE} {International} {Conference} on {Robotics} and {Automation}},
+	author = {Stentz, A.},
+	month = may,
+	year = {1994},
+	keywords = {Cost function, Mobile robots, Motion planning, Orbital robotics, Path planning, Regions, Robot sensing systems, State estimation, State-space methods, Trajectory},
+	pages = {3310--3317 vol.4},
+}
+
+@misc{liu_towards_2018-1,
+	title = {Towards {Search}-based {Motion} {Planning} for {Micro} {Aerial} {Vehicles}},
+	url = {http://arxiv.org/abs/1810.03071},
+	doi = {10.48550/arXiv.1810.03071},
+	abstract = {Search-based motion planning has been used for mobile robots in many applications. However, it has not been fully developed and applied for planning full state trajectories of Micro Aerial Vehicles (MAVs) due to their complicated dynamics and the requirement of real-time computation. In this paper, we explore a search-based motion planning framework that plans dynamically feasible, collision-free, and resolution optimal and complete trajectories. This paper extends the search-based planning approach to address three important scenarios for MAVs navigation: (i) planning safe trajectories in the presence of motion uncertainty; (ii) planning with constraints on field-of-view and (iii) planning in dynamic environments. We show that these problems can be solved effectively and efficiently using the proposed search-based planning with motion primitives.},
+	urldate = {2022-06-27},
+	publisher = {arXiv},
+	author = {Liu, Sikang and Mohta, Kartik and Atanasov, Nikolay and Kumar, Vijay},
+	month = oct,
+	year = {2018},
+	note = {arXiv:1810.03071 [cs]},
+	keywords = {Computer Science - Robotics},
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@preamble{ "\newcommand{\noopsort}[1]{} "
+	# "\newcommand{\printfirst}[2]{#1} "
+	# "\newcommand{\singleletter}[1]{#1} "
+	# "\newcommand{\switchargs}[2]{#2#1} " }
+
+@ARTICLE{article-minimal,
+   author = {L[eslie] A. Aamport},
+   title = {The Gnats and Gnus Document Preparation System},
+   journal = {\mbox{G-Animal's} Journal},
+   year = 1986,
+}
+
+@ARTICLE{article-full,
+   author = {L[eslie] A. Aamport},
+   title = {The Gnats and Gnus Document Preparation System},
+   journal = {\mbox{G-Animal's} Journal},
+   year = 1986,
+   volume = 41,
+   number = 7,
+   pages = "73+",
+   month = jul,
+   note = "This is a full ARTICLE entry",
+}
+
+The KEY field is here to override the KEY field in the journal being
+cross referenced (so is the NOTE field, in addition to its imparting
+information).
+
+@ARTICLE{article-crossref,
+   crossref = {WHOLE-JOURNAL},
+   key = "",
+   author = {L[eslie] A. Aamport},
+   title = {The Gnats and Gnus Document Preparation System},
+   pages = "73+",
+   note = "This is a cross-referencing ARTICLE entry",
+}
+
+@ARTICLE{whole-journal,
+   key = "GAJ",
+   journal = {\mbox{G-Animal's} Journal},
+   year = 1986,
+   volume = 41,
+   number = 7,
+   month = jul,
+   note = {The entire issue is devoted to gnats and gnus
+		(this entry is a cross-referenced ARTICLE (journal))},
+}
+
+@INBOOK{inbook-minimal,
+   author = "Donald E. Knuth",
+   title = "Fundamental Algorithms",
+   publisher = "Addison-Wesley",
+   year = "{\noopsort{1973b}}1973",
+   chapter = "1.2",
+}
+
+@INBOOK{inbook-full,
+   author = "Donald E. Knuth",
+   title = "Fundamental Algorithms",
+   volume = 1,
+   series = "The Art of Computer Programming",
+   publisher = "Addison-Wesley",
+   address = "Reading, Massachusetts",
+   edition = "Second",
+   month = "10~" # jan,
+   year = "{\noopsort{1973b}}1973",
+   type = "Section",
+   chapter = "1.2",
+   pages = "10--119",
+   note = "This is a full INBOOK entry",
+}
+
+@INBOOK{inbook-crossref,
+   crossref = "whole-set",
+   title = "Fundamental Algorithms",
+   volume = 1,
+   series = "The Art of Computer Programming",
+   edition = "Second",
+   year = "{\noopsort{1973b}}1973",
+   type = "Section",
+   chapter = "1.2",
+   note = "This is a cross-referencing INBOOK entry",
+}
+
+@BOOK{book-minimal,
+   author = "Donald E. Knuth",
+   title = "Seminumerical Algorithms",
+   publisher = "Addison-Wesley",
+   year = "{\noopsort{1973c}}1981",
+}
+
+@BOOK{book-full,
+   author = "Donald E. Knuth",
+   title = "Seminumerical Algorithms",
+   volume = 2,
+   series = "The Art of Computer Programming",
+   publisher = "Addison-Wesley",
+   address = "Reading, Massachusetts",
+   edition = "Second",
+   month = "10~" # jan,
+   year = "{\noopsort{1973c}}1981",
+   note = "This is a full BOOK entry",
+}
+
+@BOOK{book-crossref,
+   crossref = "whole-set",
+   title = "Seminumerical Algorithms",
+   volume = 2,
+   series = "The Art of Computer Programming",
+   edition = "Second",
+   year = "{\noopsort{1973c}}1981",
+   note = "This is a cross-referencing BOOK entry",
+}
+
+@BOOK{whole-set,
+   author = "Donald E. Knuth",
+   publisher = "Addison-Wesley",
+   title = "The Art of Computer Programming",
+   series = "Four volumes",
+   year = "{\noopsort{1973a}}{\switchargs{--90}{1968}}",
+   note = "Seven volumes planned (this is a cross-referenced set of BOOKs)",
+}
+
+@BOOKLET{booklet-minimal,
+   key = "Kn{\printfirst{v}{1987}}",
+   title = "The Programming of Computer Art",
+}
+
+@BOOKLET{booklet-full,
+   author = "Jill C. Knvth",
+   title = "The Programming of Computer Art",
+   howpublished = "Vernier Art Center",
+   address = "Stanford, California",
+   month = feb,
+   year = 1988,
+   note = "This is a full BOOKLET entry",
+}
+
+@INCOLLECTION{incollection-minimal,
+   author = "Daniel D. Lincoll",
+   title = "Semigroups of Recurrences",
+   booktitle = "High Speed Computer and Algorithm Organization",
+   publisher = "Academic Press",
+   year = 1977,
+}
+
+@INCOLLECTION{incollection-full,
+   author = "Daniel D. Lincoll",
+   title = "Semigroups of Recurrences",
+   editor = "David J. Lipcoll and D. H. Lawrie and A. H. Sameh",
+   booktitle = "High Speed Computer and Algorithm Organization",
+   number = 23,
+   series = "Fast Computers",
+   chapter = 3,
+   type = "Part",
+   pages = "179--183",
+   publisher = "Academic Press",
+   address = "New York",
+   edition = "Third",
+   month = sep,
+   year = 1977,
+   note = "This is a full INCOLLECTION entry",
+}
+
+@INCOLLECTION{incollection-crossref,
+   crossref = "whole-collection",
+   author = "Daniel D. Lincoll",
+   title = "Semigroups of Recurrences",
+   pages = "179--183",
+   note = "This is a cross-referencing INCOLLECTION entry",
+}
+
+@BOOK{whole-collection,
+   editor = "David J. Lipcoll and D. H. Lawrie and A. H. Sameh",
+   title = "High Speed Computer and Algorithm Organization",
+   booktitle = "High Speed Computer and Algorithm Organization",
+   number = 23,
+   series = "Fast Computers",
+   publisher = "Academic Press",
+   address = "New York",
+   edition = "Third",
+   month = sep,
+   year = 1977,
+   note = "This is a cross-referenced BOOK (collection) entry",
+}
+
+@MANUAL{manual-minimal,
+   key = "Manmaker",
+   title = "The Definitive Computer Manual",
+}
+
+@MANUAL{manual-full,
+   author = "Larry Manmaker",
+   title = "The Definitive Computer Manual",
+   organization = "Chips-R-Us",
+   address = "Silicon Valley",
+   edition = "Silver",
+   month = apr # "-" # may,
+   year = 1986,
+   note = "This is a full MANUAL entry",
+}
+
+@MASTERSTHESIS{mastersthesis-minimal,
+   author = "{\'{E}}douard Masterly",
+   title = "Mastering Thesis Writing",
+   school = "Stanford University",
+   year = 1988,
+}
+
+@MASTERSTHESIS{mastersthesis-full,
+   author = "{\'{E}}douard Masterly",
+   title = "Mastering Thesis Writing",
+   school = "Stanford University",
+   type = "Master's project",
+   address = "English Department",
+   month = jun # "-" # aug,
+   year = 1988,
+   note = "This is a full MASTERSTHESIS entry",
+}
+
+@MISC{misc-minimal,
+   key = "Missilany",
+   note = "This is a minimal MISC entry",
+}
+
+@MISC{misc-full,
+   author = "Joe-Bob Missilany",
+   title = "Handing out random pamphlets in airports",
+   howpublished = "Handed out at O'Hare",
+   month = oct,
+   year = 1984,
+   note = "This is a full MISC entry",
+}
+
+@STRING{STOC-key = "OX{\singleletter{stoc}}"}
+
+@STRING{ACM = "The OX Association for Computing Machinery"}
+
+@STRING{STOC = " Symposium on the Theory of Computing"}
+
+@INPROCEEDINGS{inproceedings-minimal,
+   author = "Alfred V. Oaho and Jeffrey D. Ullman and Mihalis Yannakakis",
+   title = "On Notions of Information Transfer in {VLSI} Circuits",
+   booktitle = "Proc. Fifteenth Annual ACM" # STOC,
+   year = 1983,
+}
+
+@INPROCEEDINGS{inproceedings-full,
+   author = "Alfred V. Oaho and Jeffrey D. Ullman and Mihalis Yannakakis",
+   title = "On Notions of Information Transfer in {VLSI} Circuits",
+   editor = "Wizard V. Oz and Mihalis Yannakakis",
+   booktitle = "Proc. Fifteenth Annual ACM" # STOC,
+   number = 17,
+   series = "All ACM Conferences",
+   pages = "133--139",
+   month = mar,
+   year = 1983,
+   address = "Boston",
+   organization = ACM,
+   publisher = "Academic Press",
+   note = "This is a full INPROCEDINGS entry",
+}
+
+@INPROCEEDINGS{inproceedings-crossref,
+   crossref = "whole-proceedings",
+   author = "Alfred V. Oaho and Jeffrey D. Ullman and Mihalis Yannakakis",
+   title = "On Notions of Information Transfer in {VLSI} Circuits",
+   organization = "",
+   pages = "133--139",
+   note = "This is a cross-referencing INPROCEEDINGS entry",
+}
+
+@PROCEEDINGS{proceedings-minimal,
+   key = STOC-key,
+   title = "Proc. Fifteenth Annual" # STOC,
+   year = 1983,
+}
+
+@PROCEEDINGS{proceedings-full,
+   editor = "Wizard V. Oz and Mihalis Yannakakis",
+   title = "Proc. Fifteenth Annual" # STOC,
+   number = 17,
+   series = "All ACM Conferences",
+   month = mar,
+   year = 1983,
+   address = "Boston",
+   organization = ACM,
+   publisher = "Academic Press",
+   note = "This is a full PROCEEDINGS entry",
+}
+
+@PROCEEDINGS{whole-proceedings,
+   key = STOC-key,
+   organization = ACM,
+   title = "Proc. Fifteenth Annual" # STOC,
+   address = "Boston",
+   year = 1983,
+   booktitle = "Proc. Fifteenth Annual ACM" # STOC,
+   note = "This is a cross-referenced PROCEEDINGS",
+}
+
+@PHDTHESIS{phdthesis-minimal,
+   author = "F. Phidias Phony-Baloney",
+   title = "Fighting Fire with Fire: Festooning {F}rench Phrases",
+   school = "Fanstord University",
+   year = 1988,
+}
+
+@PHDTHESIS{phdthesis-full,
+   author = "F. Phidias Phony-Baloney",
+   title = "Fighting Fire with Fire: Festooning {F}rench Phrases",
+   school = "Fanstord University",
+   type = "{PhD} Dissertation",
+   address = "Department of French",
+   month = jun # "-" # aug,
+   year = 1988,
+   note = "This is a full PHDTHESIS entry",
+}
+
+@TECHREPORT{techreport-minimal,
+   author = "Tom Terrific",
+   title = "An {$O(n \log n / \! \log\log n)$} Sorting Algorithm",
+   institution = "Fanstord University",
+   year = 1988,
+}
+
+@TECHREPORT{techreport-full,
+   author = "Tom T{\'{e}}rrific",
+   title = "An {$O(n \log n / \! \log\log n)$} Sorting Algorithm",
+   institution = "Fanstord University",
+   type = "Wishful Research Result",
+   number = "7",
+   address = "Computer Science Department, Fanstord, California",
+   month = oct,
+   year = 1988,
+   note = "This is a full TECHREPORT entry",
+}
+
+@UNPUBLISHED{unpublished-minimal,
+   author = "Ulrich {\"{U}}nderwood and Ned {\~N}et and Paul {\={P}}ot",
+   title = "Lower Bounds for Wishful Research Results",
+   note = "Talk at Fanstord University (this is a minimal UNPUBLISHED entry)",
+}
+
+@UNPUBLISHED{unpublished-full,
+   author = "Ulrich {\"{U}}nderwood and Ned {\~N}et and Paul {\={P}}ot",
+   title = "Lower Bounds for Wishful Research Results",
+   month = nov # ", " # dec,
+   year = 1988,
+   note = "Talk at Fanstord University (this is a full UNPUBLISHED entry)",
+}
+
+@MISC{random-note-crossref,
+   key = {Volume-2},
+   note = "Volume~2 is listed under Knuth \cite{book-full}"
+}

@@ -1,0 +1,585 @@
+%% This is an example first chapter.  You should put chapter/appendix that you
+%% write into a separate file, and add a line \include{yourfilename} to
+%% main.tex, where `yourfilename.tex' is the name of the chapter/appendix file.
+%% You can process specific files by typing their names in at the 
+%% \files=
+%% prompt when you run the file main.tex through LaTeX.
+\chapter{Trajectory Deconfliction}
+
+\section{Issues with Other State-of-the-art Approaches}
+
+As described in Section~\ref{sec:literature_review}, existing methods either implicitly or explicitly assume perfect communication environments, and with the presence of communication latency, their approaches' collision-safety guarantee no longer holds. 
+MADER~\cite{tordesillas_mader_2022} guarantees collision-free trajectories under ideal communication through the use of the planning stages shown in Fig.~\ref{fig:mader_deconfliction}.
+% When there is no communication delay, safety can be guaranteed by using the approach presented in our previous work MADER~\cite{tordesillas_mader_2022} (see Fig.~\ref{fig:mader_deconfliction}).
+An agent plans its initial trajectory during \OptimizationStep{} (\OStep{}), followed by \CheckStep{} (\CStep{}) to ensure its plan does not lead to a collision.
+Finally, \RecheckStep{} (\RStep{}) is used to check if the agent received any trajectory updates from other agents during \CStep{} - if so, an agent starts over planning at \OStep{}.
+Although MADER does not have explicit safety guarantees in the presence of communication delays, its trajectories are still collision free for cases 1 and 2 shown in Fig.~\ref{fig:mader_deconfliction}. However,  collisions may occur in cases 3 and 4 of Fig.~\ref{fig:mader_deconfliction}.
+These four cases are summarized in Fig.~\ref{fig:mader_deconfliction} and Table~\ref{tab:safety_guarantees_delays}.
+
+\begin{figure*}[t]
+\centering
+  \centering
+  \resizebox{1.0\textwidth}{!}{%
+    \begin{tikzpicture}
+        [
+        % define styles
+        greenbox/.style={shape=rectangle, fill=opt_color, draw=black},
+        bluebox/.style={shape=rectangle, fill=check_color, draw=black},
+        redbox/.style={shape=rectangle, fill=recheck_color, draw=black},
+        ]
+        
+        % coordinate
+        \newcommand\Ay{5.5}
+        \newcommand\Axo{3}
+        \newcommand\Axc{8}
+        \newcommand\Axr{10}
+        \newcommand\Axe{11}
+        
+        \newcommand\By{2}
+        \newcommand\Bxo{5}
+        \newcommand\Bxc{12}
+        \newcommand\Bxr{15}
+        
+        % MADER deconfliction 
+        % Agent A
+            \node[text=red] at (0.5,\Ay+0.2) {\scriptsize Agent A};
+            % previous iter.
+            \filldraw[fill=check_color, draw=black, opacity=0.2] (0,\Ay) rectangle (1.5,\Ay-1.0);
+            \filldraw[fill=recheck_color, draw=black, opacity=0.2] (1.5,\Ay) rectangle (\Axo,\Ay-1.0);
+            % current iter.
+            \filldraw[thick, fill=opt_color, draw=black] (\Axo,\Ay) rectangle (\Axc,\Ay-1.0);
+            \filldraw[thick, fill=check_color, draw=black] (\Axc, \Ay) rectangle (\Axr, \Ay-1.0);
+            \filldraw[thick, fill=recheck_color, draw=black] (\Axr, \Ay) rectangle (\Axe, \Ay-1.0);
+            % next iter.
+            \filldraw[fill=opt_color, draw=black, opacity=0.2] (\Axe, \Ay) rectangle (\Axe+4.5, \Ay-1.0);
+            \filldraw[fill=check_color, draw=black, opacity=0.2] (\Axe+4.5, \Ay) rectangle (\Axe+5.5, \Ay-1.0);
+            \filldraw[fill=recheck_color, draw=black, opacity=0.2] (\Axe+5.5, \Ay) rectangle (\columnwidth, \Ay-1.0);
+        % Agent B
+            \node[text=blue] at (0.5,\By+0.2) {\scriptsize Agent B};
+            % previous iter.
+            \filldraw[fill=check_color, draw=black, opacity=0.2] (0,\By) rectangle (\Bxo-0.5,\By-1.0);
+            \filldraw[fill=recheck_color, draw=black, opacity=0.2] (\Bxo-0.5,\By) rectangle (\Bxo,\By-1.0);
+            % current iter.
+            \filldraw[thick, fill=opt_color, draw=black] (\Bxo,\By) rectangle (\Bxc,\By-1.0);
+            \filldraw[thick, fill=check_color, draw=black] (\Bxc, \By) rectangle (\Bxr, \By-1.0);
+            \filldraw[thick, fill=recheck_color, draw=black] (\Bxr, \By) rectangle (\Bxr+1, \By-1.0);
+            % next iter.
+            \filldraw[fill=opt_color, draw=black, opacity=0.2] (\Bxr+1, \By) rectangle (\columnwidth, \By-1.0);
+
+        \draw[thick, densely dotted] (\Axe,-0.0) -- (\Axe,\Ay-1.0) node[] at (\Axe, -0.3) {\tiny $t_{\trajA{}{}}^A$};
+            
+        % Axis
+        \draw[thick,->] (0,0) -- (\columnwidth,0) node[anchor=north east] {time};
+        
+        % traj. msgs
+        \draw[thick, ->, draw=red] (\Axe,\Ay-1.0) -- (\Axe,\Ay-2.2) node[midway,fill=white, text=red] {\tiny \trajA{}};
+        \draw[thick, <-, draw=red] (\Bxc-0.3,\By) -- (\Bxc-0.3,\By+0.3) node[anchor=south,text=black] {\tiny case 1};
+        \draw[thick, <-, draw=red] (\Bxc+0.5,\By) -- (\Bxc+0.5,\By+0.3) node[anchor=south,text=black] {\tiny case 2};
+        \draw[thick, <-, draw=red] (\Bxr+0.1,\By) -- (\Bxr+0.1,\By+0.3) node[anchor=south,text=black] {\tiny case 3};
+        \draw[thick, <-, draw=red] (\Bxr+2,\By) -- (\Bxr+2,\By+0.3) node[anchor=south,text=black] {\tiny case 4};
+        
+        % legend in the sequence
+        \node[font=\bfseries,right] at (\Axo,\Ay-0.15) {\tiny Optimization (O\textsubscript{A})};
+        \node[font=\bfseries,right] at (\Axc,\Ay-0.15) {\tiny Check (C\textsubscript{A})};
+        \node[font=\bfseries,right] at (\Axr-0.47,\Ay+0.15) {\tiny Recheck (R\textsubscript{A})};
+
+        \node[font=\bfseries,right] at (\Bxo,\By-0.15) {\tiny O\textsubscript{B}};
+        \node[font=\bfseries,right] at (\Bxc,\By-0.15) {\tiny C\textsubscript{B}};
+        \node[font=\bfseries,right] at (\Bxr,\By-0.15) {\tiny R\textsubscript{B}};
+        
+        % text
+        \node[color=gray] at (1.0,\Ay-0.15) {\scriptsize Prev. iter.};
+        \node[color=gray] at (0.95\columnwidth,\Ay-0.15) {\scriptsize Next iter.};
+        \node[color=gray] at (1,\By-0.15) {\scriptsize Prev. iter.};
+        \node[color=gray] at (0.95\columnwidth,\By-0.15) {\scriptsize Next iter.};
+    \end{tikzpicture}
+    }
+    \vspace*{-5mm}
+    \captionof{figure}{MADER deconfliction: \AgentA{} solves \OStepA{} to find its optimal trajectory, constrained by other agents' trajectories. \AgentA{} then begins \CStepA{} to determine if that generated trajectory has any conflicts with trajectories received during \OStepA{}. Finally, in \RStepA{}, \AgentA{} checks if it received any trajectories during \CStep{}. The four cases shown in the figure correspond to different communication delays, resulting in \trajA{} being received by \AgentB{} at different times. Designed to guarantee safety when there is no communication delays, MADER also guarantees safety when \trajA{} arrives during \OStepB{} (Case 1) or \CStepB{} (Case 2), but could cause collisions if \trajA{} is received during/after (Case 3/4) \RStepB{}.
+    % MADER assumes no communication delay between Agents, but that can be too strong an assumption in the real world. In the case that communication delay occurs, \AgentB{} receives \trajA{} at $t^{ci}$ corresponding to Case i:
+    % \begin{itemize}
+    %     \item Case 1 \& 2: \AgentB{} can detect its trajectory conflicts with 
+    %     \trajA{} during its \CStep{} and {\tt Recheck}, respectively.
+    %     \item Case 3: MADER assumes Agents will not receive trajectories in {\tt Recheck}, which is short, but this could occur. In such a case it can not detect collisions.
+    %     \item Case 4: \AgentB{} already published its trajectory after {\tt Recheck} and therefore cannot detect conflicts. 
+    % \end{itemize}
+    }
+  \label{fig:mader_deconfliction}
+\end{figure*}
+
+\section{RMADER's trajectory deconfliction}
+
+To achieve robustness to communication delays, we replace the \RecheckStep{} with \DelayCheckStep{} (\DCStep{}), where each agent repeatedly checks if its newly optimized trajectory conflicts with other agents' trajectories.
+If an agent detects conflicts during \DCStep{}, it discards the new trajectory and starts another \OStep{} while executing its previous trajectory. 
+If no collisions are detected in \DCStep{}, it starts executing the new trajectory. 
+To guarantee collision-free trajectory generation, \DCStep{} needs to be longer than the possible longest communication delay (i.e., \NeccessaryCond{}). 
+That way, an agent can always keep at least one collision-free trajectory. 
+It could, however, not be ideal for introducing such a long \delayParameter{}, and therefore, in Section~\ref{sec:sim} we also tried $\delta_{\text{DC}}<\delta_{\text{max}}$ and measure its performance. 
+Fig.~\ref{fig:rmader_deconfliction} shows how RMADER deals with communication delays.
+Furthermore, Table~\ref{tab:safety_guarantees_delays} shows all the possible cases in which communication delays could occur and how these are handled by RMADER to generate collision-free trajectories even with communication delays.
+The pseudocode of RMADER deconfliction is given in Algorithm~\ref{alg:rmader}. First, Agent~B runs \OStep{} to obtain \trajBNew{} and broadcasts it if \CStep{} is satisfied 
+(Line~\ref{line:broadcast_traj_B_new}). This \CStep{} aims to determine if \trajBNew{} has any conflicts with trajectories received in \OStep{}. Then, Agent~B commits either \trajBPrev{} or \trajBNew{} - if \DCStep{} detects conflicts, Agent~B commits to \trajBPrev{} (Line~\ref{line:DC_not_satisfied}), and if \DCStep{} detects no conflicts, \trajBNew{} (Line~\ref{line:DC_satisfied}). This committed trajectory is then broadcast to the other agents (Line~\ref{line:broadcast_traj_B}). Table~\ref{tab:mader_vs_rmader} highlights the differences between MADER and RMADER.
+
+\begin{figure*}[t]
+\centering
+  \resizebox{1.0\textwidth}{!}{%
+       \begin{tikzpicture}
+       [
+        % define styles
+        greenbox/.style={shape=rectangle, fill=opt_color, draw=black},
+        bluebox/.style={shape=rectangle, fill=check_color, draw=black},
+         yellowbox/.style={shape=rectangle, fill=delaycheck_color, draw=black},
+        ]
+        
+        % coordinate
+        \newcommand\Ay{5.5}
+        \newcommand\Axo{3}
+        \newcommand\Axc{8}
+        \newcommand\Axr{10}
+        \newcommand\Axe{11}
+        
+        \newcommand\By{2}
+        \newcommand\Bxo{5}
+        \newcommand\Bxc{12}
+        \newcommand\Bxr{15}
+        \newcommand\Bxe{17}
+        
+        % RMADER deconfliction 
+        % Agent A
+            \node[text=red] at (0.5,\Ay+0.2) {\scriptsize Agent A};
+            % previous iter.
+            \filldraw[fill=check_color, draw=black, opacity=0.2] (0,\Ay) rectangle (1.5,\Ay-1.0);
+            \filldraw[fill=delaycheck_color, draw=black, opacity=0.2] (0.5,\Ay) rectangle (\Axo,\Ay-1.0);
+            % current iter.
+            \filldraw[thick, fill=opt_color, draw=black] (\Axo,\Ay) rectangle (\Axc,\Ay-1.0);
+            \filldraw[thick, fill=check_color, draw=black] (\Axc, \Ay) rectangle (\Axr, \Ay-1.0);
+            \filldraw[thick, fill=delaycheck_color, draw=black] (\Axr, \Ay) rectangle (\Axe, \Ay-1.0);
+            % next iter.
+            \filldraw[fill=opt_color, draw=black, opacity=0.2] (\Axe, \Ay) rectangle (\Axe+1.5, \Ay-1.0);
+            \filldraw[fill=check_color, draw=black, opacity=0.2] (\Axe+1.5, \Ay) rectangle (\columnwidth, \Ay-1.0);
+        % Agent B
+            \node[text=blue] at (0.5,\By+0.2) {\scriptsize Agent B};
+            % previous iter.
+            \filldraw[fill=check_color, draw=black, opacity=0.2] (0,\By) rectangle (\Bxo-0.5,\By-1.0);
+            \filldraw[fill=delaycheck_color, draw=black, opacity=0.2] (\Bxo-0.5,\By) rectangle (\Bxo,\By-1.0);
+            % current iter.
+            \filldraw[thick, fill=opt_color, draw=black] (\Bxo,\By) rectangle (\Bxc,\By-1.0);
+            \filldraw[thick, fill=check_color, draw=black] (\Bxc, \By) rectangle (\Bxr, \By-1.0);
+            \filldraw[thick, fill=delaycheck_color, draw=black] (\Bxr, \By) rectangle (\Bxe, \By-1.0);
+            % next iter.
+            \filldraw[fill=opt_color, draw=black, opacity=0.2] (\Bxe, \By) rectangle (\columnwidth, \By-1.0);
+            % \filldraw[fill=check_color, draw=black, opacity=0.2] (\Bxe+1.0, \By) rectangle (\columnwidth-1, \By-1.0);
+        
+        % time label
+        % \draw[thick, densely dotted] (\Axo,0) -- (\Axo,\Ay-1.0) node[] at (\Axo, -0.25) {\tiny $t_o^A$};
+        %\draw[thick, densely dotted] (\Axc,0) -- (\Axc,\Ay-1.0) node[] at (\Axc, -0.25) {\tiny $t_c^A$};
+        \draw[thick, densely dotted] (\Axr,0) -- (\Axr,\Ay-1.0) node[] at (\Axr, -0.25) {\tiny t\textsubscript{traj\textsubscript{A\textsubscript{new}}}};
+        \draw[thick, densely dotted] (\Axe,0) -- (\Axe,\Ay-1.0) node[] at (\Axe, -0.25) {\tiny t\textsubscript{traj\textsubscript{A}}};
+            
+        % Axis
+        \draw[thick,->] (0,0) -- (\columnwidth,0) node[anchor=north east] {time};
+        
+        % traj. msgs
+        \draw[thick, ->, draw=red] (\Axr,\Ay-1.0) -- (\Axr,\Ay-2.2) node[midway,fill=white, text=red] {\tiny \trajANew{}};
+        \draw[thick, ->, draw=red] (\Axe,\Ay-1.0) -- (\Axe,\Ay-2.2) node[midway,fill=white, text=red] {\tiny \trajA{}};
+        \draw[thick, <-, draw=red] (\Bxc-0.2,\By) -- (\Bxc-0.2,\By+0.3)  node[anchor=south,text=black] {\tiny case 1};
+        \draw[thick, <-, draw=red] (\Bxc+0.6,\By) -- (\Bxc+0.6,\By+0.3) node[anchor=south,text=black] {\tiny case 2};
+        \draw[thick, <-, draw=red] (\Bxr+0.4,\By) -- (\Bxr+0.4,\By+0.3) node[anchor=south,text=black] {\tiny case 3};
+        \draw[thick, <-, draw=red] (\Bxe+0.4,\By) -- (\Bxe+0.4,\By+0.3) node[anchor=south,text=black] {\tiny case 4};
+        
+        % legend in the sequence
+        \node[font=\bfseries,right] at (\Axo,\Ay-0.15) {\tiny O\textsubscript{A}};
+        \node[font=\bfseries,right] at (\Axc,\Ay-0.15) {\tiny C\textsubscript{A}};
+        \node[font=\bfseries,right] at (\Axr,\Ay-0.15) {\tiny DC\textsubscript{A}};
+
+        \node[font=\bfseries,right] at (\Bxo,\By-0.15) {\tiny O\textsubscript{B}};
+        \node[font=\bfseries,right] at (\Bxc,\By-0.15) {\tiny C\textsubscript{B}};
+        \node[font=\bfseries,right] at (\Bxr,\By-0.15) {\tiny DC\textsubscript{B}};
+        
+        % legend box
+        % \matrix [draw,below left] at (current bounding box.north east) {
+        % \matrix [draw,below left,fill=white,opacity=1.0] at (15, \Ay) {
+        %   \node [greenbox,label=right:Optimization] {}; \\
+        %   \node [bluebox,label=right:Check] {}; \\
+        %   \node [redbox,label=right:Recheck] {}; \\
+        % };
+        
+        % text
+        \node[color=gray] at (1,\Ay-0.15) {\scriptsize Prev. iter.};
+        \node[color=gray] at (0.95\columnwidth,\Ay-0.15) {\scriptsize Next iter.};
+        \node[color=gray] at (1,\By-0.15) {\scriptsize Prev. iter.};
+        \node[color=gray] at (\columnwidth,\By-1.45) {\scriptsize Next iter.};
+        
+    \end{tikzpicture}
+    }
+    
+  \captionof{figure}{RMADER deconfliction: After \CStepA{}, \AgentA{} keeps executing the trajectory from the previous iteration, \trajAPrev{}, while checking potential collisions of newly optimized trajectory, \trajANew{}. 
+  This is because \trajANew{} might have conflicts due to communication delays and need to be checked in \DCStepA{}, and traj\textsubscript{A\textsubscript{prev}} is ensured to be collision-free. If collisions are detected in either \CStepA{} or \DCStepA{}, \AgentA{} keeps executing \trajAPrev{} (i.e., $\text{\trajA{}}\leftarrow \text{\trajAPrev{}}$). If \DCStepA{} does not detect collisions, \AgentA{} broadcasts and starts implementing \trajANew{} (i.e., $\text{\trajA{}}\leftarrow \text{\trajANew{}}$).}
+  \label{fig:rmader_deconfliction}
+\end{figure*}
+
+In MADER~\cite{tordesillas_mader_2022} and RMADER, UAVs plan trajectories asynchronously and broadcast the results to each other.  Each agent uses these trajectories as constraints in the optimization problem. Assuming no communication delays exist, safety can be guaranteed using our previous approach presented in MADER (summarized in Section~\ref{subsec:mader_deconfliction}). 
+This safety guarantee, however, breaks when an agent's planned trajectory is received by other agents with some latency. Section~\ref{subsec:rmader_deconfliction} shows how RMADER guarantees safety even with communication delays. We use the definitions shown in Table~\ref{tab:delaydefinitions}.
+
+\begin{table}[b]
+    \vspace{-1.5em}
+    \begin{centering}
+    \caption{Definitions of the different delay quantities: Note that, by definition, $0\le\delayIntroduced\le\delayActual{}\le\delayActualMax{}$. See also Figs~\ref{fig:sim_actual_comm_delay} and~\ref{fig:comm_delay_on_centr} for the actual histogram of the delays in simulation and hardware, respectively.  }
+    \renewcommand{\arraystretch}{2}
+    \begin{centering}
+    \begin{tabular}{>{\centering\arraybackslash}m{0.1\columnwidth} >{\arraybackslash}m{0.7\columnwidth}}
+    \toprule 
+    \delayActual{} & Actual communication delays among agents. \tabularnewline
+    \hline 
+    \delayActualMax{} & \makecell[l]{Possible maximum communication delay. } \tabularnewline
+    \hline 
+    \delayIntroduced{} & \makecell[l]{Introduced communication delay in simulations. } \tabularnewline
+    \hline 
+    \delayParameter{} & \makecell[l]{Length of \DelayCheckStep{} in RMADER. \\ To guarantee safety, $\delayActualMax{}\le\delayParameter{}$ must be satisfied.} \tabularnewline
+    \bottomrule
+    \end{tabular}
+    \par\end{centering}
+    \label{tab:delaydefinitions}
+    \par\end{centering}
+\end{table}
+
+\begin{table}
+\caption{Safety guarantees under communication delays: Depending on when \trajA{} is received by Agent B, the deconfliction takes place at different stages. MADER does not guarantee safety if \trajA{} is received during \RStepB{} or during the following iteration, while RMADER guarantees safety in all the cases. Note that in RMADER, if Agent~B does not receive \trajA{} by the end of \DCStepB{}, then the deconfliction is performed by Agent A (specifically, in \CStepA{} or \DCStepA{}) and not by Agent B. Agent A will use \trajBNew{} and/or \trajB{} for this.}
+\label{tab:safety_guarantees_delays}
+\begin{centering}
+\renewcommand{\arraystretch}{1.2}
+\resizebox{1.0\columnwidth}{!}{
+\setlength\extrarowheight{0.3em}
+\begin{tabular}{>{\centering}m{0.3\columnwidth} || >{\centering}m{0.2\columnwidth} >{\centering}m{0.2\columnwidth} >{\centering}m{0.2\columnwidth} >{\centering}m{0.2\columnwidth}}
+\toprule
+\multicolumn{1}{>{\centering}m{0.1\columnwidth}||}{} & \multicolumn{4}{c}{\textbf{MADER}} \tabularnewline[0.2em]
+\hline
+\textbf{When \trajA{} received}  & \makecell{\OStepB{} \\ (Case 1)} & \makecell{\CStepB{} \\ (Case 2)} & \makecell{\RStepB{} \\ (Case 3)} & \makecell{\textbf{Next iter.} \\ (Case 4)} \tabularnewline[0.4em]
+\hline 
+\textbf{\trajA{} deconflicted? When?} & \makecell{\YesGreen{} \\ \CStepB{}}  & \makecell{\YesGreen{} \\ \RStepB{}}  & \NoRed{}  & \NoRed{} \tabularnewline
+\bottomrule
+\end{tabular}
+}
+%\hfill
+\vspace{0.2cm}
+
+\resizebox{1.0\columnwidth}{!}{
+\setlength\extrarowheight{0.3em}
+\begin{tabular}{>{\centering}m{0.3\columnwidth} || >{\centering}m{0.2\columnwidth} >{\centering}m{0.2\columnwidth} >{\centering}m{0.2\columnwidth} >{\centering}m{0.2\columnwidth}}
+\toprule
+\multicolumn{1}{>{\centering}m{0.1\columnwidth}||}{} & \multicolumn{4}{c}{\textbf{RMADER}}\tabularnewline[0.2em]
+\hline
+\textbf{When \trajANew{}/\trajA{} received}  & \makecell{\OStepB{} \\ (Case 1)} & \makecell{\CStepB{} \\ (Case 2)} & \makecell{\DCStepB{} \\ (Case 3)} & \makecell{\textbf{Next iter.} \\ (Case 4)} \tabularnewline
+\hline 
+\textbf{\trajANew{}/\trajA{} deconflicted? When?} & \makecell{\YesGreen{} \\ \CStepB{}} & \makecell{\YesGreen{} \\ \DCStepB{}}  & \makecell{\YesGreen{} \\ \DCStepB{}}  & \makecell{\YesGreen{} \\ \CStepA{} or \DCStepA{}} \tabularnewline
+\bottomrule
+\end{tabular}
+}
+
+\par\end{centering}
+\end{table}
+
+\begin{algorithm}
+    \begin{algorithmic}[1]
+    \Require traj\textsubscript{B}, a feasible trajectory
+    \While{not goal reached}
+        \State \trajBNew{} $=$ \textproc{\OptimizationStep{}()} \label{line:traj_opt}
+        \If{\textproc{\CheckStep}(\trajBNew{}) $==$ False} 
+            \State Go to Line 2
+        \EndIf
+        \State Broadcast \trajBNew{} \label{line:broadcast_traj_B_new}
+        \If{\textproc{\DelayCheckStep{}}(\trajBNew{}) $==$ False} 
+            \State \trajB{} $\leftarrow$ \trajBPrev{}, and go to Line~\ref{line:broadcast_traj_B}\label{line:DC_not_satisfied}
+        \EndIf
+        \State \trajB{} $\leftarrow$ \trajBNew{} \label{line:DC_satisfied}
+        \State Broadcast \trajB{} \label{line:broadcast_traj_B}
+    \EndWhile
+    \end{algorithmic}
+    \caption{Robust MADER - Agent B}
+    \label{alg:rmader}
+\end{algorithm}
+
+\begin{table}
+\begin{centering}
+\caption{\centering Differences between MADER and RMADER}
+\label{tab:mader_vs_rmader}
+\renewcommand{\arraystretch}{1.1}
+\resizebox{1.0\columnwidth}{!}{
+\scriptsize
+\begin{tabular}{>{\centering\arraybackslash}m{0.4\columnwidth} >{\centering\arraybackslash}m{0.4\columnwidth}}
+\toprule
+\textbf{MADER} & \textbf{RMADER}\tabularnewline
+\hline 
+\hline 
+Upon successful \CStep{} and \RStep{}, the newly optimized trajectory is broadcast to other agents 
+%Broadcast only the committed trajectory. This committed trajectory will be newly optimized trajectory if both \CStep{} and \RStep{} are satisfied, and the previous trajectory
+& Upon successful \CStep{}, \trajJNew{} is broadcast. After \DCStep{}, the committed trajectory \trajJ{} (which is either \trajJNew{} and \trajJPrev{} depending on whether \DCStep{} is satisfied or not) is broadcast \tabularnewline
+\hline 
+\RStep{} is a Boolean check to see if the agent received traj.
+in \CStep{} & \DCStep{} is a sequence of collision checks\tabularnewline
+\hline 
+\RStep{} is very short & \DCStep{} lasts \delayParameter{} seconds\tabularnewline
+\bottomrule
+\end{tabular}
+}
+\par\end{centering}
+\vspace{-2em}
+\end{table}
+
+\begin{algorithm}
+    \newcommand{\algorithmicbreak}{\textbf{break}}
+    \begin{algorithmic}[1] %1 means every 1 line the line will be numbered
+    \Function {\textproc{\DelayCheckStep{}}}{\trajBNew{}}
+        \For {\delayParameter{} seconds}
+            \If{\trajBNew{} collides with any trajectory in $\mathcal{Q}_B$}    
+                %\State Discards \trajB{}
+                \State \Return False
+             \EndIf
+         \EndFor
+    \State \Return True
+    \EndFunction
+    \end{algorithmic}
+    \caption{Delay Check - Agent B}\label{alg:pess_delaycheck}
+\end{algorithm}
+
+\newcommand{\QB}{\ensuremath{\mathcal{Q}_B}}
+
+Agent~B stores the trajectories received from other agents in a set \QB{}; for example, for each Agent~J, Agent~B will store the committed trajectory of Agent~J, \trajJ{}, and possibly the newly optimized trajectory \trajJNew{} if any new committed trajectory has still not been broadcast. Figure~\ref{fig:QB_definition} shows the way Agent B stores trajectories from Agent A. 
+\QB{} is used in \OStep{}, \CheckStep{}, and \DCStep{},  where Agent~B checks for collision against all the trajectories stored in \QB{}. Note that \QB{} is updated in parallel with \OStep{} and \DCStep{}. 
+At the beginning of \OStepB{}, an agent generates an optimal trajectory, \trajBNew{}, using all the trajectories stored in \QB{} as constraints, and then, Agent B checks for \trajBNew{}'s potential collisions against \QB{}, which is updated in optimization. 
+Finally, Agent~B repeatedly checks for collisions against \QB{} in \DCStepB{}, which lasts for \delayParameter{}. 
+Note that \CStep{} is not necessary to guarantee safety in RMADER - \OStep{} followed by \DCStep{} alone can generate collision-free trajectories as long as \NeccessaryCond{} holds. Though \CStep{} detects collisions before broadcasting any (possibly conflicted) trajectories and allows an agent to start another \OStep{}, which prevents unnecessary communication.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\columnwidth]{figures/QB_definition.pdf}
+    \setlength{\belowcaptionskip}{-0.5em}
+    \caption{Agent~B stores in \QB{} the last committed trajectory of Agent~A. It will also contain the newly optimized trajectory \trajANew{} while the new committed trajectory has still not been received by Agent~B. }
+    \label{fig:QB_definition}
+\end{figure}
+
+Now we provide a theoretical analysis of RMADER's trajectory deconfliction. 
+First, we introduce Lemma~\ref{lem:two_agent_suffices_multiagent}, which allows us to scale up and apply two-agent deconfliction analysis to multiagent deconfliction, and then Proposition~\ref{prop:rmader_deconfliction_theorem} provides a theoretical guarantee of RMADER's deconfliction approach. 
+
+\newtheorem{lemma}{Lemma}
+\begin{lemma}
+\label{lem:two_agent_suffices_multiagent}
+In decentralized asynchronous trajectory planning, collision safety guarantee between any two agents is a sufficient condition for multiagent collision safety guarantee. 
+\end{lemma}
+
+\begin{proof}
+Decentralized asynchronous multiagent trajectory deconfliction is a set of two-agent trajectory deconfliction, and therefore in case of trajectory deconfliction is guaranteed between every pair of any two agents, multiagent trajectory deconfliction is also guaranteed. 
+\end{proof}
+
+\newtheorem{prop}{Proposition}
+\begin{prop}
+\label{prop:rmader_deconfliction_theorem}
+Given $\delayParameter{}>\delayActualMax{}$, RMADER is guaranteed to be collision-free under communication delay.
+\end{prop}
+
+\begin{proof}
+By Lemma~\ref{lem:two_agent_suffices_multiagent}, to prove RMADER's multiagent collision-free guarantee, we show RMADER's collision-free guarantee between two agents.
+Note that in case the decentralized asynchronous planner uses hard constraints, such as RMADER, as long as at any given time, at least one of the two agents has knowledge of the other agent's trajectory, collision safety is guaranteed between the two agents \textemdash In RMADER, this condition is implied by $\delayParameter{}>\delayActualMax{}$. 
+To prove RMADER's collision-free guarantee, we thoroughly go through all the possible 12 cases of trajectory deconfliction between two agents - One agent sends its trajectory to the other agent's either \OStep{}, \CStep{}, or \DCStep{}, and the other agent can receive this trajectory in either \OStep{}, \CStep{}, \DCStep{}, or the next iteration. 
+For clarity, we define the time \AgentA{} publishes its newly optimized trajectory as \tApub, the time \AgentB{} receives it as \tBrec, and Agent B's \OptimizationStep/\CheckStep/\DelayCheckStep{} as \OStepB/\CStepB/\DCStepB, respectively. All the possible cases are illustrated in Table~\ref{tab:rmader_possible_cases}; for example, case 3 denotes \AgentA{} publishes in \OStepB{}, and \AgentB{} receives it in \DCStepB{}. Note that cases 1-4 correspond to cases 1-4 in Fig.~\ref{fig:rmader_deconfliction}.
+\begin{table}[H]
+\caption{\centering RMADER Trajectory Deconfliction Cases}
+\label{tab:rmader_possible_cases}
+\begin{centering}
+\renewcommand{\arraystretch}{1.2}
+\resizebox{1.0\columnwidth}{!}{
+\begin{tabular}{ c c || c c c c }
+\toprule
+ & & \multicolumn{4}{c}{\tBrec}\tabularnewline
+\cline{3-6} 
+ & & \OStepB{} & \CStepB{} & \DCStepB{} & Next Iter. \tabularnewline
+\hline \hline
+\multirow{3}[1]{*}{\tApub} & \OStepB{} & case 1 & case 2 & case 3 & case 4 \tabularnewline
+\cline{2-6} 
+ & \CStepB{} & case 5 & case 6 & case 7 & case 8 \tabularnewline
+\cline{2-6}
+ & \DCStepB{} & case 9 & case 10 & case 11 & case 12 \tabularnewline
+\bottomrule
+\end{tabular}}
+\par\end{centering}
+\end{table}
+
+\begin{itemize}
+\item In Case 1, Agent B detects possible collisions in its \CStep{} before committing to any trajectory.
+\item In Case 2, Agent B detects possible collisions in its \DCStep{} before committing to any trajectory.
+\item In Case 3, Agent B detects possible collisions in its \DCStep{} before committing to any trajectory.
+\item In Case 4, Given $\delayParameter{}>\delayActualMax{}$, this case will never occur.
+\item Case 5 will never occur since \CStep{} comes after \OStep{}.
+\item In Case 6, Agent B detects possible collisions in its \DCStep{} before committing to any trajectory.
+\item In Case 7, Agent B detects possible collisions in its \DCStep{} before committing to any trajectory.
+\item Case 8 will never occur because $\delayParameter{}>\delayActualMax{}$.
+\item Case 9 will never occur since \DCStep{} comes after \OStep{}.
+\item Case 10 will never occur since \DCStep{} comes after \CStep{}.
+\item In Case 11, Agent B detects possible collisions in its \DCStep{} before committing to any trajectory.
+\item In Case 12, Agent B will commit its trajectory at the end of its \DCStep{}, not knowing Agent A's potentially collision-prone trajectory. However, by $\delayParameter{}>\delayActualMax{}$, Agent B's newly optimized trajectory is published in either Agent A's \OStep{} or \CStep{}, and therefore, Agent A can detect potential collisions before committing to its trajectory.
+\end{itemize}
+
+As shown above, in all the possible cases, either one of the two can detect possible collisions. Therefore RMADER is guaranteed to be collision-free as long as $\delayParameter{}>\delayActualMax{}$ holds.
+\end{proof}
+
+\section{RMADER without Check}
+
+As demonstrated in Algorithm~\ref{alg:pess_delaycheck}, \DCStep{} repeatedly executes \CheckStep{}, and therefore we can guarantee safety without \CheckStep{} as long as \DCStep{} is longer than \delayActualMax{}. However, this could increase the number of rejections of newly optimized trajectory because it is published before it is checked for potential collisions with trajectories received in \OStep, leading to more conservative results.
+Note that even if we skip \CheckStep{} and publish \trajNew{}, \trajNew{} is not committed yet, and therefore, collision-free guarantee is ensured. Fig.~\ref{fig:wo_check_rmader_deconfliction} illustrates this scheme's trajectory deconfliction: 
+\begin{itemize}
+    \item Case 1 \& 2: \AgentB{} can detect its trajectory conflicts in \DCStepB.
+    \item Case 3: As long as $\delayParameter{}>\delayActualMax{}$, Case 3 will not happen.
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+  \centering
+  \resizebox{1.0\textwidth}{!}{%
+       \begin{tikzpicture}
+       [
+        % define styles
+        greenbox/.style={shape=rectangle, fill=opt_color, draw=black},
+        bluebox/.style={shape=rectangle, fill=check_color, draw=black},
+         yellowbox/.style={shape=rectangle, fill=delaycheck_color, draw=black},
+        ]
+        
+        % coordinate
+        % coordinate
+        \newcommand\Ay{5.5}
+        \newcommand\Axo{3}
+        \newcommand\Axc{8}
+        \newcommand\Axr{10}
+        \newcommand\Axe{11}
+        
+        \newcommand\By{2}
+        \newcommand\Bxo{5}
+        \newcommand\Bxc{12}
+        \newcommand\Bxr{15}
+        \newcommand\Bxe{17}
+        
+        % RMADER deconfliction 
+        % Agent A
+            \node[text=red] at (0.5,\Ay+0.2) {\scriptsize Agent A};
+            % previous iter.
+            \filldraw[fill=delaycheck_color, draw=black, opacity=0.2] (0,\Ay) rectangle (\Axo,\Ay-1.0);
+            % current iter.
+            \filldraw[thick, fill=opt_color, draw=black] (\Axo,\Ay) rectangle (\Axr,\Ay-1.0);
+            \filldraw[thick, fill=delaycheck_color, draw=black] (\Axr, \Ay) rectangle (\Axe, \Ay-1.0);
+            % next iter.
+            \filldraw[fill=opt_color, draw=black, opacity=0.2] (\Axe, \Ay) rectangle (\Axe+2.5, \Ay-1.0);
+            \filldraw[fill=delaycheck_color, draw=black, opacity=0.2] (\Axe+2.5, \Ay) rectangle (\columnwidth, \Ay-1.0);
+        % Agent B
+            \node[text=blue] at (0.5,\By+0.2) {\scriptsize Agent B};
+            % previous iter.
+            \filldraw[fill=opt_color, draw=black, opacity=0.2] (0,\By) rectangle (0.5,\By-1.0);
+            \filldraw[fill=delaycheck_color, draw=black, opacity=0.2] (0.5,\By) rectangle (\Bxo,\By-1.0);
+            % current iter.
+            \filldraw[thick, fill=opt_color, draw=black] (\Bxo,\By) rectangle (\Bxc,\By-1.0);
+            \filldraw[thick, fill=delaycheck_color, draw=black] (\Bxc, \By) rectangle (\Bxc+1.5, \By-1.0);
+            % next iter.
+            \filldraw[fill=opt_color, draw=black, opacity=0.2] (\Bxc+1.5, \By) rectangle (\columnwidth, \By-1.0);
+        
+        % time label
+        % \draw[thick, densely dotted] (\Axo,0) -- (\Axo,\Ay-1.0) node[] at (\Axo, -0.25) {\tiny $t_o^A$};
+        %\draw[thick, densely dotted] (\Axc,0) -- (\Axc,\Ay-1.0) node[] at (\Axc, -0.25) {\tiny $t_c^A$};
+        \draw[thick, densely dotted] (\Axr,0) -- (\Axr,\Ay-1.0) node[] at (\Axr, -0.25) {\tiny t\textsubscript{traj\textsubscript{A\textsubscript{new}}}};
+        \draw[thick, densely dotted] (\Axe,0) -- (\Axe,\Ay-1.0) node[] at (\Axe, -0.25) {\tiny t\textsubscript{traj\textsubscript{A}}};
+        %\draw[thick, densely dotted] (\Bxc-0.2,\By) -- (\Bxc-0.2,-0.5) node[] at (\Bxc-0.2, -0.7) {\tiny $t^{c1}$};
+        %\draw[thick, densely dotted]  (\Bxc+0.35,\By) -- (\Bxc+0.35,0) node[] at (\Bxc+0.35, -0.25) {\tiny $t^{c2}$};
+        %\draw[thick, densely dotted] (\Bxr+0.4,\By) -- (\Bxr+0.4,0) node[] at (\Bxr+0.4, -0.25) {\tiny $t^{c3}$};
+        %\draw[thick, densely dotted] (\Bxe+0.4,\By) -- (\Bxe+0.4,0) node[] at (\Bxe+0.4, -0.25) {\tiny $t^{c4}$};
+            
+        % Axis
+        \draw[thick,->] (0,0) -- (\columnwidth,0) node[anchor=north east] {time};
+        
+        % traj. msgs
+        \draw[thick, ->, draw=red] (\Axr,\Ay-1.0) -- (\Axr,\Ay-2.2) node[midway,fill=white, text=red] {\tiny \trajANew{}};
+        \draw[thick, ->, draw=red] (\Axe,\Ay-1.0) -- (\Axe,\Ay-2.2) node[midway,fill=white, text=red] {\tiny \trajA{}};
+        \draw[thick, <-, draw=red] (\Bxc-0.2,\By) -- (\Bxc-0.2,\By+0.3)  node[anchor=south,text=black] {\tiny case 1};
+        \draw[thick, <-, draw=red] (\Bxc+0.6,\By) -- (\Bxc+0.6,\By+0.3) node[anchor=south,text=black] {\tiny case 2};
+        \draw[thick, <-, draw=red] (\Bxr+0.4,\By) -- (\Bxr+0.4,\By+0.3) node[anchor=south,text=black] {\tiny case 3};
+        
+        % legend in the sequence
+        \node[font=\bfseries,right] at (\Axo,\Ay-0.15) {\tiny O\textsubscript{A}};
+        \node[font=\bfseries,right] at (\Axr,\Ay-0.15) {\tiny DC\textsubscript{A}};
+
+        \node[font=\bfseries,right] at (\Bxo,\By-0.15) {\tiny O\textsubscript{B}};
+        \node[font=\bfseries,right] at (\Bxc,\By-0.15) {\tiny DC\textsubscript{B}};
+        
+        % text
+        \node[color=gray] at (1,\Ay-0.15) {\scriptsize Prev. iter.};
+        \node[color=gray] at (0.95\columnwidth,\Ay-0.15) {\scriptsize Next iter.};
+        \node[color=gray] at (1,\By-0.15) {\scriptsize Prev. iter.};
+        \node[color=gray] at (0.95\columnwidth,\By-0.15) {\scriptsize Next iter.};
+        
+    \end{tikzpicture}
+    }
+    
+  \captionof{figure}{RMADER deconfliction without \CheckStep{}: After \OStepA, \AgentA{} publishes its newly optimized trajectory \trajANew, while it keeps executing the trajectory from the previous iteration, traj\textsubscript{A\textsubscript{prev}}. As with Fig.~\ref{fig:rmader_deconfliction}, the agent checks conflicts \DCStepA{}, and if collisions are detected in \DCStepA{}, \AgentA{} continues on executing \trajAPrev{} (i.e., $\text{\trajA{}}\leftarrow \text{\trajAPrev{}}$). In case \DCStepA{} does not detect collisions, \AgentA{} broadcasts and starts implementing \trajANew{} (i.e., $\text{\trajA{}}\leftarrow \text{\trajANew{}}$).}
+  \label{fig:wo_check_rmader_deconfliction}
+\end{figure}
+
+\section{Delay Check variations}
+
+There are several ways to implement \DelayCheckStep{} depending on communication environments, and this section illustrates these variations.
+
+
+\textbf{How the deconfliction is solved:} We can have two approaches:
+\begin{itemize}
+    \item \underline{Optimistic} (Algorithm~\ref{alg:opt_delaycheck}): It uses the ``first commits, first occupies" policy: An Agent A checks collisions only against the received trajectories that were generated before its own trajectory. If the received trajectory was generated after A's trajectory, Agent A does not need to be checked for collision because the other Agents will do that. 
+    \item \underline{Pessimistic} (Algorithm~\ref{alg:pess_delaycheck}): An Agent checks for collisions using all the received trajectories, regardless of their timestamps. 
+
+\end{itemize}
+
+Both approaches guarantee safety as long as \NeccessaryCond{} holds for all the Agents. When \NeccessaryCond{} does not hold, neither approach can guarantee safety; however, {\tt Pessimistic} approach is more likely to avoid conflicts.
+
+\subsubsection{Optimistic vs Pessimistic}
+
+    Although this could generate conservative trajectories, Agents can avoid unnecessary collisions.
+        As all the Agents follow this policy,  An Agent first checks if other Agents committed their trajectories earlier. If the Agent committed earlier, it would not check collisions since it is confident that the other Agents will eventually receive the Agent's trajectory during their {\tt Delay Check} and deconflict accordingly
+
+One way to check conflicts in Delay Check is using the "first commits, first occupies" policy, which we call {\tt Optimistic Delay Check}. An Agent first checks if other Agents committed their trajectories earlier. If the Agent committed earlier, it would not check collisions since it is confident that the other Agents will eventually receive the Agent's trajectory during their {\tt Delay Check} and deconflict accordingly. 
+Algorithm \ref{alg:opt_delaycheck} illustrates this approach. Note that {\tt Optimistic Delay Check} could lead to collisions in case the other UAVs' Delay Check is not long enough - though if \NeccessaryCond{} holds for all the Agents, 
+all the Agents' {\tt Delay Check} is longer than the maximum communication delay, 
+{\tt Optimistic Delay Check} guarantees safety. 
+However, when obstacles are in flight space, {\tt Optimistic Delay Check} cannot guarantee safety since obstacles do not actively deconflict. 
+
+As discussed above, {\tt Optimistic Delay Check} allows an Agent to commit trajectory even if the Agent detects collision as long as it has a priority. Yet, in case $\delayParameter\le\delayActual$ this overly optimistic approach could lead to collisions.
+
+In {\tt Pessimistic Delay Check}, an Agent will not check the timestamp of other Agents' trajectory and only checks conflicts. Although this could generate conservative trajectories, Agents can avoid unnecessary collisions. {\tt Pessimistic Delay Check} is the one we use for all the simulations and hardware experiments of this paper.
+
+Note that as long as \NeccessaryCond{} holds, both {\tt Optimistic} and {\tt Pessimistic Delay Check} guarantee collision safety, and in case \NeccessaryCond{} does not hold, neither approach can guarantee safety; however, {\tt Pessimistic} approach is more likely to avoid conflicts. Algorithm \ref{alg:opt_delaycheck} and \ref{alg:pess_delaycheck} provide details for {\tt Optimistic} and {\tt Pessimistic Delay Check}, respectively.
+
+
+\footnotetext{Existing works suggest various methods to break the tie. Some works use Agents' pre-assigned ID; however, this could introduce other external information such as ID. We compared the x, y, and z axes in shared coordination, which is already shared as a part of trajectory in RMADER, and whichever has a higher value on the prioritized axis wins (we prioritize the x, y, and z axis in order). That way, Agents no longer need external information to break the tie.}
+
+See Alg.~\ref{alg:opt_delaycheck}
+\begin{algorithm}
+    \newcommand{\algorithmicbreak}{\textbf{break}}
+    traj\textsubscript{i} is another Agent's traj.\\
+    timestamp\textsubscript{i} is a time when Agent i generated traj\textsubscript{i}
+    \begin{algorithmic}[1] %1 means every 1 line the line will be numbered
+    \Function {OptimisticDelayCheck}{\trajA{}}
+        %\While {Elapsed time $<$ \delayParameter{}}
+        \For {\delayParameter{} seconds}
+            \If{timestamp\textsubscript{i} $<$ timestamp\textsubscript{A}}
+                \If{\trajA{} collides with traj\textsubscript{i}}    
+                    \State Discard \trajA{}
+                    \State \algorithmicbreak
+                \ElsIf{timestamp\textsubscript{i} $==$ timestamp\textsubscript{A}}
+                    \State Tie Breaking\footnotemark
+    %             \EndIf
+    %         \EndIf
+    %     \EndWhile
+    % \EndFunction
+    \end{algorithmic}
+    \caption{Optimistic Delay Check - Agent A}\label{alg:opt_delaycheck}
+\end{algorithm}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\columnwidth]{figures/QB_definition.pdf}
+    \setlength{\belowcaptionskip}{-0.5em}
+    \caption{Agent~B stores in \QB{} the last committed trajectory of Agent~A. It will also contain the newly optimized trajectory \trajANew{} while the new committed trajectory has still not been received by Agent~B. }
+    \label{fig:QB_definition}
+\end{figure}
