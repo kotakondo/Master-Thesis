@@ -1,9 +1,380 @@
+
+%%
+%% Categorized Citations (order: early -> current)
+%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Centralized Multiagent Planner
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{robinson2018efficient,
+	title = {An {Efficient} {Algorithm} for {Optimal} {Trajectory} {Generation} for {Heterogeneous} {Multi}-{Agent} {Systems} in {Non}-{Convex} {Environments}},
+	volume = {3},
+	issn = {2377-3766},
+	doi = {10.1109/LRA.2018.2794582},
+	abstract = {Generating optimal trajectories for a large numbers of vehicles in real-time becomes extremely challenging when including realistic dynamic models and time-varying obstacle constraints. We present a novel method to efficiently produce time-optimal collision-free trajectories in complex non-convex maze-like environments while enforcing nonlinear constraints on velocity, acceleration, jerk, and snap. The approach combines two complementary numerical techniques for optimal control: level set reachability analysis and pseudospectral orthogonal collocation. Applied in a multi-agent prioritized planning framework, the methodology allows for heterogeneous sizes, dynamics, endpoint conditions, and individualized optimization objectives, while achieving linear scaling in computation time relative to the number of vehicles. Simulation examples are shown with up to 26 static obstacles and 32 quadcopters in a tightly constrained space with average computation times of 1-3.5 s per vehicle, depending on scenario complexity.},
+	number = {2},
+	journal = {IEEE Robotics and Automation Letters},
+	author = {Robinson, D. Reed and Mar, Robert T. and Estabridis, Katia and Hewer, Gary},
+	month = apr,
+	year = {2018},
+	note = {Conference Name: IEEE Robotics and Automation Letters},
+	keywords = {Aerospace electronics, Motion and path planning, Nonlinear dynamical systems, Optimal control, Optimization, Planning, Trajectory, Vehicle dynamics, collision avoidance, optimization and optimal control, path planning for multiple mobile robots or agents},
+	pages = {1215--1222},
+}
+
+@inproceedings{park2020efficient,
+	title = {Efficient {Multi}-{Agent} {Trajectory} {Planning} with {Feasibility} {Guarantee} using {Relative} {Bernstein} {Polynomial}},
+	doi = {10.1109/ICRA40945.2020.9197162},
+	abstract = {This paper presents a new efficient algorithm which guarantees a solution for a class of multi-agent trajectory planning problems in obstacle-dense environments. Our algorithm combines the advantages of both grid-based and optimization-based approaches, and generates safe, dynamically feasible trajectories without suffering from an erroneous optimization setup such as imposing infeasible collision constraints. We adopt a sequential optimization method with dummy agents to improve the scalability of the algorithm, and utilize the convex hull property of Bernstein and relative Bernstein polynomial to replace non-convex collision avoidance constraints to convex ones. The proposed method can compute the trajectory for 64 agents on average 6.36 seconds with Intel Core i7-7700 @ 3.60GHz CPU and 16G RAM, and it reduces more than 50\% of the objective cost compared to our previous work. We validate the proposed algorithm through simulation and flight tests.},
+	booktitle = {2020 {IEEE} {International} {Conference} on {Robotics} and {Automation} ({ICRA})},
+	author = {Park, Jungwon and Kim, Junha and Jang, Inkyu and Kim, H. Jin},
+	month = may,
+	year = {2020},
+	note = {ISSN: 2577-087X},
+	keywords = {Collision avoidance, Heuristic algorithms, Optimization, Planning, System recovery, Three-dimensional displays, Trajectory},
+	pages = {434--440},
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Decentralized Multiagent Planner
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@inproceedings{van2017distributed,
+  title={Distributed model predictive formation control with inter-vehicle collision avoidance},
+  author={Van Parys, Ruben and Pipeleers, Goele},
+  booktitle={2017 11th Asian Control Conference (ASCC)},
+  pages={2399--2404},
+  year={2017},
+  organization={IEEE}
+}
+
+@article{firoozi2020distributed,
+  title={A distributed multi-robot coordination algorithm for navigation in tight environments},
+  author={Firoozi, Roya and Ferranti, Laura and Zhang, Xiaojing and Nejadnik, Sebastian and Borrelli, Francesco},
+  journal={arXiv preprint arXiv:2006.11492},
+  year={2020}
+}
+
+@ARTICLE{luis2020online,
+  author={Luis, Carlos E. and Vukosavljev, Marijan and Schoellig, Angela P.},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={Online Trajectory Generation With Distributed Model Predictive Control for Multi-Robot Motion Planning}, 
+  year={2020},
+  volume={5},
+  number={2},
+  pages={604-611},
+  doi={10.1109/LRA.2020.2964159}
+}
+
+@misc{zhou2020ego-swarm,
+	title = {{EGO}-{Swarm}: {A} {Fully} {Autonomous} and {Decentralized} {Quadrotor} {Swarm} {System} in {Cluttered} {Environments}},
+	shorttitle = {{EGO}-{Swarm}},
+	url = {http://arxiv.org/abs/2011.04183},
+	doi = {10.48550/arXiv.2011.04183},
+	abstract = {This paper presents a decentralized and asynchronous systematic solution for multi-robot autonomous navigation in unknown obstacle-rich scenes using merely onboard resources. The planning system is formulated under gradient-based local planning framework, where collision avoidance is achieved by formulating the collision risk as a penalty of a nonlinear optimization problem. In order to improve robustness and escape local minima, we incorporate a lightweight topological trajectory generation method. Then agents generate safe, smooth, and dynamically feasible trajectories in only several milliseconds using an unreliable trajectory sharing network. Relative localization drift among agents is corrected by using agent detection in depth images. Our method is demonstrated in both simulation and real-world experiments. The source code is released for the reference of the community.},
+	urldate = {2022-07-05},
+	publisher = {arXiv},
+	author = {Zhou, Xin and Zhu, Jiangchao and Zhou, Hongyu and Xu, Chao and Gao, Fei},
+	month = nov,
+	year = {2020},
+	note = {arXiv:2011.04183 [cs]
+version: 1},
+	keywords = {Computer Science - Robotics},
+}
+
+@article{tordesillas2020mader,
+  title={{MADER}: Trajectory Planner in Multi-Agent and Dynamic Environments},
+  author={Tordesillas, Jesus and How, Jonathan P},
+  journal={IEEE Transactions on Robotics},
+  year={2021},
+  publisher={IEEE}
+}
+
+@article{Hou2022EnhancedDA,
+  title={Enhanced Decentralized Autonomous Aerial Swarm with Group Planning},
+  author={Jialiang Hou and Xin Zhou and Zhongxue Gan and Fei Gao},
+  journal={ArXiv},
+  year={2022},
+  volume={abs/2203.01069}
+}
+
+@article{peng2022obstacle,
+  title={Obstacle Avoidance of Resilient UAV Swarm Formation with Active Sensing System in the Dense Environment},
+  author={Peng, Peng and Dong, Wei and Chen, Gang and Zhu, Xiangyang},
+  journal={arXiv preprint arXiv:2202.13381},
+  year={2022}
+}
+
+@inproceedings{ryou_cooperative_2022,
+	title = {Cooperative {Multi}-{Agent} {Trajectory} {Generation} with {Modular} {Bayesian} {Optimization}},
+	isbn = {978-0-9923747-8-5},
+	url = {http://www.roboticsproceedings.org/rss18/p060.pdf},
+	doi = {10.15607/RSS.2022.XVIII.060},
+	abstract = {We present a modular Bayesian optimization framework that efficiently generates time-optimal trajectories for a cooperative multi-agent system, such as a team of UAVs. Existing methods for multi-agent trajectory generation often rely on overly conservative constraints to reduce the complexity of this highdimensional planning problem, leading to suboptimal solutions. We propose a novel modular structure for the Bayesian optimization model that consists of multiple Gaussian process surrogate models that represent the dynamic feasibility and collision avoidance constraints. This modular structure alleviates the stark increase in computational cost with problem dimensionality and enables the use of minimal constraints in the joint optimization of the multi-agent trajectories. The efficiency of the algorithm is further improved by introducing a scheme for simultaneous evaluation of the Bayesian optimization acquisition function and random sampling. The modular BayesOpt algorithm was applied to optimize multi-agent trajectories through six unique environments using multi-fidelity evaluations from various data sources. It was found that the resulting trajectories are faster than those obtained from two baseline methods. The optimized trajectories were validated in real-world experiments using four quadcopters that fly within centimeters of each other at speeds up to 7.4 m/s.},
+	language = {en},
+	urldate = {2022-07-08},
+	booktitle = {Robotics: {Science} and {Systems} {XVIII}},
+	publisher = {Robotics: Science and Systems Foundation},
+	author = {Ryou, Gilhyun and Tal, Ezra and Karaman, Sertac},
+	month = jun,
+	year = {2022},
+	file = {Ryou et al. - 2022 - Cooperative Multi-Agent Trajectory Generation with.pdf:/home/kota/snap/zotero-snap/common/Zotero/storage/BLAJP6F9/Ryou et al. - 2022 - Cooperative Multi-Agent Trajectory Generation with.pdf:application/pdf},
+}
+
+@article{toumieh2022decentralized,
+	title = {Decentralized {Multi}-{Agent} {Planning} {Using} {Model} {Predictive} {Control} and {Time}-{Aware} {Safe} {Corridors}},
+	volume = {7},
+	issn = {2377-3766},
+	doi = {10.1109/LRA.2022.3196777},
+	abstract = {Multi-agent planning has numerous real-world applications, such as autonomous agriculture, search and rescue, and infrastructure inspection. It is thus of tremendous benefit to improve on the state-of-the-art in multiple metrics to make autonomous multi-agent systems more efficient and a more viable real-world solution. In this letter, we propose a new framework for multi-agent planning in a static environment that improves upon the existing state-of-the-art in multiple areas such as computation time, trajectory smoothness, and feasibility. The proposed method first generates a global path that only avoids static obstacles and then generates a Safe Corridor around it. It then extends the notion of Safe Corridors and makes them time-aware in order to account for the future positions of other agents. The time-aware Safe Corridor, along with a local reference trajectory generated from the global path, are used in an Mixed-Integer Quadratic Program/Model Predictive Control formulation that generates a collision-free optimal trajectory. The proposed framework is real-time, decentralized, and synchronous. It is compared to two recent state-of-the-art methods in simulations. It outperforms both methods in robustness as well as feasibility and computation time.},
+	number = {4},
+	journal = {IEEE Robotics and Automation Letters},
+	author = {Toumieh, Charbel and Lambert, Alain},
+	month = oct,
+	year = {2022},
+	note = {Conference Name: IEEE Robotics and Automation Letters},
+	keywords = {Collision avoidance, Computational modeling, Ellipsoids, Planning, Real-time systems, Safety, Shape, Trajectory, path planning for multiple mobile robots or agents, swarm robotics},
+	pages = {11110--11117},
+}
+
+@INPROCEEDINGS{gao2022meeting,
+  author={Gao, Yuman and Wang, Yingjian and Zhong, Xingguang and Yang, Tiankai and Wang, Mingyang and Xu, Zhixiong and Wang, Yongchao and Lin, Yi and Xu, Chao and Gao, Fei},
+  booktitle={2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
+  title={Meeting-Merging-Mission: A Multi-robot Coordinate Framework for Large-Scale Communication-Limited Exploration}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={13700-13707},
+  doi={10.1109/IROS47612.2022.9981544}}
+
+
+@Article{sebetghadam2022distributed,
+AUTHOR = {Sabetghadam, Bahareh and Cunha, Rita and Pascoal, António},
+TITLE = {A Distributed Algorithm for Real-Time Multi-Drone Collision-Free Trajectory Replanning},
+JOURNAL = {Sensors},
+VOLUME = {22},
+YEAR = {2022},
+NUMBER = {5},
+ARTICLE-NUMBER = {1855},
+URL = {https://www.mdpi.com/1424-8220/22/5/1855},
+PubMedID = {35271001},
+ISSN = {1424-8220},
+ABSTRACT = {In this paper, we present a distributed algorithm to generate collision-free trajectories for a group of quadrotors flying through a common workspace. In the setup adopted, each vehicle replans its trajectory, in a receding horizon manner, by solving a small-scale optimization problem that only involves its own individual variables. We adopt the Voronoi partitioning of space to derive local constraints that guarantee collision avoidance with all neighbors for a certain time horizon. The obtained set of collision avoidance constraints explicitly takes into account the vehicle&rsquo;s orientation to avoid infeasiblity issues caused by ignoring the quadrotor&rsquo;s rotational motion. Moreover, the resulting constraints can be expressed as B&eacute;zier curves, and thus can be evaluated efficiently, without discretization, to ensure that collision avoidance requirements are satisfied at any time instant, even for an extended planning horizon. The proposed approach is validated through extensive simulations with up to 100 drones. The results show that the proposed method has a higher success rate at finding collision-free trajectories for large groups of drones compared to other Voronoi diagram-based methods.},
+DOI = {10.3390/s22051855}
+}
+
+@inproceedings{batra2022decentralized,
+  title={Decentralized control of quadrotor swarms with end-to-end deep reinforcement learning},
+  author={Batra, Sumeet and Huang, Zhehui and Petrenko, Aleksei and Kumar, Tushar and Molchanov, Artem and Sukhatme, Gaurav S},
+  booktitle={Conference on Robot Learning},
+  pages={576--586},
+  year={2022},
+  organization={PMLR}
+}
+
+@INPROCEEDINGS{wang2022robust,
+  author={Wang, Zhepei and Xu, Chao and Gao, Fei},
+  booktitle={2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
+  title={Robust Trajectory Planning for Spatial-Temporal Multi-Drone Coordination in Large Scenes}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={12182-12188},
+  doi={10.1109/IROS47612.2022.9982032}
+}
+
 @article{kondo2022robust,
   title={Robust {MADER}: Decentralized and Asynchronous Multiagent Trajectory Planner Robust to Communication Delay},
   author={Kondo, Kota and Tordesillas, Jesus and Figueroa, Reinaldo and Rached, Juan and Merkel, Joseph and Lusk, Parker C and How, Jonathan P},
   journal={arXiv preprint arXiv:2209.13667},
   year={2022}
 }
+
+@article{kondo2023robust,
+  title={Robust MADER: Decentralized Multiagent Trajectory Planner Robust to Communication Delay in Dynamic Environments},
+  author={Kondo, Kota and Figueroa, Reinaldo and Rached, Juan and Tordesillas, Jesus and Lusk, Parker C and How, Jonathan P},
+  journal={arXiv preprint arXiv:2303.06222},
+  year={2023}
+}
+
+@article{toumieh2023decentralized,
+  title={Decentralized Multi-Agent Planning for Multirotors: a Fully online and Communication Latency Robust Approach},
+  author={Toumieh, Charbel},
+  journal={arXiv preprint arXiv:2304.09462},
+  year={2023}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Perception-aware Planner
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{thomas2017autonomous,
+  author={Thomas, Justin and Welde, Jake and Loianno, Giuseppe and Daniilidis, Kostas and Kumar, Vijay},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={Autonomous Flight for Detection, Localization, and Tracking of Moving Targets With a Small Quadrotor}, 
+  year={2017},
+  volume={2},
+  number={3},
+  pages={1762-1769},
+  doi={10.1109/LRA.2017.2702198}}
+
+
+@INPROCEEDINGS{penin2017vision-based,
+  author={Penin, Bryan and Spica, Riccardo and Giordano, Paolo Robuffo and Chaumette, François},
+  booktitle={2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
+  title={Vision-based minimum-time trajectory generation for a quadrotor UAV}, 
+  year={2017},
+  volume={},
+  number={},
+  pages={6199-6206},
+  doi={10.1109/IROS.2017.8206522}}
+  
+@INPROCEEDINGS{murali2019perception,
+  author={Murali, Varun and Spasojevic, Igor and Guerra, Winter and Karaman, Sertac},
+  booktitle={2019 American Control Conference (ACC)}, 
+  title={Perception-aware trajectory generation for aggressive quadrotor flight using differential flatness}, 
+  year={2019},
+  volume={},
+  number={},
+  pages={3936-3943},
+  doi={10.23919/ACC.2019.8814697}}
+
+@INPROCEEDINGS{spasojevic2020perception,
+  author={Spasojevic, Igor and Murali, Varun and Karaman, Sertac},
+  booktitle={2020 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={Perception-aware time optimal path parameterization for quadrotors}, 
+  year={2020},
+  volume={},
+  number={},
+  pages={3213-3219},
+  doi={10.1109/ICRA40945.2020.9197157}}
+
+@article{tordesillas2021panther,
+  title={{PANTHER}: Perception-Aware Trajectory Planner in Dynamic Environments},
+  author={Tordesillas, Jesus and How, Jonathan P},
+  journal={arXiv preprint arXiv:2103.06372},
+  year={2021}
+}
+
+@ARTICLE{zhou2021raptor,
+  author={Zhou, Boyu and Pan, Jie and Gao, Fei and Shen, Shaojie},
+  journal={IEEE Transactions on Robotics}, 
+  title={RAPTOR: Robust and Perception-Aware Trajectory Replanning for Quadrotor Fast Flight}, 
+  year={2021},
+  volume={37},
+  number={6},
+  pages={1992-2009},
+  doi={10.1109/TRO.2021.3071527}}
+
+@ARTICLE{wu2022perception,
+  author={Wu, Xiangyu and Chen, Shuxiao and Sreenath, Koushil and Mueller, Mark W.},
+  journal={IEEE Access}, 
+  title={Perception-Aware Receding Horizon Trajectory Planning for Multicopters With Visual-Inertial Odometry}, 
+  year={2022},
+  volume={10},
+  number={},
+  pages={87911-87922},
+  doi={10.1109/ACCESS.2022.3200342}
+}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IL-based Planner
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{Park2020VisionBasedOA,
+  title={Vision-Based Obstacle Avoidance for UAVs via Imitation Learning with Sequential Neural Networks},
+  author={Bumsoo Park and Hyondong Oh},
+  journal={International Journal of Aeronautical and Space Sciences},
+  year={2020},
+  volume={21},
+  pages={768 - 779}
+}
+
+@article{Tagliabue2021DemonstrationEfficientGP,
+  title={Demonstration-Efficient Guided Policy Search via Imitation of Robust Tube MPC},
+  author={Andrea Tagliabue and Dong-Ki Kim and Michael Everett and Jonathan P. How},
+  journal={2022 International Conference on Robotics and Automation (ICRA)},
+  year={2021},
+  pages={462-468}
+}
+
+@ARTICLE{tordesillas2023deep,
+  author={Tordesillas, Jesus and How, Jonathan P.},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={Deep-PANTHER: Learning-Based Perception-Aware Trajectory Planner in Dynamic Environments}, 
+  year={2023},
+  volume={8},
+  number={3},
+  pages={1399-1406},
+  doi={10.1109/LRA.2023.3235678}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NN-related
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% LSTM
+@Article{HochSchm97,
+  author      = {Sepp Hochreiter and Jürgen Schmidhuber},
+  journal     = {Neural Computation},
+  title       = {Long Short-Term Memory},
+  year        = {1997},
+  number      = {8},
+  pages       = {1735--1780},
+  volume      = {9},
+  optabstract = {Learning to store information over extended time intervals by recurrent backpropagation takes a very long time, mostly because of insufficient, decaying error backflow. We briefly review Hochreiter's (1991) analysis of this problem, then address it by introducing a novel, efficient, gradient based method called long short-term memory (LSTM). Truncating the gradient where this does not do harm, LSTM can learn to bridge minimal time lags in excess of 1000 discrete-time steps by enforcing constant error flow through constant error carousels within special units. Multiplicative gate units learn to open and close access to the constant error flow. LSTM is local in space and time; its computational complexity per time step and weight is O. 1. Our experiments with artificial data involve local, distributed, real-valued, and noisy pattern representations. In comparisons with real-time recurrent learning, back propagation through time, recurrent cascade correlation, Elman nets, and neural sequence chunking, LSTM leads to many more successful runs, and learns much faster. LSTM also solves complex, artificial long-time-lag tasks that have never been solved by previous recurrent network algorithms.},
+  optdoi      = {10.1162/neco.1997.9.8.1735},
+  opteprint   = {http://dx.doi.org/10.1162/neco.1997.9.8.1735},
+  opturl      = {http://dx.doi.org/10.1162/neco.1997.9.8.1735},
+}
+
+%% DAgger paper
+@inproceedings{ross2011reduction,
+  title={A reduction of imitation learning and structured prediction to no-regret online learning},
+  author={Ross, St{\'e}phane and Gordon, Geoffrey and Bagnell, Drew},
+  booktitle={Proceedings of the fourteenth international conference on artificial intelligence and statistics},
+  pages={627--635},
+  year={2011},
+  organization={JMLR Workshop and Conference Proceedings}
+}
+
+%% Adam
+@article{kingma2014adam,
+  title={Adam: A method for stochastic optimization},
+  author={Kingma, Diederik P and Ba, Jimmy},
+  journal={arXiv preprint arXiv:1412.6980},
+  year={2014}
+}
+
+%% Michael's work
+@INPROCEEDINGS{everett2018motion,
+  author={Everett, Michael and Chen, Yu Fan and How, Jonathan P.},
+  booktitle={2018 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
+  title={Motion Planning Among Dynamic, Decision-Making Agents with Deep Reinforcement Learning}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={3052-3059},
+  doi={10.1109/IROS.2018.8593871}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Differential Flatness
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@INPROCEEDINGS{mellinger2011minimum,
+  author={Mellinger, Daniel and Kumar, Vijay},
+  booktitle={2011 IEEE International Conference on Robotics and Automation}, 
+  title={Minimum snap trajectory generation and control for quadrotors}, 
+  year={2011},
+  volume={},
+  number={},
+  pages={2520-2525},
+  doi={10.1109/ICRA.2011.5980409}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% From RA-L RMADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 @article{kuwata_cooperative_2011,
 	title = {Cooperative {Distributed} {Robust} {Trajectory} {Optimization} {Using} {Receding} {Horizon} {MILP}},
@@ -51,51 +422,12 @@
 	file = {Full Text PDF:/home/kota/snap/zotero-snap/common/Zotero/storage/YHWDRZY4/Batra et al. - 2022 - Decentralized Control of Quadrotor Swarms with End.pdf:application/pdf},
 }
 
-@inproceedings{ryou_cooperative_2022,
-	title = {Cooperative {Multi}-{Agent} {Trajectory} {Generation} with {Modular} {Bayesian} {Optimization}},
-	isbn = {978-0-9923747-8-5},
-	url = {http://www.roboticsproceedings.org/rss18/p060.pdf},
-	doi = {10.15607/RSS.2022.XVIII.060},
-	abstract = {We present a modular Bayesian optimization framework that efficiently generates time-optimal trajectories for a cooperative multi-agent system, such as a team of UAVs. Existing methods for multi-agent trajectory generation often rely on overly conservative constraints to reduce the complexity of this highdimensional planning problem, leading to suboptimal solutions. We propose a novel modular structure for the Bayesian optimization model that consists of multiple Gaussian process surrogate models that represent the dynamic feasibility and collision avoidance constraints. This modular structure alleviates the stark increase in computational cost with problem dimensionality and enables the use of minimal constraints in the joint optimization of the multi-agent trajectories. The efficiency of the algorithm is further improved by introducing a scheme for simultaneous evaluation of the Bayesian optimization acquisition function and random sampling. The modular BayesOpt algorithm was applied to optimize multi-agent trajectories through six unique environments using multi-fidelity evaluations from various data sources. It was found that the resulting trajectories are faster than those obtained from two baseline methods. The optimized trajectories were validated in real-world experiments using four quadcopters that fly within centimeters of each other at speeds up to 7.4 m/s.},
-	language = {en},
-	urldate = {2022-07-08},
-	booktitle = {Robotics: {Science} and {Systems} {XVIII}},
-	publisher = {Robotics: Science and Systems Foundation},
-	author = {Ryou, Gilhyun and Tal, Ezra and Karaman, Sertac},
-	month = jun,
-	year = {2022},
-	file = {Ryou et al. - 2022 - Cooperative Multi-Agent Trajectory Generation with.pdf:/home/kota/snap/zotero-snap/common/Zotero/storage/BLAJP6F9/Ryou et al. - 2022 - Cooperative Multi-Agent Trajectory Generation with.pdf:application/pdf},
-}
-
-@article{peng2022obstacle,
-  title={Obstacle Avoidance of Resilient UAV Swarm Formation with Active Sensing System in the Dense Environment},
-  author={Peng, Peng and Dong, Wei and Chen, Gang and Zhu, Xiangyang},
-  journal={arXiv preprint arXiv:2202.13381},
-  year={2022}
-}
-
 @article{senbaslar_asynchronous_2022,
     title={{Asynchronous} {Real}-time {Decentralized} {Multi}-{Robot} {Trajectory Planning}},
     author = {Baskin, Senbaslar and Sukhatme, Gaurav},
     journal = {IEEE/RSJ International Conference on Intelligent Robots and Systems},
     month = oct,
     year = {2022},
-}
-
-@article{robinson_efficient_2018,
-	title = {An {Efficient} {Algorithm} for {Optimal} {Trajectory} {Generation} for {Heterogeneous} {Multi}-{Agent} {Systems} in {Non}-{Convex} {Environments}},
-	volume = {3},
-	issn = {2377-3766},
-	doi = {10.1109/LRA.2018.2794582},
-	abstract = {Generating optimal trajectories for a large numbers of vehicles in real-time becomes extremely challenging when including realistic dynamic models and time-varying obstacle constraints. We present a novel method to efficiently produce time-optimal collision-free trajectories in complex non-convex maze-like environments while enforcing nonlinear constraints on velocity, acceleration, jerk, and snap. The approach combines two complementary numerical techniques for optimal control: level set reachability analysis and pseudospectral orthogonal collocation. Applied in a multi-agent prioritized planning framework, the methodology allows for heterogeneous sizes, dynamics, endpoint conditions, and individualized optimization objectives, while achieving linear scaling in computation time relative to the number of vehicles. Simulation examples are shown with up to 26 static obstacles and 32 quadcopters in a tightly constrained space with average computation times of 1-3.5 s per vehicle, depending on scenario complexity.},
-	number = {2},
-	journal = {IEEE Robotics and Automation Letters},
-	author = {Robinson, D. Reed and Mar, Robert T. and Estabridis, Katia and Hewer, Gary},
-	month = apr,
-	year = {2018},
-	note = {Conference Name: IEEE Robotics and Automation Letters},
-	keywords = {Aerospace electronics, Motion and path planning, Nonlinear dynamical systems, Optimal control, Optimization, Planning, Trajectory, Vehicle dynamics, collision avoidance, optimization and optimal control, path planning for multiple mobile robots or agents},
-	pages = {1215--1222},
 }
 
 @article{sharon_conflict-based_2015,
@@ -458,19 +790,6 @@ that can deal with challenging tracking tasks with g...},
 	urldate = {2022-07-12},
 }
 
-@article{zhou_ego-planner_2020,
-	title = {{EGO}-{Planner}: {An} {ESDF}-free {Gradient}-based {Local} {Planner} for {Quadrotors}},
-	volume = {PP},
-	shorttitle = {{EGO}-{Planner}},
-	doi = {10.1109/LRA.2020.3047728},
-	abstract = {Gradient-based planners are widely used for quadrotor local planning, in which a Euclidean Signed Distance Field (ESDF) is crucial for evaluating gradient magnitude and direction. Nevertheless, computing such a field has much redundancy since the trajectory optimization procedure only covers a very limited subspace of the ESDF updating range. In this paper, an ESDF-free gradient-based planning framework is proposed, which significantly reduces computation time. The main improvement is that the collision term in penalty function is formulated by comparing the colliding trajectory with a collision-free guiding path. The resulting obstacle information will be stored only if the trajectory hits new obstacles, making the planner only extract necessary obstacle information. Then, we lengthen the time allocation if dynamical feasibility is violated. An anisotropic curve fitting algorithm is introduced to adjust higher order derivatives of the trajectory while maintaining the original shape. Benchmark comparisons and real-world experiments verify its robustness and high-performance. The source code is released as ros packages.},
-	journal = {IEEE Robotics and Automation Letters},
-	author = {Zhou, Xin and Wang, Zhepei and Ye, Hongkai and Xu, Chao and Gao, Fei},
-	month = dec,
-	year = {2020},
-	pages = {1--1},
-}
-
 @article{luis_trajectory_2019,
 	title = {Trajectory {Generation} for {Multiagent} {Point}-{To}-{Point} {Transitions} via {Distributed} {Model} {Predictive} {Control}},
 	volume = {4},
@@ -487,19 +806,6 @@ that can deal with challenging tracking tasks with g...},
 	pages = {375--382},
 }
 
-@inproceedings{park_efficient_2020,
-	title = {Efficient {Multi}-{Agent} {Trajectory} {Planning} with {Feasibility} {Guarantee} using {Relative} {Bernstein} {Polynomial}},
-	doi = {10.1109/ICRA40945.2020.9197162},
-	abstract = {This paper presents a new efficient algorithm which guarantees a solution for a class of multi-agent trajectory planning problems in obstacle-dense environments. Our algorithm combines the advantages of both grid-based and optimization-based approaches, and generates safe, dynamically feasible trajectories without suffering from an erroneous optimization setup such as imposing infeasible collision constraints. We adopt a sequential optimization method with dummy agents to improve the scalability of the algorithm, and utilize the convex hull property of Bernstein and relative Bernstein polynomial to replace non-convex collision avoidance constraints to convex ones. The proposed method can compute the trajectory for 64 agents on average 6.36 seconds with Intel Core i7-7700 @ 3.60GHz CPU and 16G RAM, and it reduces more than 50\% of the objective cost compared to our previous work. We validate the proposed algorithm through simulation and flight tests.},
-	booktitle = {2020 {IEEE} {International} {Conference} on {Robotics} and {Automation} ({ICRA})},
-	author = {Park, Jungwon and Kim, Junha and Jang, Inkyu and Kim, H. Jin},
-	month = may,
-	year = {2020},
-	note = {ISSN: 2577-087X},
-	keywords = {Collision avoidance, Heuristic algorithms, Optimization, Planning, System recovery, Three-dimensional displays, Trajectory},
-	pages = {434--440},
-}
-
 @inproceedings{chen_decoupled_2015-1,
 	title = {Decoupled multiagent path planning via incremental sequential convex programming},
 	doi = {10.1109/ICRA.2015.7140034},
@@ -511,22 +817,6 @@ that can deal with challenging tracking tasks with g...},
 	note = {ISSN: 1050-4729},
 	keywords = {Approximation algorithms, Approximation methods, Optimization, Time factors, Trajectory, Vehicles},
 	pages = {5954--5961},
-}
-
-@misc{zhou_ego-swarm_2020,
-	title = {{EGO}-{Swarm}: {A} {Fully} {Autonomous} and {Decentralized} {Quadrotor} {Swarm} {System} in {Cluttered} {Environments}},
-	shorttitle = {{EGO}-{Swarm}},
-	url = {http://arxiv.org/abs/2011.04183},
-	doi = {10.48550/arXiv.2011.04183},
-	abstract = {This paper presents a decentralized and asynchronous systematic solution for multi-robot autonomous navigation in unknown obstacle-rich scenes using merely onboard resources. The planning system is formulated under gradient-based local planning framework, where collision avoidance is achieved by formulating the collision risk as a penalty of a nonlinear optimization problem. In order to improve robustness and escape local minima, we incorporate a lightweight topological trajectory generation method. Then agents generate safe, smooth, and dynamically feasible trajectories in only several milliseconds using an unreliable trajectory sharing network. Relative localization drift among agents is corrected by using agent detection in depth images. Our method is demonstrated in both simulation and real-world experiments. The source code is released for the reference of the community.},
-	urldate = {2022-07-05},
-	publisher = {arXiv},
-	author = {Zhou, Xin and Zhu, Jiangchao and Zhou, Hongyu and Xu, Chao and Gao, Fei},
-	month = nov,
-	year = {2020},
-	note = {arXiv:2011.04183 [cs]
-version: 1},
-	keywords = {Computer Science - Robotics},
 }
 
 @misc{zhou_decentralized_2021,
@@ -641,20 +931,6 @@ version: 1},
 	pages = {1548--1557},
 }
 
-@misc{hou_enhanced_2022,
-	title = {Enhanced {Decentralized} {Autonomous} {Aerial} {Swarm} with {Group} {Planning}},
-	url = {http://arxiv.org/abs/2203.01069},
-	doi = {10.48550/arXiv.2203.01069},
-	abstract = {Autonomous aerial swarm remains a grand challenge in robotics. Existing works in this field can be categorized as centralized and decentralized. Centralized methods suffer from scale dilemmas, while decentralized ones often lead to poor planning quality. In this paper, we propose an enhanced decentralized autonomous aerial swarm system with group planning. According to the spatial distribution of agents, the system dynamically divides the swarm into several groups and isolated agents. For conflicts within each group, we propose a novel coordination mechanism named group planning. The group planning consists of efficient multi-agent pathfinding and trajectory joint optimization, which can significantly improve the planning quality and success rate. We demonstrate simulations and real-world experiments that our method not only has applicability for a large-scale swarm, but also has top-level planning quality.},
-	urldate = {2022-06-28},
-	publisher = {arXiv},
-	author = {Hou, Jialiang and Zhou, Xin and Gan, Zhongxue and Gao, Fei},
-	month = mar,
-	year = {2022},
-	note = {arXiv:2203.01069 [cs]},
-	keywords = {Computer Science - Robotics},
-}
-
 @article{park_online_2022,
 	title = {Online {Distributed} {Trajectory} {Planning} for {Quadrotor} {Swarm} {With} {Feasibility} {Guarantee} {Using} {Linear} {Safe} {Corridor}},
 	volume = {7},
@@ -684,8 +960,6 @@ version: 1},
 	note = {arXiv:2106.12481 [cs]},
 	keywords = {Computer Science - Robotics},
 }
-
-@ARTICLE{tordesillas_mader_2022,  author={Tordesillas, Jesus and How, Jonathan P.},  journal={IEEE Transactions on Robotics},   title={MADER: Trajectory Planner in Multiagent and Dynamic Environments},   year={2022},  volume={38},  number={1},  pages={463-476},  doi={10.1109/TRO.2021.3080235}}
 
 @article{zhao_robust_2021,
 	title = {Robust and {Efficient} {Trajectory} {Replanning} {Based} on {Guiding} {Path} for {Quadrotor} {Fast} {Autonomous} {Flight}},
@@ -753,384 +1027,3 @@ Publisher: Multidisciplinary Digital Publishing Institute},
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@preamble{ "\newcommand{\noopsort}[1]{} "
-	# "\newcommand{\printfirst}[2]{#1} "
-	# "\newcommand{\singleletter}[1]{#1} "
-	# "\newcommand{\switchargs}[2]{#2#1} " }
-
-@ARTICLE{article-minimal,
-   author = {L[eslie] A. Aamport},
-   title = {The Gnats and Gnus Document Preparation System},
-   journal = {\mbox{G-Animal's} Journal},
-   year = 1986,
-}
-
-@ARTICLE{article-full,
-   author = {L[eslie] A. Aamport},
-   title = {The Gnats and Gnus Document Preparation System},
-   journal = {\mbox{G-Animal's} Journal},
-   year = 1986,
-   volume = 41,
-   number = 7,
-   pages = "73+",
-   month = jul,
-   note = "This is a full ARTICLE entry",
-}
-
-The KEY field is here to override the KEY field in the journal being
-cross referenced (so is the NOTE field, in addition to its imparting
-information).
-
-@ARTICLE{article-crossref,
-   crossref = {WHOLE-JOURNAL},
-   key = "",
-   author = {L[eslie] A. Aamport},
-   title = {The Gnats and Gnus Document Preparation System},
-   pages = "73+",
-   note = "This is a cross-referencing ARTICLE entry",
-}
-
-@ARTICLE{whole-journal,
-   key = "GAJ",
-   journal = {\mbox{G-Animal's} Journal},
-   year = 1986,
-   volume = 41,
-   number = 7,
-   month = jul,
-   note = {The entire issue is devoted to gnats and gnus
-		(this entry is a cross-referenced ARTICLE (journal))},
-}
-
-@INBOOK{inbook-minimal,
-   author = "Donald E. Knuth",
-   title = "Fundamental Algorithms",
-   publisher = "Addison-Wesley",
-   year = "{\noopsort{1973b}}1973",
-   chapter = "1.2",
-}
-
-@INBOOK{inbook-full,
-   author = "Donald E. Knuth",
-   title = "Fundamental Algorithms",
-   volume = 1,
-   series = "The Art of Computer Programming",
-   publisher = "Addison-Wesley",
-   address = "Reading, Massachusetts",
-   edition = "Second",
-   month = "10~" # jan,
-   year = "{\noopsort{1973b}}1973",
-   type = "Section",
-   chapter = "1.2",
-   pages = "10--119",
-   note = "This is a full INBOOK entry",
-}
-
-@INBOOK{inbook-crossref,
-   crossref = "whole-set",
-   title = "Fundamental Algorithms",
-   volume = 1,
-   series = "The Art of Computer Programming",
-   edition = "Second",
-   year = "{\noopsort{1973b}}1973",
-   type = "Section",
-   chapter = "1.2",
-   note = "This is a cross-referencing INBOOK entry",
-}
-
-@BOOK{book-minimal,
-   author = "Donald E. Knuth",
-   title = "Seminumerical Algorithms",
-   publisher = "Addison-Wesley",
-   year = "{\noopsort{1973c}}1981",
-}
-
-@BOOK{book-full,
-   author = "Donald E. Knuth",
-   title = "Seminumerical Algorithms",
-   volume = 2,
-   series = "The Art of Computer Programming",
-   publisher = "Addison-Wesley",
-   address = "Reading, Massachusetts",
-   edition = "Second",
-   month = "10~" # jan,
-   year = "{\noopsort{1973c}}1981",
-   note = "This is a full BOOK entry",
-}
-
-@BOOK{book-crossref,
-   crossref = "whole-set",
-   title = "Seminumerical Algorithms",
-   volume = 2,
-   series = "The Art of Computer Programming",
-   edition = "Second",
-   year = "{\noopsort{1973c}}1981",
-   note = "This is a cross-referencing BOOK entry",
-}
-
-@BOOK{whole-set,
-   author = "Donald E. Knuth",
-   publisher = "Addison-Wesley",
-   title = "The Art of Computer Programming",
-   series = "Four volumes",
-   year = "{\noopsort{1973a}}{\switchargs{--90}{1968}}",
-   note = "Seven volumes planned (this is a cross-referenced set of BOOKs)",
-}
-
-@BOOKLET{booklet-minimal,
-   key = "Kn{\printfirst{v}{1987}}",
-   title = "The Programming of Computer Art",
-}
-
-@BOOKLET{booklet-full,
-   author = "Jill C. Knvth",
-   title = "The Programming of Computer Art",
-   howpublished = "Vernier Art Center",
-   address = "Stanford, California",
-   month = feb,
-   year = 1988,
-   note = "This is a full BOOKLET entry",
-}
-
-@INCOLLECTION{incollection-minimal,
-   author = "Daniel D. Lincoll",
-   title = "Semigroups of Recurrences",
-   booktitle = "High Speed Computer and Algorithm Organization",
-   publisher = "Academic Press",
-   year = 1977,
-}
-
-@INCOLLECTION{incollection-full,
-   author = "Daniel D. Lincoll",
-   title = "Semigroups of Recurrences",
-   editor = "David J. Lipcoll and D. H. Lawrie and A. H. Sameh",
-   booktitle = "High Speed Computer and Algorithm Organization",
-   number = 23,
-   series = "Fast Computers",
-   chapter = 3,
-   type = "Part",
-   pages = "179--183",
-   publisher = "Academic Press",
-   address = "New York",
-   edition = "Third",
-   month = sep,
-   year = 1977,
-   note = "This is a full INCOLLECTION entry",
-}
-
-@INCOLLECTION{incollection-crossref,
-   crossref = "whole-collection",
-   author = "Daniel D. Lincoll",
-   title = "Semigroups of Recurrences",
-   pages = "179--183",
-   note = "This is a cross-referencing INCOLLECTION entry",
-}
-
-@BOOK{whole-collection,
-   editor = "David J. Lipcoll and D. H. Lawrie and A. H. Sameh",
-   title = "High Speed Computer and Algorithm Organization",
-   booktitle = "High Speed Computer and Algorithm Organization",
-   number = 23,
-   series = "Fast Computers",
-   publisher = "Academic Press",
-   address = "New York",
-   edition = "Third",
-   month = sep,
-   year = 1977,
-   note = "This is a cross-referenced BOOK (collection) entry",
-}
-
-@MANUAL{manual-minimal,
-   key = "Manmaker",
-   title = "The Definitive Computer Manual",
-}
-
-@MANUAL{manual-full,
-   author = "Larry Manmaker",
-   title = "The Definitive Computer Manual",
-   organization = "Chips-R-Us",
-   address = "Silicon Valley",
-   edition = "Silver",
-   month = apr # "-" # may,
-   year = 1986,
-   note = "This is a full MANUAL entry",
-}
-
-@MASTERSTHESIS{mastersthesis-minimal,
-   author = "{\'{E}}douard Masterly",
-   title = "Mastering Thesis Writing",
-   school = "Stanford University",
-   year = 1988,
-}
-
-@MASTERSTHESIS{mastersthesis-full,
-   author = "{\'{E}}douard Masterly",
-   title = "Mastering Thesis Writing",
-   school = "Stanford University",
-   type = "Master's project",
-   address = "English Department",
-   month = jun # "-" # aug,
-   year = 1988,
-   note = "This is a full MASTERSTHESIS entry",
-}
-
-@MISC{misc-minimal,
-   key = "Missilany",
-   note = "This is a minimal MISC entry",
-}
-
-@MISC{misc-full,
-   author = "Joe-Bob Missilany",
-   title = "Handing out random pamphlets in airports",
-   howpublished = "Handed out at O'Hare",
-   month = oct,
-   year = 1984,
-   note = "This is a full MISC entry",
-}
-
-@STRING{STOC-key = "OX{\singleletter{stoc}}"}
-
-@STRING{ACM = "The OX Association for Computing Machinery"}
-
-@STRING{STOC = " Symposium on the Theory of Computing"}
-
-@INPROCEEDINGS{inproceedings-minimal,
-   author = "Alfred V. Oaho and Jeffrey D. Ullman and Mihalis Yannakakis",
-   title = "On Notions of Information Transfer in {VLSI} Circuits",
-   booktitle = "Proc. Fifteenth Annual ACM" # STOC,
-   year = 1983,
-}
-
-@INPROCEEDINGS{inproceedings-full,
-   author = "Alfred V. Oaho and Jeffrey D. Ullman and Mihalis Yannakakis",
-   title = "On Notions of Information Transfer in {VLSI} Circuits",
-   editor = "Wizard V. Oz and Mihalis Yannakakis",
-   booktitle = "Proc. Fifteenth Annual ACM" # STOC,
-   number = 17,
-   series = "All ACM Conferences",
-   pages = "133--139",
-   month = mar,
-   year = 1983,
-   address = "Boston",
-   organization = ACM,
-   publisher = "Academic Press",
-   note = "This is a full INPROCEDINGS entry",
-}
-
-@INPROCEEDINGS{inproceedings-crossref,
-   crossref = "whole-proceedings",
-   author = "Alfred V. Oaho and Jeffrey D. Ullman and Mihalis Yannakakis",
-   title = "On Notions of Information Transfer in {VLSI} Circuits",
-   organization = "",
-   pages = "133--139",
-   note = "This is a cross-referencing INPROCEEDINGS entry",
-}
-
-@PROCEEDINGS{proceedings-minimal,
-   key = STOC-key,
-   title = "Proc. Fifteenth Annual" # STOC,
-   year = 1983,
-}
-
-@PROCEEDINGS{proceedings-full,
-   editor = "Wizard V. Oz and Mihalis Yannakakis",
-   title = "Proc. Fifteenth Annual" # STOC,
-   number = 17,
-   series = "All ACM Conferences",
-   month = mar,
-   year = 1983,
-   address = "Boston",
-   organization = ACM,
-   publisher = "Academic Press",
-   note = "This is a full PROCEEDINGS entry",
-}
-
-@PROCEEDINGS{whole-proceedings,
-   key = STOC-key,
-   organization = ACM,
-   title = "Proc. Fifteenth Annual" # STOC,
-   address = "Boston",
-   year = 1983,
-   booktitle = "Proc. Fifteenth Annual ACM" # STOC,
-   note = "This is a cross-referenced PROCEEDINGS",
-}
-
-@PHDTHESIS{phdthesis-minimal,
-   author = "F. Phidias Phony-Baloney",
-   title = "Fighting Fire with Fire: Festooning {F}rench Phrases",
-   school = "Fanstord University",
-   year = 1988,
-}
-
-@PHDTHESIS{phdthesis-full,
-   author = "F. Phidias Phony-Baloney",
-   title = "Fighting Fire with Fire: Festooning {F}rench Phrases",
-   school = "Fanstord University",
-   type = "{PhD} Dissertation",
-   address = "Department of French",
-   month = jun # "-" # aug,
-   year = 1988,
-   note = "This is a full PHDTHESIS entry",
-}
-
-@TECHREPORT{techreport-minimal,
-   author = "Tom Terrific",
-   title = "An {$O(n \log n / \! \log\log n)$} Sorting Algorithm",
-   institution = "Fanstord University",
-   year = 1988,
-}
-
-@TECHREPORT{techreport-full,
-   author = "Tom T{\'{e}}rrific",
-   title = "An {$O(n \log n / \! \log\log n)$} Sorting Algorithm",
-   institution = "Fanstord University",
-   type = "Wishful Research Result",
-   number = "7",
-   address = "Computer Science Department, Fanstord, California",
-   month = oct,
-   year = 1988,
-   note = "This is a full TECHREPORT entry",
-}
-
-@UNPUBLISHED{unpublished-minimal,
-   author = "Ulrich {\"{U}}nderwood and Ned {\~N}et and Paul {\={P}}ot",
-   title = "Lower Bounds for Wishful Research Results",
-   note = "Talk at Fanstord University (this is a minimal UNPUBLISHED entry)",
-}
-
-@UNPUBLISHED{unpublished-full,
-   author = "Ulrich {\"{U}}nderwood and Ned {\~N}et and Paul {\={P}}ot",
-   title = "Lower Bounds for Wishful Research Results",
-   month = nov # ", " # dec,
-   year = 1988,
-   note = "Talk at Fanstord University (this is a full UNPUBLISHED entry)",
-}
-
-@MISC{random-note-crossref,
-   key = {Volume-2},
-   note = "Volume~2 is listed under Knuth \cite{book-full}"
-}

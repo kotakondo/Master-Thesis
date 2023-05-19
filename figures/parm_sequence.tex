@@ -1,0 +1,77 @@
+\begin{tikzpicture}
+[
+% define styles
+greenbox/.style={shape=rectangle, fill=opt_color, draw=black},
+bluebox/.style={shape=rectangle, fill=check_color, draw=black},
+ yellowbox/.style={shape=rectangle, fill=delaycheck_color, draw=black},
+]
+
+% coordinate
+\newcommand\Ay{3.5}
+\newcommand\Axo{1}
+\newcommand\Axc{3.2}
+\newcommand\Axr{4}
+\newcommand\Axe{5.5}
+
+\newcommand\By{0.7}
+\newcommand\Bxo{2.0}
+\newcommand\Bxc{4.7}
+\newcommand\Bxr{6.0}
+\newcommand\Bxe{7.5}
+
+% RMADER deconfliction 
+% Agent A
+    \node[text=red] at (0.5,\Ay+0.2) {\scriptsize Agent A};
+    % previous iter.
+    \filldraw[fill=check_color, draw=black, opacity=0.2] (0,\Ay) rectangle (1.5,\Ay-1.5);
+    \filldraw[fill=delaycheck_color, draw=black, opacity=0.2] (0.5,\Ay) rectangle (\Axo,\Ay-1.5);
+    % current iter.
+    \filldraw[thick, fill=opt_color, draw=black] (\Axo,\Ay) rectangle (\Axc,\Ay-1.5);
+    \filldraw[thick, fill=check_color, draw=black] (\Axc, \Ay) rectangle (\Axr, \Ay-1.5);
+    \filldraw[thick, fill=delaycheck_color, draw=black] (\Axr, \Ay) rectangle (\Axe, \Ay-1.5);
+    % next iter.
+    \filldraw[fill=opt_color, draw=black, opacity=0.2] (\Axe, \Ay) rectangle (\Axe+1.5, \Ay-1.5);
+    \filldraw[fill=check_color, draw=black, opacity=0.2] (\Axe+1.5, \Ay) rectangle (\columnwidth, \Ay-1.5);
+% Agent B
+    \node[text=blue] at (0.5,\By+0.2) {\scriptsize Agent B};
+    % previous iter.
+    \filldraw[fill=check_color, draw=black, opacity=0.2] (0,\By) rectangle (\Bxo-0.5,\By-0.3);
+    \filldraw[fill=delaycheck_color, draw=black, opacity=0.2] (\Bxo-0.5,\By) rectangle (\Bxo,\By-0.3);
+    % current iter.
+    \filldraw[thick, fill=opt_color, draw=black] (\Bxo,\By) rectangle (\Bxc,\By-0.3);
+    \filldraw[thick, fill=check_color, draw=black] (\Bxc, \By) rectangle (\Bxr, \By-0.3);
+    \filldraw[thick, fill=delaycheck_color, draw=black] (\Bxr, \By) rectangle (\Bxe, \By-0.3);
+    % next iter.
+    \filldraw[fill=opt_color, draw=black, opacity=0.2] (\Bxe, \By) rectangle (\columnwidth, \By-0.3);
+    % \filldraw[fill=check_color, draw=black, opacity=0.2] (\Bxe+1.0, \By) rectangle (\columnwidth-1, \By-0.3);
+
+% time label
+\draw[thick, densely dotted] (\Axr,0) -- (\Axr,\Ay-1.5) node[] at (\Axr, -0.25) {\tiny t\textsubscript{traj\textsubscript{A\textsubscript{new}}}};
+\draw[thick, densely dotted] (\Axe,0) -- (\Axe,\Ay-1.5) node[] at (\Axe, -0.25) {\tiny t\textsubscript{traj\textsubscript{A}}};
+    
+% Axis
+\draw[thick,->] (0,0) -- (\columnwidth,0) node[anchor=north east] {time};
+
+% traj. msgs
+\draw[thick, ->, draw=red] (\Axr,\Ay-1.5) -- (\Axr,\Ay-2.5) node[midway,fill=white, text=red] {\tiny \trajANew{}};
+\draw[thick, ->, draw=red] (\Axe,\Ay-1.5) -- (\Axe,\Ay-2.5) node[midway,fill=white, text=red] {\tiny \trajA{}};
+
+% legend in the sequence
+\node[font=\bfseries,right] at (\Axo,\Ay-0.15) {\tiny Optimization\textsubscript{A}};
+\node[right] at (\Axo,\Ay-0.45) {\scriptsize constraints:};
+\node[right] at (\Axo,\Ay-0.75) {\scriptsize \ multiple agents};
+\node[right] at (\Axo,\Ay-1.05) {\scriptsize \ multiple obstacles};
+\node[font=\bfseries,right] at (\Axc,\Ay-0.15) {\tiny Check\textsubscript{A}};
+\node[font=\bfseries,right] at (\Axr,\Ay-0.15) {\tiny Delay Check\textsubscript{A}};
+
+\node[font=\bfseries,right] at (\Bxo,\By-0.15) {\tiny Optimization\textsubscript{B}};
+\node[font=\bfseries,right] at (\Bxc,\By-0.15) {\tiny Check\textsubscript{B}};
+\node[font=\bfseries,right] at (\Bxr,\By-0.15) {\tiny Delay Check\textsubscript{B}};
+
+% text
+\node[color=gray] at (0.5,\Ay-0.15) {\scriptsize Prev. iter.};
+\node[color=gray] at (\Axe+0.6,\Ay-0.15) {\scriptsize Next iter.};
+\node[color=gray] at (0.5,\By-0.15) {\scriptsize Prev. iter.};
+\node[color=gray] at (0.95\columnwidth,\By-0.15) {\scriptsize Next iter.};
+
+\end{tikzpicture}

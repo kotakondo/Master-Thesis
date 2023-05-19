@@ -1,0 +1,124 @@
+%% This is an example first chapter.  You should put chapter/appendix that you
+%% write into a separate file, and add a line \include{yourfilename} to
+%% main.tex, where `yourfilename.tex' is the name of the chapter/appendix file.
+%% You can process specific files by typing their names in at the 
+%% \files=
+%% prompt when you run the file main.tex through LaTeX.
+\chapter{Introduction}\label{chap:intoroduction}
+
+\section{Motivation}
+
+In recent years, multiagent UAV trajectory planning has been extensively studied~\cite{ryou_cooperative_2022, peng2022obstacle, gao2022meeting, tordesillas2020mader, kondo2023robust, zhou2020ego-swarm, sebetghadam2022distributed, robinson2018efficient, park2020efficient, Hou2022EnhancedDA, firoozi2020distributed, toumieh2023decentralized, wang2022robust, batra2022decentralized}. 
+Multiagent trajectory planning is a critical aspect of unmanned aerial vehicle (UAV) applications such as search and rescue missions, surveillance, and package delivery. However, developing a scalable and reliable multiagent trajectory planner for UAVs poses significant challenges. 
+Especailly considering real-world deployments multiagent trajectory planning needs to be robust to system disturbances such as communication delays. 
+Also, when an agent needs to be able to avoid dynamic obstacles such as other UAVs. Failing to do so could lead to undesired collisions.
+In real-world deployments of multiagent trajectory planning methods, it is crucial to (1)~achieving \textbf{scalable} multiagent trajectory planning, (2)~handling \textbf{communication delays}, (3)~avoiding \textbf{static and dynamic obstacles}.
+However, finding effective solutions to these challenges remains an open question.
+
+\section{Literature Review}\label{sec:literature_review}
+
+\subsection{Multiagent Trajectory Planner in Real-World Environment}
+
+To achieve \textbf{scalable} multiagent trajectory planners, it is important to understand the categories of multiagent trajectory planning. Multiagent planners can be centralized~\cite{park2020efficient, sharon_conflict-based_2015, robinson2018efficient} (one machine plans every agent's trajectory) or decentralized \cite{tordesillas2020mader, zhou2020ego-swarm, lusk_distributed_2020} (each agent plans its own trajectory).
+Decentralized planners are more scalable and robust to failures of the centralized machine. Despite these advantages, a decentralized scheme requires communication between the agents, and communication delays could potentially introduce failure in the trajectory deconfliction between the agents~\cite{gielis_critical_2022}. 
+It is also worth noting that there are two layers of decentralization \textemdash decentralization on planning and decentralization on hardware architecture. Even if planner is decentralized in terms of planning, agents can still rely on centralized communication architecture, such as WiFi, and centralized localization, such as motion capture system. 
+
+Multiagent planners can also be classified according to whether or not they are asynchronous. In an asynchronous setting, each agent independently triggers the planning step without considering the planning status of other agents. 
+Asynchronous approaches do not require a synchronous mechanism among agents and are, therefore, more scalable than synchronous approaches.
+They are, however, also more susceptible to communication delays since agents plan and execute trajectories independently. See Table \ref{tab:multiagent_category} for the aforementioned multiagent trajectory planner categorization.
+
+\begin{table}[t]
+    \renewcommand{\arraystretch}{2.5}
+    \scriptsize
+    \begin{centering}
+    \caption{\centering Multiagent Trajectory Planner Category}
+    \label{tab:multiagent_category}
+    \resizebox{\columnwidth}{!}{
+    \begin{tabular}{>{\centering\arraybackslash}m{0.05\columnwidth} >{\centering\arraybackslash}m{0.15\columnwidth} || >{\centering\arraybackslash}m{0.3\columnwidth} >{\centering\arraybackslash}m{0.3\columnwidth}}
+    & & \ \ \ \ \ \ \ \tikzmark{a} & \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \tikzmark{b} \tabularnewline
+    & & \textbf{Synchronous} & \textbf{Asynchronous} \tabularnewline
+    \hline 
+    \hline 
+    \tikzmark{c} & \textbf{Centralized} & \cite{park2020efficient, sharon_conflict-based_2015, robinson2018efficient} & No methods proposed \tabularnewline
+    \cline{2-4}
+    \tikzmark{d} & \textbf{Decentralized} & \cite{chen_decoupled_2015, liu_towards_2018, park_online_2022, toumieh_decentralized_2022} & \cite{cap_asynchronous_2013, tordesillas2020mader, zhou2020ego-swarm, senbaslar_asynchronous_2022}, and \textbf{RMADER} \tabularnewline
+    \end{tabular}}
+    \par\end{centering}
+    \begin{tikzpicture}[overlay, remember picture, shorten >=.5pt, shorten <=.5pt, transform canvas={yshift=.25\baselineskip}]
+        \draw[thick, ->] ({pic cs:a}) -- ({pic cs:b}) node[midway, anchor=south] {\scriptsize Scalability};
+        \draw[thick, ->] ({pic cs:c}) -- ({pic cs:d}) node[midway, fill=white] {\scriptsize Scalability};
+    \end{tikzpicture}
+\vspace*{0.5em}
+\end{table}
+
+Many decentralized state-of-the-art trajectory planners do not consider \textbf{communication delays} or explicitly state assumptions about communication. 
+For example, \textbf{SCP}~\cite{chen_decoupled_2015}, \textbf{decNS}~\cite{liu_towards_2018}, and \textbf{LSC}~\cite{park_online_2022} are decentralized and synchronous, but SCP and decNS implicitly and LSC explicitly assume a perfect communication environment without any communication delays.
+
+The algorithm \textbf{decMPC}~\cite{toumieh_decentralized_2022} is decentralized, but it requires synchronicity and communication delays to be within a fixed planning period.
+\textbf{EDG-Team}~\cite{Hou2022EnhancedDA} is a decentralized semi-asynchronous planner, which solves joint optimization as a group. 
+EDG-Team cooperatively tackles the path-planning problem but implicitly assumes no communication delays. 
+\textbf{ADPP}~\cite{cap_asynchronous_2013} is asynchronous\footnote{As in \cite{tordesillas2020mader}, we define asynchronous planning to be when the agent triggers trajectory planning independently without considering the planning status of other agents. 
+However, ADPP~\cite{cap_asynchronous_2013} implements a prioritized asynchronous approach, meaning plannings are not fully independently triggered.} and decentralized, but it assumes perfect communication without delay. 
+Our previous work \MADER{}~\cite{tordesillas2020mader} is asynchronous and decentralized but assumes no communication delays.
+\textbf{EGO-Swarm}~\cite{zhou2020ego-swarm} also proposes a decentralized, asynchronous planner that requires agents to periodically broadcast a trajectory at a fixed frequency, and each agent immediately performs collision checks upon receiving the message. EGO-Swarm is the first fully decentralized, asynchronous trajectory planner successfully demonstrating hardware experiments, yet it still suffers from collisions due to communication delays, as shown Chapter~\ref{chap:simulation-results}. 
+\textbf{AsyncBVC}~\cite{senbaslar_asynchronous_2022} proposes an asynchronous decentralized trajectory planner that can guarantee safety even with communication delays.
+However, the future trajectories are constrained by past separating planes, which can overconstrain the solution space and hence increase conservatism.
+In addition, it relies on discretization when solving the optimization problem, meaning that safety is only guaranteed on the discretization points. Additionally, AsyncBVC was only tested in simulations, so its applicability in real-world hardware is unclear. 
+%In contrast, our approach instead is able to guarantee safety in a continuous approach by leveraging the MINVO basis~\cite{tordesillas_minvo_2022}.
+For clarification, we define a dynamic environment as an environment with dynamic obstacles. The difference between an agent and an obstacle is that an agent can make decisions based on given information. An obstacle, on the other hand, simply follows a pre-determined trajectory regardless of what else is in the environment.
+
+Furthermore, it is worth noting that in the current literature, there is a scarcity of research on the practical applicability of these state-of-the-art approaches in \textbf{dynamic environments}, where the unpredictability and rapid changes of obstacles and other agents make trajectory planning significantly more challenging. Therefore, to the best of our knowledge, none of these state-of-the-art approaches have been demonstrated in such dynamic environments, which highlights the need for novel trajectory planning methods that can handle the complexities of real-world scenarios.
+
+\begin{table}[h]
+    \renewcommand{\arraystretch}{2.0}
+    \scriptsize
+    \begin{centering}
+    \caption{\centering State-of-the-art Decentralized Multiagent Planners}
+    \label{tab:state_of_the_art_comparison}
+    \resizebox{1.0\columnwidth}{!}{
+    \begin{tabular}{>{\centering\arraybackslash}m{0.3\columnwidth} >{\centering\arraybackslash}m{0.18\columnwidth} >{\centering\arraybackslash}m{0.3\columnwidth} >{\centering\arraybackslash}m{0.18\columnwidth}}
+    \toprule 
+    \textbf{Method} & \textbf{Asynchronous?} & \textbf{Robust to Comm. Delay?} & \textbf{Hardware in Dynamic Env.?}\tabularnewline
+    \hline 
+    \hline 
+    \textbf{SCP}~\cite{chen_decoupled_2015}  & \multirow{3}[1]{*}{\NoRed{}} & \multirow{3}[1]{*}{\NoRed{}} & \multirow{3}[1]{*}{\NoRed{}} \tabularnewline
+    \cline{0-0}
+    \textbf{decNS}~\cite{liu_towards_2018} &&& \tabularnewline
+    \cline{0-0}
+    \textbf{LSC}~\cite{park_online_2022} &&& \tabularnewline
+    \hline 
+    \textbf{decMPC}~\cite{toumieh_decentralized_2022} & \NoRed{} & \YesGreen{} & \NoRed{} \tabularnewline
+    \hline
+    \textbf{EDG-Team}~\cite{Hou2022EnhancedDA} & \YesGreen{}/\NoRed{}\footnotemark[2] & \NoRed{} & \NoRed{} \tabularnewline
+    \hline 
+    \textbf{ADPP}~\cite{cap_asynchronous_2013} & \YesGreen{}\footnotemark[3] & \NoRed{} & \NoRed{} \tabularnewline
+    \hline
+    \textbf{MADER}~\cite{tordesillas2020mader} & \YesGreen{} & \NoRed{} & \NoRed{} \tabularnewline
+    \hline 
+    \textbf{EGO-Swarm}~\cite{zhou2020ego-swarm} & \YesGreen{} & \NoRed{} & \NoRed{} \tabularnewline
+    \hline 
+    \textbf{AsyncBVC}~\cite{senbaslar_asynchronous_2022} & \YesGreen{} & \YesGreen{}  & \NoRed{} \tabularnewline
+    \hline
+    \textbf{RMADER \ (proposed)}\cite{kondo2022robust, kondo2023robust} & \YesGreen{} & \YesGreen{} & \YesGreen{} \tabularnewline
+    \bottomrule
+    \end{tabular}
+    }
+    \par\end{centering}
+\vspace*{0.5em}
+\footnotesize{$^2$ \!\!\! EDG-Team triggers joint optimization in dense environments and switches to a centralized, synchronous planner.} \\
+\footnotesize{$^3$  \!\!\!\! Asynchronous but requires priority information for planning.}
+\end{table}
+
+\section{Contributions}
+
+To achieve \textbf{scalable} multiagent trajectory planning that can handle \textbf{communication delays} while avoiding \textbf{static and dynamic obstacles}, we propose \textbf{Robust MADER} (\RMADER{}), a decentralized and asynchronous multiagent trajectory planner that is capable of generating collision-free trajectories in dynamic environments even in the presence of realistic communication delays.
+As shown in Table~\ref{tab:state_of_the_art_comparison}, RMADER is the first approach to demonstrate trajectory planning in dynamic environments while maintaining robustness to communication delays. Our contributions include:
+\begin{enumerate}
+  \item An algorithm that guarantees collision-free trajectory generation even in the presence of real-world communication delays between vehicles. 
+  \item Extensive simulations comparing our approach to state-of-the-art methods under communication delays that demonstrate a \textbf{100\% success rate} of collision-free trajectory generation (see Table~\ref{tab:sim_compare}).
+  \item Theoretical analysis of collision-free guarantee on RMADER
+  \item A mesh network hardware demonstration using six agents. 
+  \item Two, four, and six agent hardware flight experiments on a mesh network with two dynamic obstacles, achieving \SI{5.8}{\m/\s}. Our work is the first to demonstrate a multiagent trajectory planner that is robust to communication delays with multiple dynamic obstacles in hardware.
+\end{enumerate}
+
+Chapter~\ref{chap:trajectory-deconfliction} presents RMADER's trajectory deconfliction approach and theoretical guarantee. Chapter~\ref{chap:simulation-results} provides simulation results and benchmark studies, and Chapter~\ref{chap:hardware-experiments} showcases hardware experiment results, where RMADER's robustness to communication delays.

@@ -1,0 +1,15 @@
+%% This is an example first chapter.  You should put chapter/appendix that you
+%% write into a separate file, and add a line \include{yourfilename} to
+%% main.tex, where `yourfilename.tex' is the name of the chapter/appendix file.
+%% You can process specific files by typing their names in at the 
+%% \files=
+%% prompt when you run the file main.tex through LaTeX.
+\chapter{Conclusions and Future Work}\label{chap:conclusions}
+
+\section{Conclusions}
+
+The proposed approach of decentralized and asynchronous multiagent trajectory planning called Robust MADER addresses the challenges faced by UAV applications such as search and rescue missions, surveillance, and package delivery. The traditional centralized planners require a single entity to plan all the trajectories, making them vulnerable to a single point of failure and heavily dependent on communication with the central entity. On the other hand, the decentralized approach enables each agent to plan its trajectory, making it inherently more scalable. The proposed approach's robustness to communication delays is achieved by introducing a delay-check step and a two-step trajectory-sharing scheme, ensuring a collision-free trajectory even under communication delay. The evaluation of Robust MADER through benchmark studies and flight experiments demonstrates its superior performance over existing state-of-the-art methods, achieving a 100\% collision-free success rate. Therefore, this approach is a significant contribution to the advancement of multiagent trajectory planning for UAVs.
+
+\section{Future Work}
+
+Although the proposed approach is promising, there are several areas of research that can further enhance its efficiency, accuracy, and robustness. One potential area of future work is to investigate the feasibility of integrating additional sensors or information sources to improve the accuracy and robustness of the trajectory planning. For example, integrating vision or radar-based obstacle detection and avoidance systems can enhance the proposed approach's collision avoidance capabilities in complex environments. Another direction for future research is to explore the potential of the proposed approach in more complex environments such as urban areas or disaster scenarios, which pose unique challenges to multiagent trajectory planning. Testing the proposed approach with a larger number of agents can also help validate its scalability in real-world scenarios. Furthermore, optimizing the communication protocols to reduce delays and improve communication reliability can be explored. Finally, research can be conducted to improve the efficiency of the proposed approach by exploring the use of machine learning techniques, such as reinforcement learning or deep learning, to generate trajectory plans.

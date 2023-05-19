@@ -1,0 +1,31 @@
+%% This is an example first chapter.  You should put chapter/appendix that you
+%% write into a separate file, and add a line \include{yourfilename} to
+%% main.tex, where `yourfilename.tex' is the name of the chapter/appendix file.
+%% You can process specific files by typing their names in at the 
+%% \files=
+%% prompt when you run the file main.tex through LaTeX.
+\chapter{Trajectory Optimization}\label{chap:trajectory-optimization}
+
+\section{Convex vs. Nonconvex MADER}
+
+Our prior work MADER~\cite{tordesillas2020mader} formulated a nonconvex optimization problem by using both the control points and the separating planes as decision variables~\cite[Section VI-D]{tordesillas2020mader}. This could, however, cause expensive onboard computation. Therefore we re-formulated the problem as convex by fixing the separating planes in the optimization (i.e., by not including these planes as decision variables). In addition, to generate smoother trajectories, we added a constraint on the maximum jerk. 
+
+We compared both version on a \texttt{general-purpose-N2} Google Cloud instance with 32 Intel\textsuperscript{\small\textregistered} Core i7. The flight space contains 250 dynamic and static obstacles, and the UAV must fly through the space to reach a goal \SI{75}{m} away. Maximum velocity/acceleration/jerk are set to \SI{10}{\m/\s} / \SI{20}{\m/\s^2} / \SI{30}{\m/\s^3}. The performance was measured in terms of \emph{Computation Time}, trajectory smoothness indicated by \intaccelsquared{} and \intjerksquared{}, \emph{Number of Stops}, \emph{Travel Time}, and \emph{Travel Distance}. The results are shown in Table~\ref{tab:mader-comparison}, where all data is the average of \textbf{100 simulations}. The notation \intaccelsquared{} and \intjerksquared{} refers to the time integral of squared norm of the acceleration and jerk along the trajectory, respectively. Higher values therefore represent a less smooth trajectory. \emph{Number of Stops} is the number of times the UAV had to stop on its way to the goal. Table~\ref{tab:mader-comparison} indicates that convex MADER is computationally less expensive and generates smoother trajectories, but nonconvex MADER performs better in terms of the \emph{Number of Stops} and \emph{Travel Time}. Since convex MADER has a computational advantage and can generate smoother trajectories, we implemented convex MADER for MADER and RMADER in all the simulations and hardware experiments in this paper.   
+
+\begin{table}
+    \centering
+    \caption{\centering Convex MADER vs Nonconvex MADER \label{tab:mader-comparison}}
+    % \renewcommand{\arraystretch}{2}
+    \resizebox{1.0\columnwidth}{!}{%
+    \begin{tabular}{>{\centering\arraybackslash}m{0.1\columnwidth} >{\centering\arraybackslash}m{0.05\columnwidth} >{\centering\arraybackslash}m{0.05\columnwidth} >{\centering\arraybackslash}m{0.13\columnwidth} >{\centering\arraybackslash}m{0.12\columnwidth} >{\centering\arraybackslash}m{0.12\columnwidth} >{\centering\arraybackslash}m{0.13\columnwidth} >{\centering\arraybackslash}m{0.18\columnwidth}}
+        \toprule
+        \multirow{2}{*}{Method} & \multicolumn{2}{c}{\makecell{Computation \\ Time [ms]}} & \multirow{2}{0.13\columnwidth}{\centering \intaccelsquared{} [m$^2$/s$^3$]} & \multirow{2}{0.13\columnwidth}{\centering \intjerksquared{} [m$^2$/s$^5$]} & \multirow{2}{0.12\columnwidth}{\centering Number of Stops} & \multirow{2}{0.12\columnwidth}{\centering Travel Time [s]} & \multirow{2}{0.18\columnwidth}{\centering Travel Distance [m]} \tabularnewline
+        & Avg & Max & & & & & \tabularnewline
+        \hline
+        \makecell{convex \\ MADER} & \textbf{31.08} & \textbf{433.0} & \textbf{103.5} & \textbf{2135.0} & 0.18 & 16.05 & \textbf{75.24} \tabularnewline
+        \hline
+        \makecell{nonconvex \\ MADER} & 39.23 & 724.0 & 441.93 & 20201.8 &  \textbf{0.16} & \textbf{9.93} & 75.80 \tabularnewline
+        \bottomrule 
+    \end{tabular}}
+\vspace{-2em}
+\end{table}

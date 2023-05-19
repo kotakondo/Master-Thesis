@@ -1,0 +1,400 @@
+%% This is an example first chapter.  You should put chapter/appendix that you
+%% write into a separate file, and add a line \include{yourfilename} to
+%% main.tex, where `yourfilename.tex' is the name of the chapter/appendix file.
+%% You can process specific files by typing their names in at the 
+%% \files=
+%% prompt when you run the file main.tex through LaTeX.
+\chapter{PRIMER}\label{chap:primer}
+
+\section{Overviews}\label{sec:primer-overviews}
+
+%%
+%% (1) decentralization & asynchronousness in multiagent setting
+%% (2) computational burden of optimization-based planner
+%%
+
+% Big issues we are adresssing: Multiadgent planners aren't perception aware, 
+In recent years, multiagent UAV trajectory planning has been extensively studied~\cite{ryou_cooperative_2022, peng2022obstacle, gao2022meeting, tordesillas2020mader, kondo2023robust, zhou2020ego-swarm, sebetghadam2022distributed, robinson2018efficient, park2020efficient, Hou2022EnhancedDA, firoozi2020distributed, toumieh2023decentralized, wang2022robust, batra2022decentralized}. In real-world deployments of multiagent trajectory planning methods, it is crucial to deal with challenges such as (1) detecting and avoiding collisions with \textbf{unknown obstacles}, (2)~handling \textbf{localization errors/uncertainties}, (3)~achieving \textbf{scalability} to a large number of agents, and~(4) enabling \textbf{fast and efficient computation} for onboard replanning and quick adaptation to dynamic environments. However, finding effective solutions to these challenges remains an open question.
+
+One approach to address challenges such as detecting and avoiding unknown obstacles, even in the presence of localization errors and uncertainties, is to equip each agent with a sensor, typically a camera, to perceive the surrounding environment. This allows agents to gather real-time information about their surroundings, enabling them to make informed decisions and take appropriate actions to avoid collisions and navigate through dynamic environments.
+However, this sensor often has a limited field of view (FOV), making the orientation of the UAV crucial when planning trajectories through unknown space. Therefore, planners for flying with limited FOV sensors generally need to be perception-aware to ensure that as many obstacles or other UAVs as possible are kept within the FOV.
+
+When scaling multiagent trajectory planners, it is important to note that, with centralized planners, each agent needs to listen to a single entity that plans all the trajectories~\cite{robinson2018efficient, park2020efficient}. While this approach simplifies planning, the central entity may act as a single point of failure, and the replanning abilities of the agent depend on their ability to communicate with the central entity. Decentralized planners greatly mitigate these issues, as each agent plans its own trajectory \cite{zhou2020ego-swarm, tordesillas2020mader, sebetghadam2022distributed, kondo2023robust, toumieh2023decentralized, batra2022decentralized}. Decentralized planners are therefore generally considered to be inherently more scalable and robust to failures.
+
+Similarly, synchronous planners such as~\cite{van2017distributed, sebetghadam2022distributed, firoozi2020distributed} require all agents to wait at a synchronization barrier until planning can be globally triggered, whereas asynchronous planning enables each agent to independently trigger the planning step without considering the planning status of other agents. Asynchronous methods are typically more scalable compared to synchronous methods~\cite{zhou2020ego-swarm, kondo2023robust, tordesillas2020mader}.
+
+Many optimization-based approaches~\cite{tordesillas2020mader, kondo2023robust, toumieh2023decentralized, zhou2020ego-swarm} have been proposed for multiagent trajectory generation. However, these approaches often require substantial computational resources, posing challenges for deployments in dynamic environments that demand fast on-the-fly replanning. To mitigate this issue, researchers have explored imitation learning (IL)-based approaches~\cite{tordesillas2023deep, Tagliabue2021DemonstrationEfficientGP, Park2020VisionBasedOA}, which offer the advantage of faster replanning while still achieving close-to-optimal trajectory generation.
+
+%%
+%% Start Table
+%%
+
+\begin{table}[!t]
+    \renewcommand{\arraystretch}{1.4}
+    \scriptsize
+    \begin{centering}
+    \caption{\centering State-of-the-art UAV Trajectory Planners}
+    \label{tab:state_of_the_art_comparison}
+    \resizebox{1.0\columnwidth}{!}{
+    \begin{tabular}{>{\centering\arraybackslash}m{0.4\columnwidth} >{\centering\arraybackslash}m{0.25\columnwidth} >{\centering\arraybackslash}m{0.25\columnwidth}}
+    \toprule 
+    \textbf{Method} & \textbf{Multiagent} & \textbf{Perception-aware} \tabularnewline
+    \midrule
+    \textbf{EGO-Swarm} \cite{zhou2020ego-swarm} & \cellcolor{LimeGreen!25} & \cellcolor{Red!10} \tabularnewline
+    \cline{0-0} 
+    \textbf{DMPC} \cite{luis2020online} & \cellcolor{LimeGreen!25} & \cellcolor{Red!10} \tabularnewline
+    \cline{0-0}
+    \textbf{MADER} \cite{tordesillas2020mader} & \cellcolor{LimeGreen!25} \YesGreen{} & \cellcolor{Red!10} \NoRed{} \tabularnewline
+    \cline{0-0}
+    \textbf{decMPC} \cite{toumieh2022decentralized} & \cellcolor{LimeGreen!25} & \cellcolor{Red!10} \tabularnewline
+    \cline{0-0}
+    \textbf{RMADER} \cite{kondo2023robust} & \cellcolor{LimeGreen!25} & \cellcolor{Red!10} \tabularnewline
+    \hline
+    \textbf{Raptor} \cite{zhou2021raptor} & \cellcolor{Red!10} & \cellcolor{LimeGreen!25} \tabularnewline
+    \cline{0-0}
+    \textbf{Time-opt} \cite{spasojevic2020perception} & \cellcolor{Red!10} & \cellcolor{LimeGreen!25} \tabularnewline
+    \cline{0-0}
+    \textbf{PANTHER} \cite{tordesillas2021panther} & \cellcolor{Red!10} \NoRed{} & \cellcolor{LimeGreen!25} \YesGreen{} \tabularnewline
+    \cline{0-0}
+    \textbf{PA-RHP} \cite{wu2022perception} & \cellcolor{Red!10} & \cellcolor{LimeGreen!25} \tabularnewline
+    \cline{0-0}
+    \textbf{Deep-PANTHER} \cite{tordesillas2023deep} & \cellcolor{Red!10} & \cellcolor{LimeGreen!25} \tabularnewline
+    \hline
+    \textbf{PARM} / \textbf{PRIMER}\ (proposed) & \cellcolor{LimeGreen!25} \YesGreen{} & \cellcolor{LimeGreen!25} \YesGreen{} \tabularnewline
+    \bottomrule
+    \end{tabular}}
+    \par\end{centering}
+\end{table}
+
+%%
+%% End Table
+%%
+
+To tackle the challenges of (1)~\textbf{unknown objects detection and collision avoidance}, (2)~\textbf{localization errors/uncertainties}, (3)~\textbf{scalability}, and (4)~\textbf{fast and efficient computation}, we propose PRIMER, an IL-based decentralized, asynchronous, perception-aware multiagent trajectory planner. Table~\ref{tab:state_of_the_art_comparison} provides a comparison of PRIMER with state-of-the-art approaches, and our contributions include:
+%
+\begin{enumerate}
+    \item PARM/PARM* -- the first decentralized, asynchronous, perception-aware, multiagent trajectory planner.
+    \item PRIMER -- IL-based decentralized, asynchronous, perception-aware, multiagent approach for translational and yaw trajectory generation with the use of Long Short-Term Memory (LSTM) neural network.
+    \item Extensive simulation benchmarking, we compared the performance of PARM, PARM*, and PRIMER.
+    % \item obstacle sharing??
+    % \item Multiagent UAV hardware experiments with dynamic obstacles, achieving fast, real-time onboard planning while generating collision-free trajectories.
+\end{enumerate}
+%
+
+\section{Perception-aware Multiagent Trajectory Generation}\label{sec:trajectory-generation}
+
+%%
+%% (1) Explain PARM:
+%%      (1.1) How to achieve multiagent perception-aware trajectory? (multi PANTHER %% (multiple FOV terms))
+%%      (1.2) Decentr. Asynchronous Multiagent PA planner in Optimization/Check/Recheck(DelayCheck) framework
+%% (2) Explain PRIMER
+%%      (2.1) IL NN architecture + Expert
+%%      (2.2) Yaw + Pos NN
+%%      (2.3) Multiagent/multi-obstacle planner using LSTM 
+%% (3) Explain training environments (DAgger, dynamic obstacles, and other agents, yaw_loss_weight)
+%% (4) Obstacle sharing
+%% (5) practically, optimization method doesn't scale because if you have many obstacles, you will need more and more constraints + FOV terms, and computationally it's not solvable.
+
+\textcolor{blue}{
+This section outlines our perception-aware multiagent planning approach, encompassing both optimization-based and IL-based methods.
+First, we introduce PARM and PARM*, which are optimization-based perception-aware multiagent trajectory planners. These planners utilize the Robust MADER trajectory deconfliction framework~\cite{kondo2023robust} to ensure safe and collision-free trajectories. By considering both position and yaw, PARM and PARM* are capable of tracking multiple obstacles while generating trajectories.
+Next, we present PRIMER, an IL-based planner that is trained using PARM* as an expert. PRIMER offers fast computation by leveraging the benefits of IL. By incorporating the expertise of PARM*, PRIMER is able to generate effective trajectories while significantly reducing computational requirements.
+As Table~\ref{tab:state_of_the_art_pa_comparison} shows, PARM, PARM*, and PRIMER are notable as the first perception-aware multiagent trajectory planners designed to track multiple obstacles while accounting for both position and yaw.}
+
+
+\subsection{PARM / PARM* \textemdash Optimization-based Decentralized, Asynchronous Perception-Aware Multiagent Planning}
+
+MADER~\cite{tordesillas2020mader} proposed an optimization-check-recheck scheme for decentralized, asynchronous multiagent planning.
+In this approach, an agent optimizes its trajectory while using received trajectories as optimization constraints.
+Next, the agent checks its trajectory against trajectories received in the optimization step and rechecks if it received any trajectory in the check step.
+To enhance robustness against communication delays, we proposed Robust MADER \cite{kondo2023robust}, which replaces the recheck step with a delay-check step. 
+These frameworks allow fully decentralized asynchronous multiagent trajectory generation under real-world uncertainties and delays.
+
+PANTHER~\cite{tordesillas2021panther} proposed a perception-aware trajectory planner for a single agent in dynamic environments, generating trajectories to avoid obstacles while keeping them in the sensor FOV. In~\cite{tordesillas2023deep}, PANTHER* improved the original PANTHER \textcolor{blue}{with less conservatism by including separating planes and trajectory total time as optimization variables}, but both were limited to tracking and avoiding only one obstacle at a time.
+%
+To overcome this limitation, we modify the optimization problem solved by PANTHER to enable tracking and avoidance of multiple obstacles, leading to PARM -- a decentralized, asynchronous, perception-aware multi-agent trajectory planning system that incorporates this modified optimization approach into the RMADER deconfliction framework. To enable tracking multiple obstacles and agents, we modify the FOV term given in \textcolor{blue}{Section IV of \cite{tordesillas2021panther} as the following.}
+%
+\begin{equation}
+% \begin{multlined}
+    % \alpha_{\boldsymbol{j}} \text{\intjerksquared} + \alpha_{\psi} \intddyawsquared \\
+    - \alpha_{FOV} \sum_{i}^{n} \left[ \int_{0}^{T} \{\text{inFOV}(\text{obstacle}_{i})\}^3 dt \right] \\
+    % + \alpha_{\boldsymbol{g}} \left\Vert \boldsymbol{p}(t_f) - \boldsymbol{g} \right\Vert ^2 + \alpha_T T 
+% \end{multlined}
+\end{equation}
+%
+\textcolor{blue}{where $\alpha_{FOV}$ is the weight for the FOV term, $n$ is the number of obstacles, $T$ is the total time of the trajectory, inFOV() returns a higher number when obstacle$_i$ is in FOV.}
+
+Additionally, following the method outlined in~\cite{tordesillas2023deep}, we introduce PARM*, a method that finds closer-to-optimal trajectories, albeit at the cost of increased computation and slower re-planning rates.
+
+%%
+%% Figure (parm and parm star)
+%%
+
+\begin{figure}[t]
+    \centering
+    \resizebox{\columnwidth}{!}{
+    \input{figures/parm_sequence}
+    } 
+    \captionof{figure}{PARM 's trajectory optimization and deconfliction sequence: PARM uses an optimization-based approach to generate trajectories for each agent, followed by a conflict detection and resolution step based on the Robust MADER framework. Each agent first generates a new trajectory in the optimization step, and then checks if there are any conflicts with the trajectories received from other agents. If no conflicts are detected, the agent publishes its new trajectory and begins checking for potential collisions in a delay check step. This delay check step is a sequence of checks over a period of time. Finally, if no conflicts are detected during the delay check, the agent commits to the new trajectory and publishes it. However, if conflicts are detected, the agent reverts to the trajectory from the previous iteration and discards the new trajectory. More details on the RMADER approach can be found in Section II of~\cite{kondo2023robust}.}
+\label{fig:parm_sequence}
+\end{figure}
+
+%%
+%% End Figure 
+%%
+
+In addition, it is worth noting that coupled trajectory generation has the advantage of enabling the optimizer to simultaneously consider both position and yaw trajectories, taking into account the impact of each on the other. On the other hand, the decoupled approach involves optimizing either the position or yaw trajectory first, and then optimizing the other trajectory based on the pre-determined trajectory. While this approach may reduce computation and complexity, it could also result in sub-optimal position and yaw trajectories overall, as the two trajectories are not jointly optimized. Therefore we designed PARM/PARM* in a way that they optimize both position and yaw in a coupled manner (See Table~\ref{tab:state_of_the_art_pa_comparison}). 
+
+Note that we assume our system is differential flat~\cite{mellinger2011minimum}, and the flat outputs are position, yaw, and their derivatives.
+
+\subsection{PRIMER \textemdash Imitation Learning-based PARM*}
+
+In our previous work, Deep-PANTHER \cite{tordesillas2023deep}, we used IL to train a neural network that generates a desired position trajectory, while relying on closed-form solutions to obtain the direction where the onboard sensor should be looking at (e.g., yaw on a multirotor). This closed-form yaw solution generates yaw trajectories given position trajectories, reducing the output dimension of the learned policy. However, this approach is not scalable in multi-obstacle environments since the closed-form solution only generates yaw trajectories for a single given obstacle.
+To address this limitation, we design PRIMER using a multi-layer perceptron (MLP) that generates both position and yaw trajectories. 
+To generate both position and yaw trajectories, PRIMER has the size of the neural network to $4$ fully connected layers, each with $1024$ neurons, and is trained to imitate the optimal perception-aware trajectories generated by PARM*.
+
+Additionally, we added a Long Short-Term Memory (LSTM)~\cite{HochSchm97} feature-extraction network to the MLP used in PRIMER, inspired by the ground-robot motion planning approach \cite{everett2018motion}. 
+This allowed the neural network to accept various numbers of obstacles and agents as input, whereas traditional fully-connected feedforward neural networks can only handle a fixed number of obstacles. LSTM can take as many obstacles and agents as possible and generate a fixed length of the latent output, which we feed into the fully connected layers. 
+
+It is also worth noting that IL-based approaches are more scalable in practice than optimization-based approaches. As the number of agents and obstacles in the environment increases, optimization-based approaches need to include more constraints in the optimization, leading to significant computational requirements. On the other hand,  IL-based approaches such as PRIMER are able to handle larger-scale environments with little to no additional computational overhead with the use of LSTM.
+
+Fig.~\ref{fig:primer-nn} shows an architecture of PRIMER. We first feed the predicted trajectories of obstacles and received other agents' trajectories to the LSTM, which outputs a fixed size vector.
+We then combine it with the agent's own state and feed this into the fully connected layers.
+
+Table~\ref{tab:state_of_the_art_pa_comparison} shows the comparison of the state-of-the-art perception-aware trajectory planners. PARM/PARM* are the first perception-aware multiagent trajectory planner that generates position and yaw coupled trajectory while tracking multiple obstacles, and PRIMER is the extension of PARM, in the sense that it has much faster computation time, leveraging IL-based planner.
+
+%%
+%% Figure (primer-nn)
+%%
+
+\begin{figure}[h]
+    \centering
+    \input{figures/primer-network1}
+\caption{\centering PRIMER Network Architectures}
+\label{fig:primer-nn}
+\end{figure}
+
+%%
+%% End Figure (primer-nn)
+%%
+
+%%
+%% Start Table
+%%
+
+\begin{table}[h]
+    \renewcommand{\arraystretch}{1.4}
+    \scriptsize
+    \begin{centering}
+    \caption{\centering State-of-the-art Perception-aware Obstacle Tracking Trajectory Planners}
+    \label{tab:state_of_the_art_pa_comparison}
+    \resizebox{1.0\columnwidth}{!}{
+    \begin{tabular}{>{\centering\arraybackslash}m{0.16\columnwidth} || >{\centering\arraybackslash}m{0.1\columnwidth} >{\centering\arraybackslash}m{0.06\columnwidth} >{\centering\arraybackslash}m{0.2\columnwidth} >{\centering\arraybackslash}m{0.26\columnwidth}} 
+    \toprule 
+    \textbf{Method} & \textbf{Tracking Multi-obstacles} & \makecell{\textbf{Multi-} \\ \textbf{agents}} & \textbf{Trajectory} & \textbf{Planning} \tabularnewline
+    \midrule
+    \cite{thomas2017autonomous} & \NoRed{} & \NoRed{} & \OnlyPosRed{}{} & \OptRed{} \tabularnewline
+    \hline
+    \cite{penin2017vision-based} & \NoRed{} & \NoRed{} & \PosAndYawGreen{} & \OptRed{} \tabularnewline
+    \hline
+    \textbf{PANTHER} / \textbf{PANTHER*} \cite{tordesillas2021panther, tordesillas2023deep} & \NoRed{} & \NoRed{} & \PosAndYawGreen{} & \OptRed{} \tabularnewline
+    \hline
+    \textbf{Deep-PANTHER} \cite{tordesillas2023deep} & \NoRed{} & \NoRed{} & \OnlyPosRed{} \footnote{Deep-PANTHER \cite{tordesillas2023deep} generates only position trajectory, and yaw trajectory is generated by closed-form solution based on the position trajectory.} & \ILGreen{} \tabularnewline
+    \hline
+    \textbf{PARM} / \textbf{PARM*} (proposed) & \YesGreen{} & \YesGreen{} & \PosAndYawGreen{} & \OptRed{} \tabularnewline
+    \hline
+    \textbf{PRIMER} (proposed) & \YesGreen{} & \YesGreen{} & \PosAndYawGreen{} & \ILGreen{} \tabularnewline
+    \bottomrule
+    \end{tabular}}
+    \par\end{centering}
+\end{table}
+
+%%
+%% End Table
+%%
+
+
+\subsection{PRIMER Training Setup}
+We used the student-expert IL learning framework, where PARM* acts as an expert that provides demonstrations, and PRIMER is the student, trained so that its neural network can reproduce the provided demonstrations. 
+We trained the student in an environment that contained multiple dynamic obstacles flying a randomized trefoil-knot trajectory, as well as other PRIMER agents. The terminal goal for the student was also randomized. To collect the data and train the student, we utilized the Dataset-Aggregation algorithm (DAgger)~\cite{ross2011reduction}, and Adam~\cite{kingma2014adam} optimizer. Additionally, we introduced a weighted loss function between position and yaw. During the training process, we found that it was more difficult to train the yaw trajectory than the position trajectory, and thus we weighted the yaw loss function. In our training, we set the weight $\alpha$ to $70$. The total loss is defined as:
+%
+\begin{equation}
+\mathcal{L}_\text{total} = \mathcal{L}_\text{pos} + \alpha \mathcal{L}_\text{yaw}
+\end{equation}
+%
+\textcolor{blue}{where $\mathcal{L}_\text{total}$ is the total loss, $\mathcal{L}_\text{pos}$ is the loss for the position, $\alpha$ is the weight between the position and yaw trajectories, and $\mathcal{L}_\text{yaw}$ is the loss for the yaw trajectory.}
+
+\subsection{Obstacle Sharing}
+As shown in Fig.~\ref{fig:primer-planning-sharing-architecture}, each agent detects and tracks obstacles and shares their predicted trajectories with other agents. This obstacle-sharing architecture allows the agents to have a better understanding of the surrounding environment as a team.
+
+%%
+%% Start figure
+%% 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth, trim={0 6cm 0 0.5cm}, clip]{figures/primer-architecture.pdf}
+\caption{\centering PRIMER Planning and Sharing Trajectory Architecture}
+\label{fig:primer-planning-sharing-architecture}
+\end{figure}
+
+%%
+%% End figure
+%%
+
+\subsection{Simulation Results}
+
+%!TEX root=../main.tex
+
+\section{Simulation Results}\label{sec:simultation-results}
+
+%%
+%% (1) PARM/PARM*/PRIMER Benchmarking
+%%      (A) 1 agent + 1 obst
+%%      (C) 3 agents + 2 obst
+%%
+
+\subsection{PRIMER vs. PARM* in single-agent, single-obstacle environment} 
+
+Table~\ref{tab:sim-compare-primer-parm_star} compares the average performance of PRIMER and PARM* in a simulation environment with a single dynamic obstacle that follows a trefoil trajectory while the agent flies diagonally to avoid obstacles. The comparison is based on the average cost of trajectories, computation time, obstacle avoidance failure rate, and dynamic constraint failure rate.
+
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.4}
+\caption{\centering PRIMER vs. PARM* in single-agent, single-obstacle environment}
+\label{tab:sim-compare-primer-parm_star}
+\begin{centering}
+\resizebox{1.0\columnwidth}{!}{
+\begin{tabular}{>{\centering\arraybackslash}m{0.14\columnwidth} || >{\centering\arraybackslash}m{0.1\columnwidth} >{\centering\arraybackslash}m{0.1\columnwidth} >{\centering\arraybackslash}m{0.08\columnwidth} >{\centering\arraybackslash}m{0.3\columnwidth}}
+\toprule
+ & \textbf{Avg. Cost} & \textbf{Compu. Time [ms]} & \textbf{Success Rate [\%]} & \textbf{Obst. Avoidance, Dyn. Constr. Failure Rate [\%]} \tabularnewline
+\midrule
+\textbf{PARM*} & 403 & \textbf{\textcolor{Red}{4495.8}} & \textbf{\textcolor{ForestGreen}{100}} & 0.0  \tabularnewline
+\hline 
+\textbf{PRIMER} & 431 & \textbf{\textcolor{ForestGreen}{0.8008}} & \textbf{\textcolor{ForestGreen}{100}} & 0.0  \tabularnewline
+\bottomrule
+\end{tabular}}
+\par\end{centering}
+\end{table}
+
+\subsection{Multiagent and multi-obstacle benchmarking}
+
+We also tested PARM, PARM*, and PRIMER in two different environments: (1) one agent and two obstacles and (2) two agents and two obstacles. To conduct the experiment, we positioned the agents in a \SI{3.0}{\m} radius circle and \textcolor{blue}{had them exchange positions diagonally, as shown in Fig. 4. The obstacles are boxes with 0.5-m edges.} We set the maximum dynamic limits to \SI{2.0}{\m/\s}, \SI{10.0}{\m/\s^2}, and \SI{30.0}{\m/\s^3} for velocity, acceleration, and jerk, respectively.
+
+We conducted all simulations on an Alienware Aurora r8 desktop running Ubuntu 20.04, which is equipped with an Intel\textsuperscript{\textregistered} Core\textsuperscript{\texttrademark} i9-9900K CPU clocked at $3.60$ GHz with $16$ cores and $62.6$ GiB of RAM.
+
+Table~\ref{tab:sim-benchmarking} compares the average performance of PARM, PARM*, and PRIMER on two different environments: (1) one agent with two obstacles, and (2) three agents with two obstacles. The metrics used to evaluate the performance are as follows:
+
+\begin{enumerate}
+    \item Computation time: the time it takes to replan at each step.
+    \item Sucess rate: the rate at the agents successfully reach the goal without collisions.
+    \item Travel time: the time it takes for the agent to complete the position exchange.
+    \item FOV rate: the percentage of time that the agent keeps obstacles within its FOV when the agent is closer than its camera's depth range.
+    \item Number of continuous FOV detection frames: the number of consecutive frames that an obstacle is kept within the FOV of the agent.
+    \item Translational dynamic constraints violation rate: the violation rate of the maximum velocity, acceleration, and jerk.
+    \item Yaw dynamic constraints violation rate: the violation rate of the maximum yaw rate.
+\end{enumerate}
+
+Note that for PARM and PARM*, we had them generate both 1 and 6 trajectories per replanning and compared their performance. When an agent generates 6 trajectories, it selects the one with the lowest cost. Although 1-trajectory replanning is faster, 6-trajectory replanning is more likely to find a better trajectory. Table~\ref{tab:sim-benchmarking} shows the 1-trajectory replanning approach is significantly faster. However, in more challenging environments with three agents, PARM*'s 1-trajectory approach has a lower success rate compared to the 6-trajectory replanning approach.
+
+Overall, all three methods achieve successful position exchange with similar performance. However, PRIMER outperforms PARM and PARM* significantly in terms of computation time.
+
+In a more complex environment with three agents and two obstacles, both PARM and PRIMER achieve a high success rate, while PARM* falls short of achieving a 100\% success rate. This is because agents spend too much time optimizing their trajectories in PARM*, causing the optimization constraints to become outdated and leading to conflicts during the check and delay check steps. PARM* also suffers from long computation time, resulting in very few generated trajectories passing the check and delay check steps, thus leading to a low success rate.
+
+Fig.~\ref*{fig:sim_simulation_summary} illustrates (a) Computation Time, (b) Travel Time, and (c-d) Trajectory Smoothness. While the 6-trajectory approach finds smoother trajectories, it requires much longer computation time, resulting in increased travel time. The trajectories generated by PRIMER exhibit smoothness comparable to those of PARM*, while PARM and PRIMER have significantly faster computation times compared to PARM*.
+
+%%
+%% Figures start
+%%
+
+\begin{figure}[h!]
+    \centering
+    \begin{mdframed}[linecolor=blue]
+    \begin{tabular}{cc}
+    \begin{tikzpicture}[every text node part/.style={align=center}]
+    \node {\includegraphics[trim={10cm 0 0 10cm}, clip, width=0.4\columnwidth, height=0.3\columnwidth]{figures/primer-multiple/3-agent-2-obst-wo-fov-1.png}};
+    \node [rectangle, fill=white] at (-1.3, 0.9)  {1};
+    \end{tikzpicture} &
+    \begin{tikzpicture}[every text node part/.style={align=center}]
+    \node {\includegraphics[trim={10cm 0 0 10cm}, clip, width=0.4\columnwidth, height=0.3\columnwidth]{figures/primer-multiple/3-agent-2-obst-wo-fov-2.png}};
+    \node [rectangle, fill=white] at (-1.3, 0.9)  {2};
+    \end{tikzpicture} \\
+    \begin{tikzpicture}[every text node part/.style={align=center}]
+    \node {\includegraphics[trim={10cm 0 0 10cm}, clip, width=0.4\columnwidth, height=0.3\columnwidth]{figures/primer-multiple/3-agent-2-obst-wo-fov-3.png}};
+    \node [rectangle, fill=white] at (-1.3, 0.9)  {3};
+    \end{tikzpicture} &
+    \begin{tikzpicture}[every text node part/.style={align=center}]
+    \node {\includegraphics[trim={10cm 0 0 10cm}, clip, width=0.4\columnwidth, height=0.3\columnwidth]{figures/primer-multiple/3-agent-2-obst-wo-fov-4.png}};
+    \node [rectangle, fill=white] at (-1.3, 0.9)  {4};
+    \end{tikzpicture}
+    \end{tabular}
+    \caption{Student mingle-agent, mingle-obstacle, simulation result: We made three imitation learning-based (student) agents fly around two dynamic obstacles. They started at the top-right corner and was commanded to fly to the down-left. For simplicity, we omitted FOV tripods visualization.}
+    \end{mdframed}
+    \label{fig:primer-single}
+\end{figure}
+
+%%
+%% Figures end
+%%
+
+%%
+%% Start Table
+%%
+
+\begin{table*}[!t]
+    \renewcommand{\arraystretch}{1.4}
+    \scriptsize
+    \begin{centering}
+    \caption{\centering Simulation Benchmarking}
+    \label{tab:sim-benchmarking}
+    \resizebox{1.0\textwidth}{!}{
+    \begin{tabular}{>{\centering\arraybackslash}m{0.1\columnwidth} >{\centering\arraybackslash}m{0.1\columnwidth} >{\centering\arraybackslash}m{0.1\columnwidth} || >{\centering\arraybackslash}m{0.1\columnwidth} >{\centering\arraybackslash}m{0.1\columnwidth} >{\centering\arraybackslash}m{0.1\columnwidth} >{\centering\arraybackslash}m{0.08\columnwidth} >{\centering\arraybackslash}m{0.15\columnwidth} >{\centering\arraybackslash}m{0.15\columnwidth} >{\centering\arraybackslash}m{0.15\columnwidth} }
+    \toprule 
+    \textbf{Env.} & \textbf{Method} & \textbf{\# Trajs} & \textbf{Avg. Compu. Time [ms]} & \textbf{Success Rate [\%]} & \textbf{Avg. Travel Time [s]} & \textbf{FOV Rate [\%]} & \textbf{Avg. of Max \# Conti. FOV Detection Frames} & \textbf{Translational Dyn. Constraints Violation Rate [\%]} & \textbf{Yaw Dyn. Constraints Violation Rate [\%]} \tabularnewline
+    \midrule
+    \multirow{6}{*}{\makecell{\textbf{1 agent} \\ \textbf{ + 2 obst.}}} & \multirow{2}{*}{\textbf{PARM}} & 1 & \textbf{\textcolor{Red}{746}} & \textbf{\textcolor{ForestGreen}{100}} & 8.5 & 22.1 & 18.5 & 9.4 & 0 \tabularnewline
+    \cline{3-10}
+    && 6 & \textbf{\textcolor{Red}{1388}} & \textbf{\textcolor{ForestGreen}{100}} & 7.3 & 25.5 & 15.1 & 10.9 & 0 \tabularnewline
+    \cline{2-10}
+    & \multirow{2}{*}{\textbf{PARM*}} & 1 & \textbf{\textcolor{Red}{1462}} & \textbf{\textcolor{ForestGreen}{100}} & 7.0 & 26.4 & 31.1 & 0 & 0 \tabularnewline
+    \cline{3-10}
+    && 6 & \textbf{\textcolor{Red}{3636}} & \textbf{\textcolor{ForestGreen}{100}} & 9.1 & 20.6 & 26.0 & 0 & 0 \tabularnewline
+    \cline{2-10}
+    & \textbf{PRIMER} & 6 & \textbf{\textcolor{ForestGreen}{140}} & \textbf{\textcolor{ForestGreen}{100}} & 4.2 & 22.0 & 33.0 & 0 & 0  \tabularnewline
+    \hline
+    \multirow{6}{*}{\makecell{\textbf{3 agents} \\ \textbf{ + 2 obst.}}} & \multirow{2}{*}{\textbf{PARM}} & 1 & \textbf{\textcolor{Red}{728}} & \textbf{\textcolor{ForestGreen}{100}} & 25.7 & 17.1 & 36.0 & 3.2 & 0 \tabularnewline
+    \cline{3-10}
+    && 6 & \textbf{\textcolor{Red}{1415}} & \textbf{\textcolor{ForestGreen}{100}} & 9.3 & 21.0 & 49.0 & 7.8 & 0 \tabularnewline
+    \cline{2-10}
+    & \multirow{2}{*}{\textbf{PARM*}} & 1 & \textbf{\textcolor{Red}{1839}} & 60 & 8.5 & 24.0 & 63.3 & 0 & 0 \tabularnewline
+    \cline{3-10}
+    && 6 & \textbf{\textcolor{Red}{5762}} & 90 & 14.1 & 24.3 & 101.1 & 0 & 0 \tabularnewline
+    \cline{2-10}
+    &\textbf{PRIMER} & 6 & \textbf{\textcolor{ForestGreen}{109}} & \textbf{\textcolor{ForestGreen}{100}} & 6.6 & 22.6 & 60.2 & 0.3 & 0 \tabularnewline
+    \bottomrule
+    \end{tabular}}
+    \par\end{centering}
+\end{table*}
+
+%%
+%% End Table
+%%
+
+%%
+%% Start Figures
+%%
+
+\begin{figure*}
+    \begin{tabular}{cc}
+      \subfloat[\centering Computation Time \label{fig:sim_computation_time}]{\includegraphics[width=0.45\textwidth]{figures/computation_time.pdf}} &
+      \subfloat[\centering Travel Time\label{fig:sim_travel_time}]{\includegraphics[width=0.45\textwidth]{figures/travel_time-primer.pdf}} \\
+      \subfloat[\centering Trajectory Smoothness (Acceleration) \label{fig:sim_traj_smooth_acc}]{\includegraphics[width=0.45\textwidth]{figures/accel_trajectory_smoothness.pdf}} &
+      \subfloat[\centering Trajectory Smoothness (Jerk) \label{fig:sim_traj_smooth_jerk}]{\includegraphics[width=0.45\textwidth]{figures/jerk_trajectory_smoothness.pdf}}
+    \end{tabular}
+    \caption{Results of flight simulations. (a) The student's computation time is much faster than that of the expert, and (b) the student's travel time is also much shorter; this is mainly because of the faster computation time. (c-d) Since the student achieves faster replanning, it does not need to stop as the expert does, and that leads to smoother trajectory generation.} 
+    \label{fig:sim_simulation_summary}
+\end{figure*}
+
+%%
+%% End Figures
+%%
+
